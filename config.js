@@ -22,7 +22,7 @@
     // that can modify data or perform privileged actions.
     // Replace the placeholder value below with your actual SimpleMMO public API key
     // when deploying to GitHub Pages.
-    PUBLIC_API_KEY: "REPLACE_WITH_YOUR_SIMPLEMMO_PUBLIC_API_KEY",
+    PUBLIC_API_KEY: "api_key=WC48Vdla2i**********************************************************************",
 
     // How to fetch items. Adjust these to match your API.
     // Supported strategies in app.js: "itemsEndpoint" or "none"
@@ -60,7 +60,7 @@
 
     // If true, run a small built-in test suite for the optimizer in demo mode.
     // This only logs to the console and does not affect the UI.
-    RUN_DEMO_TESTS: true,
+    RUN_DEMO_TESTS: false,
 
     // Demo dataset uses the internal item shape:
     // { id, name, minLevel, price, slot, power }
