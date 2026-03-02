@@ -8,9 +8,9 @@
   const CONFIG = {
     // If true, the app will NOT call any API and will use DEMO_ITEMS instead.
     // Set this to false to use the real SimpleMMO API + your own item ID source.
-    // Defaulting to true so the GitHub Pages deployment works end-to-end without
-    // requiring a live API key.
-    USE_DEMO_DATA: true,
+    // Now defaulting to false so the GitHub Pages deployment uses your configured
+    // public API key and real data.
+    USE_DEMO_DATA: false,
 
     // Base URL for your game API.
     // For SimpleMMO's public API this is typically:
@@ -20,7 +20,9 @@
     // Public key (read-only). Obtain this from your SimpleMMO account.
     // IMPORTANT: This must be a read-only/public-style key; do not use a key
     // that can modify data or perform privileged actions.
-    PUBLIC_API_KEY: "",
+    // Replace the placeholder value below with your actual SimpleMMO public API key
+    // when deploying to GitHub Pages.
+    PUBLIC_API_KEY: "REPLACE_WITH_YOUR_SIMPLEMMO_PUBLIC_API_KEY",
 
     // How to fetch items. Adjust these to match your API.
     // Supported strategies in app.js: "itemsEndpoint" or "none"
