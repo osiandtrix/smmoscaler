@@ -3126,5 +3126,3374 @@
       },
       "image_url": "/img/icons/W_Staff06.png"
     }
+  },
+  {
+    "id": 72,
+    "fetchedAt": "2026-03-04T04:45:44.349Z",
+    "item": {
+      "id": 72,
+      "name": "Straight Curved Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Uncommon",
+      "value": 60,
+      "stat1": "str",
+      "stat1modifier": 9,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 133629,
+      "market": {
+        "low": 6600,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Sword013.png"
+    }
+  },
+  {
+    "id": 110,
+    "fetchedAt": "2026-03-04T04:45:50.161Z",
+    "item": {
+      "id": 110,
+      "name": "The Chosen One",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Rare",
+      "value": 1700,
+      "stat1": "str",
+      "stat1modifier": 54,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 48256,
+      "market": {
+        "low": 20000,
+        "high": 67000000
+      },
+      "image_url": "/img/icons/W_Sword017.png"
+    }
+  },
+  {
+    "id": 111,
+    "fetchedAt": "2026-03-04T04:45:56.007Z",
+    "item": {
+      "id": 111,
+      "name": "Honors Call",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 16,
+      "rarity": "Uncommon",
+      "value": 960,
+      "stat1": "str",
+      "stat1modifier": 51,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 131795,
+      "market": {
+        "low": 12000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Staff06.png"
+    }
+  },
+  {
+    "id": 116,
+    "fetchedAt": "2026-03-04T04:46:01.661Z",
+    "item": {
+      "id": 116,
+      "name": "Viking",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 18,
+      "rarity": "Uncommon",
+      "value": 1080,
+      "stat1": "str",
+      "stat1modifier": 60,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 135297,
+      "market": {
+        "low": 12489,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Mace007.png"
+    }
+  },
+  {
+    "id": 117,
+    "fetchedAt": "2026-03-04T04:46:07.253Z",
+    "item": {
+      "id": 117,
+      "name": "Heathen Warrior",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 19,
+      "rarity": "Rare",
+      "value": 1900,
+      "stat1": "str",
+      "stat1modifier": 61,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 45633,
+      "market": {
+        "low": 14500,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Mace007.png"
+    }
+  },
+  {
+    "id": 118,
+    "fetchedAt": "2026-03-04T04:46:13.078Z",
+    "item": {
+      "id": 118,
+      "name": "The Weapon for Heathens",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 20,
+      "rarity": "Rare",
+      "value": 2000,
+      "stat1": "str",
+      "stat1modifier": 62,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "44237",
+      "market": {
+        "low": 17000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Mace007.png"
+    }
+  },
+  {
+    "id": 119,
+    "fetchedAt": "2026-03-04T04:46:18.636Z",
+    "item": {
+      "id": 119,
+      "name": "Holy Might",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 20,
+      "rarity": "Rare",
+      "value": 2000,
+      "stat1": "str",
+      "stat1modifier": 65,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 46499,
+      "market": {
+        "low": 20000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Mace007.png"
+    }
+  },
+  {
+    "id": 120,
+    "fetchedAt": "2026-03-04T04:46:24.394Z",
+    "item": {
+      "id": 120,
+      "name": "World Eater",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 20,
+      "rarity": "Rare",
+      "value": 2000,
+      "stat1": "str",
+      "stat1modifier": 73,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 47309,
+      "market": {
+        "low": 10009,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword020.png"
+    }
+  },
+  {
+    "id": 121,
+    "fetchedAt": "2026-03-04T04:46:30.135Z",
+    "item": {
+      "id": 121,
+      "name": "Time of the Month",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 20,
+      "rarity": "Elite",
+      "value": 2800,
+      "stat1": "str",
+      "stat1modifier": 75,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 7439,
+      "market": {
+        "low": 30000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword020.png"
+    }
+  },
+  {
+    "id": 122,
+    "fetchedAt": "2026-03-04T04:46:35.804Z",
+    "item": {
+      "id": 122,
+      "name": "Can of Whoop Ass",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 21,
+      "rarity": "Rare",
+      "value": 2100,
+      "stat1": "str",
+      "stat1modifier": 77,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "49638",
+      "market": {
+        "low": 17000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword020.png"
+    }
+  },
+  {
+    "id": 124,
+    "fetchedAt": "2026-03-04T04:46:44.011Z",
+    "item": {
+      "id": 124,
+      "name": "Chaos",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 22,
+      "rarity": "Elite",
+      "value": 3080,
+      "stat1": "str",
+      "stat1modifier": 82,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 6961,
+      "market": {
+        "low": 64999,
+        "high": 69696969
+      },
+      "image_url": "/img/icons/W_Sword020.png"
+    }
+  },
+  {
+    "id": 125,
+    "fetchedAt": "2026-03-04T04:46:49.694Z",
+    "item": {
+      "id": 125,
+      "name": "A Rare Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 23,
+      "rarity": "Rare",
+      "value": 2300,
+      "stat1": "str",
+      "stat1modifier": 82,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "45175",
+      "market": {
+        "low": 17777,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 126,
+    "fetchedAt": "2026-03-04T04:46:55.361Z",
+    "item": {
+      "id": 126,
+      "name": "Ouch",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 24,
+      "rarity": "Elite",
+      "value": 3360,
+      "stat1": "str",
+      "stat1modifier": 90,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 6491,
+      "market": {
+        "low": 41999,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 127,
+    "fetchedAt": "2026-03-04T04:47:00.978Z",
+    "item": {
+      "id": 127,
+      "name": "Wake Up",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 27,
+      "rarity": "Elite",
+      "value": 3780,
+      "stat1": "str",
+      "stat1modifier": 92,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 6391,
+      "market": {
+        "low": 78767,
+        "high": 3000000
+      },
+      "image_url": "/img/icons/W_Sword019.png"
+    }
+  },
+  {
+    "id": 128,
+    "fetchedAt": "2026-03-04T04:47:06.787Z",
+    "item": {
+      "id": 128,
+      "name": "My Little Friend",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 28,
+      "rarity": "Elite",
+      "value": 3920,
+      "stat1": "str",
+      "stat1modifier": 93,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "6533",
+      "market": {
+        "low": 44000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword019.png"
+    }
+  },
+  {
+    "id": 129,
+    "fetchedAt": "2026-03-04T04:47:12.423Z",
+    "item": {
+      "id": 129,
+      "name": "The Sleeper",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 29,
+      "rarity": "Epic",
+      "value": 5220,
+      "stat1": "str",
+      "stat1modifier": 95,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1278,
+      "market": {
+        "low": 875000,
+        "high": 40000000
+      },
+      "image_url": "/img/icons/W_Sword019.png"
+    }
+  },
+  {
+    "id": 130,
+    "fetchedAt": "2026-03-04T04:47:18.072Z",
+    "item": {
+      "id": 130,
+      "name": "Hatreds Bite",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 25,
+      "rarity": "Uncommon",
+      "value": 1500,
+      "stat1": "str",
+      "stat1modifier": 90,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "188420",
+      "market": {
+        "low": 4000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword019.png"
+    }
+  },
+  {
+    "id": 131,
+    "fetchedAt": "2026-03-04T04:47:23.803Z",
+    "item": {
+      "id": 131,
+      "name": "Excalibre",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 31,
+      "rarity": "Elite",
+      "value": 4340,
+      "stat1": "str",
+      "stat1modifier": 100,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 5911,
+      "market": {
+        "low": 25000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/S_Sword10.png"
+    }
+  },
+  {
+    "id": 132,
+    "fetchedAt": "2026-03-04T04:47:29.315Z",
+    "item": {
+      "id": 132,
+      "name": "An Epic Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 33,
+      "rarity": "Epic",
+      "value": 5940,
+      "stat1": "str",
+      "stat1modifier": 102,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1186,
+      "market": {
+        "low": 99999,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/S_Sword10.png"
+    }
+  },
+  {
+    "id": 133,
+    "fetchedAt": "2026-03-04T04:47:34.994Z",
+    "item": {
+      "id": 133,
+      "name": "Incarnation of Evil",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 35,
+      "rarity": "Legendary",
+      "value": 14000,
+      "stat1": "str",
+      "stat1modifier": 105,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 359,
+      "market": {
+        "low": 300000,
+        "high": 10000000
+      },
+      "image_url": "/img/icons/S_Sword10.png"
+    }
+  },
+  {
+    "id": 136,
+    "fetchedAt": "2026-03-04T04:47:46.090Z",
+    "item": null
+  },
+  {
+    "id": 137,
+    "fetchedAt": "2026-03-04T04:47:52.036Z",
+    "item": null
+  },
+  {
+    "id": 138,
+    "fetchedAt": "2026-03-04T04:47:57.656Z",
+    "item": {
+      "id": 138,
+      "name": "The Scoundrel",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 35,
+      "rarity": "Rare",
+      "value": 3500,
+      "stat1": "str",
+      "stat1modifier": 110,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "42735",
+      "market": {
+        "low": 15000,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/W_Axe008.png"
+    }
+  },
+  {
+    "id": 139,
+    "fetchedAt": "2026-03-04T04:48:03.502Z",
+    "item": {
+      "id": 139,
+      "name": "The Shallow One",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 36,
+      "rarity": "Epic",
+      "value": 6480,
+      "stat1": "str",
+      "stat1modifier": 115,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1093,
+      "market": {
+        "low": 100000,
+        "high": 8000000
+      },
+      "image_url": "/img/icons/W_Axe008.png"
+    }
+  },
+  {
+    "id": 140,
+    "fetchedAt": "2026-03-04T04:48:09.052Z",
+    "item": {
+      "id": 140,
+      "name": "The Burger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 36,
+      "rarity": "Legendary",
+      "value": 14400,
+      "stat1": "str",
+      "stat1modifier": 117,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 371,
+      "market": {
+        "low": 283000,
+        "high": 10000000
+      },
+      "image_url": "/img/icons/W_Axe008.png"
+    }
+  },
+  {
+    "id": 141,
+    "fetchedAt": "2026-03-04T04:48:14.702Z",
+    "item": {
+      "id": 141,
+      "name": "Deathraze",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 35,
+      "rarity": "Elite",
+      "value": 4900,
+      "stat1": "str",
+      "stat1modifier": 114,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 5266,
+      "market": {
+        "low": 32464,
+        "high": 2000000
+      },
+      "image_url": "/img/icons/W_Axe008.png"
+    }
+  },
+  {
+    "id": 142,
+    "fetchedAt": "2026-03-04T04:48:20.474Z",
+    "item": {
+      "id": 142,
+      "name": "The Badass Axe",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 37,
+      "rarity": "Legendary",
+      "value": 14800,
+      "stat1": "str",
+      "stat1modifier": 122,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 321,
+      "market": {
+        "low": 300000,
+        "high": 15000000
+      },
+      "image_url": "/img/icons/W_Axe009.png"
+    }
+  },
+  {
+    "id": 143,
+    "fetchedAt": "2026-03-04T04:48:25.982Z",
+    "item": {
+      "id": 143,
+      "name": "Manifestation of Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 38,
+      "rarity": "Rare",
+      "value": 3800,
+      "stat1": "str",
+      "stat1modifier": 124,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "42597",
+      "market": {
+        "low": 10000,
+        "high": 100000000
+      },
+      "image_url": "/img/icons/W_Axe009.png"
+    }
+  },
+  {
+    "id": 144,
+    "fetchedAt": "2026-03-04T04:48:31.580Z",
+    "item": {
+      "id": 144,
+      "name": "Deathly Axe of Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 38,
+      "rarity": "Elite",
+      "value": 5320,
+      "stat1": "str",
+      "stat1modifier": 128,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4749,
+      "market": {
+        "low": 34000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Axe010.png"
+    }
+  },
+  {
+    "id": 145,
+    "fetchedAt": "2026-03-04T04:48:37.154Z",
+    "item": {
+      "id": 145,
+      "name": "Scalpel of Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 39,
+      "rarity": "Elite",
+      "value": 5460,
+      "stat1": "str",
+      "stat1modifier": 130,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 12269,
+      "market": {
+        "low": 20000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Axe010.png"
+    }
+  },
+  {
+    "id": 148,
+    "fetchedAt": "2026-03-04T04:48:48.060Z",
+    "item": {
+      "id": 148,
+      "name": "Bootleg Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 40,
+      "rarity": "Epic",
+      "value": 7200,
+      "stat1": "str",
+      "stat1modifier": 139,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 962,
+      "market": {
+        "low": 100000,
+        "high": 350000
+      },
+      "image_url": "/img/icons/W_Axe010.png"
+    }
+  },
+  {
+    "id": 149,
+    "fetchedAt": "2026-03-04T04:48:53.697Z",
+    "item": {
+      "id": 149,
+      "name": "Knockoff Axe",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 40,
+      "rarity": "Epic",
+      "value": 7200,
+      "stat1": "str",
+      "stat1modifier": 140,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 2044,
+      "market": {
+        "low": 210000,
+        "high": 69696969
+      },
+      "image_url": "/img/icons/W_Axe010.png"
+    }
+  },
+  {
+    "id": 150,
+    "fetchedAt": "2026-03-04T04:48:59.332Z",
+    "item": {
+      "id": 150,
+      "name": "Axe for a Jedi",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 41,
+      "rarity": "Legendary",
+      "value": 16400,
+      "stat1": "str",
+      "stat1modifier": 145,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 444,
+      "market": {
+        "low": 396000,
+        "high": 450000000
+      },
+      "image_url": "/img/icons/W_Axe010.png"
+    }
+  },
+  {
+    "id": 151,
+    "fetchedAt": "2026-03-04T04:49:05.055Z",
+    "item": {
+      "id": 151,
+      "name": "Harbringer of Doom",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 41,
+      "rarity": "Elite",
+      "value": 5740,
+      "stat1": "str",
+      "stat1modifier": 154,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4580,
+      "market": {
+        "low": 25000,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/W_Axe011.png"
+    }
+  },
+  {
+    "id": 152,
+    "fetchedAt": "2026-03-04T04:49:10.883Z",
+    "item": {
+      "id": 152,
+      "name": "Ronalds Ray Axe of Destiny",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 42,
+      "rarity": "Legendary",
+      "value": 16800,
+      "stat1": "str",
+      "stat1modifier": 160,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 366,
+      "market": {
+        "low": 300000,
+        "high": 200000000
+      },
+      "image_url": "/img/icons/W_Axe011.png"
+    }
+  },
+  {
+    "id": 153,
+    "fetchedAt": "2026-03-04T04:49:16.683Z",
+    "item": {
+      "id": 153,
+      "name": "Worldslayer",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 42,
+      "rarity": "Elite",
+      "value": 5880,
+      "stat1": "str",
+      "stat1modifier": 160,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4648,
+      "market": {
+        "low": 34500,
+        "high": 100000000
+      },
+      "image_url": "/img/icons/W_Axe014.png"
+    }
+  },
+  {
+    "id": 154,
+    "fetchedAt": "2026-03-04T04:49:22.293Z",
+    "item": {
+      "id": 154,
+      "name": "Mans Got an Axe",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 43,
+      "rarity": "Epic",
+      "value": 7740,
+      "stat1": "str",
+      "stat1modifier": 165,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 988,
+      "market": {
+        "low": 70000,
+        "high": 899999
+      },
+      "image_url": "/img/icons/W_Axe014.png"
+    }
+  },
+  {
+    "id": 155,
+    "fetchedAt": "2026-03-04T04:49:27.960Z",
+    "item": {
+      "id": 155,
+      "name": "DESTROYER OF WORLDS",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 44,
+      "rarity": "Legendary",
+      "value": 17600,
+      "stat1": "str",
+      "stat1modifier": 168,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 355,
+      "market": {
+        "low": 300000,
+        "high": 25000000
+      },
+      "image_url": "/img/icons/W_Axe014.png"
+    }
+  },
+  {
+    "id": 156,
+    "fetchedAt": "2026-03-04T04:49:33.621Z",
+    "item": {
+      "id": 156,
+      "name": "DESTROYER OF THE UNIVERSE",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 44,
+      "rarity": "Legendary",
+      "value": 17600,
+      "stat1": "str",
+      "stat1modifier": 175,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 389,
+      "market": {
+        "low": 30000000,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/W_Axe014.png"
+    }
+  },
+  {
+    "id": 157,
+    "fetchedAt": "2026-03-04T04:49:39.161Z",
+    "item": {
+      "id": 157,
+      "name": "A Weapon of Councils",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 44,
+      "rarity": "Elite",
+      "value": 6160,
+      "stat1": "str",
+      "stat1modifier": 175,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4110,
+      "market": {
+        "low": 30000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Axe013.png"
+    }
+  },
+  {
+    "id": 160,
+    "fetchedAt": "2026-03-04T04:49:50.338Z",
+    "item": {
+      "id": 160,
+      "name": "ANGEL OF DEATH",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 44,
+      "rarity": "Epic",
+      "value": 7920,
+      "stat1": "str",
+      "stat1modifier": 170,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 976,
+      "market": {
+        "low": 49000,
+        "high": 375000
+      },
+      "image_url": "/img/icons/W_Bow10.png"
+    }
+  },
+  {
+    "id": 161,
+    "fetchedAt": "2026-03-04T04:49:56.007Z",
+    "item": {
+      "id": 161,
+      "name": "Toothpick Shooter",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 44,
+      "rarity": "Rare",
+      "value": 4400,
+      "stat1": "str",
+      "stat1modifier": 180,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "40918",
+      "market": {
+        "low": 16000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Bow10.png"
+    }
+  },
+  {
+    "id": 162,
+    "fetchedAt": "2026-03-04T04:50:01.770Z",
+    "item": {
+      "id": 162,
+      "name": "A Bow That Is Ok",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 47,
+      "rarity": "Elite",
+      "value": 6580,
+      "stat1": "str",
+      "stat1modifier": 190,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 3778,
+      "market": {
+        "low": 30000,
+        "high": 42000000
+      },
+      "image_url": "/img/icons/W_Bow10.png"
+    }
+  },
+  {
+    "id": 163,
+    "fetchedAt": "2026-03-04T04:50:07.333Z",
+    "item": {
+      "id": 163,
+      "name": "Angel Strike",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 48,
+      "rarity": "Elite",
+      "value": 6720,
+      "stat1": "str",
+      "stat1modifier": 200,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4395,
+      "market": {
+        "low": 20000,
+        "high": 99999999
+      },
+      "image_url": "/img/icons/W_Bow10.png"
+    }
+  },
+  {
+    "id": 164,
+    "fetchedAt": "2026-03-04T04:50:13.652Z",
+    "item": {
+      "id": 164,
+      "name": "Tesco",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Rare",
+      "value": 5000,
+      "stat1": "str",
+      "stat1modifier": 245,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 41421,
+      "market": {
+        "low": 15000,
+        "high": 499999999
+      },
+      "image_url": "/img/icons/W_Bow13.png"
+    }
+  },
+  {
+    "id": 165,
+    "fetchedAt": "2026-03-04T04:50:19.211Z",
+    "item": {
+      "id": 165,
+      "name": "Dynasty",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Epic",
+      "value": 9000,
+      "stat1": "str",
+      "stat1modifier": 265,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 948,
+      "market": {
+        "low": 69000,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/W_Bow13.png"
+    }
+  },
+  {
+    "id": 166,
+    "fetchedAt": "2026-03-04T04:50:24.927Z",
+    "item": {
+      "id": 166,
+      "name": "Dagger of the Middle Finger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Epic",
+      "value": 9000,
+      "stat1": "str",
+      "stat1modifier": 245,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1048,
+      "market": {
+        "low": 50000,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Dagger015.png"
+    }
+  },
+  {
+    "id": 167,
+    "fetchedAt": "2026-03-04T04:50:30.604Z",
+    "item": {
+      "id": 167,
+      "name": "Rare Dagger of Holyness",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Rare",
+      "value": 5000,
+      "stat1": "str",
+      "stat1modifier": 265,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 41041,
+      "market": {
+        "low": 16778,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Dagger015.png"
+    }
+  },
+  {
+    "id": 168,
+    "fetchedAt": "2026-03-04T04:50:36.136Z",
+    "item": {
+      "id": 168,
+      "name": "Felthorn",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Legendary",
+      "value": 20000,
+      "stat1": "str",
+      "stat1modifier": 290,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 351,
+      "market": {
+        "low": 440888,
+        "high": 8100000
+      },
+      "image_url": "/img/icons/W_Dagger015.png"
+    }
+  },
+  {
+    "id": 169,
+    "fetchedAt": "2026-03-04T04:50:41.910Z",
+    "item": {
+      "id": 169,
+      "name": "The Best Dagger in the World",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 51,
+      "rarity": "Rare",
+      "value": 5100,
+      "stat1": "str",
+      "stat1modifier": 290,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "40517",
+      "market": {
+        "low": 14999,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Dagger019.png"
+    }
+  },
+  {
+    "id": 171,
+    "fetchedAt": "2026-03-04T04:50:50.535Z",
+    "item": {
+      "id": 171,
+      "name": "The Hamburger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 49,
+      "rarity": "Epic",
+      "value": 8820,
+      "stat1": "str",
+      "stat1modifier": 210,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 12789,
+      "market": {
+        "low": 25000,
+        "high": 101000000
+      },
+      "image_url": "/img/icons/W_Dagger019.png"
+    }
+  },
+  {
+    "id": 172,
+    "fetchedAt": "2026-03-04T04:50:56.062Z",
+    "item": {
+      "id": 172,
+      "name": "The Best Dagger In the Game...I Think",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Epic",
+      "value": 9000,
+      "stat1": "str",
+      "stat1modifier": 280,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1084,
+      "market": {
+        "low": 118500,
+        "high": 876543210
+      },
+      "image_url": "/img/icons/W_Dagger019.png"
+    }
+  },
+  {
+    "id": 173,
+    "fetchedAt": "2026-03-04T04:51:02.321Z",
+    "item": {
+      "id": 173,
+      "name": "Michael J Fox Breadknife",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Legendary",
+      "value": 20000,
+      "stat1": "str",
+      "stat1modifier": 250,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1008,
+      "market": {
+        "low": 275000,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 174,
+    "fetchedAt": "2026-03-04T04:51:09.336Z",
+    "item": {
+      "id": 174,
+      "name": "Legolas Dagger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 53,
+      "rarity": "Epic",
+      "value": 9540,
+      "stat1": "str",
+      "stat1modifier": 330,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1081,
+      "market": {
+        "low": 95000,
+        "high": 5000000
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 175,
+    "fetchedAt": "2026-03-04T04:51:16.749Z",
+    "item": {
+      "id": 175,
+      "name": "Nightmare",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 56,
+      "rarity": "Epic",
+      "value": 10080,
+      "stat1": "str",
+      "stat1modifier": 350,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 918,
+      "market": {
+        "low": 129900,
+        "high": 5749999
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 176,
+    "fetchedAt": "2026-03-04T04:51:23.895Z",
+    "item": {
+      "id": 176,
+      "name": "Kings Sword of Incredibleness",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 54,
+      "rarity": "Epic",
+      "value": 9720,
+      "stat1": "str",
+      "stat1modifier": 340,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 978,
+      "market": {
+        "low": 199999,
+        "high": 3000000
+      },
+      "image_url": "/img/icons/W_Sword015.png"
+    }
+  },
+  {
+    "id": 177,
+    "fetchedAt": "2026-03-04T04:51:31.769Z",
+    "item": {
+      "id": 177,
+      "name": "Swordy McSwordface",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 58,
+      "rarity": "Legendary",
+      "value": 23200,
+      "stat1": "str",
+      "stat1modifier": 370,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 634,
+      "market": {
+        "low": 300000,
+        "high": 150000000
+      },
+      "image_url": "/img/icons/W_Sword015.png"
+    }
+  },
+  {
+    "id": 178,
+    "fetchedAt": "2026-03-04T04:51:38.853Z",
+    "item": {
+      "id": 178,
+      "name": "Toothpick",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 59,
+      "rarity": "Legendary",
+      "value": 23600,
+      "stat1": "str",
+      "stat1modifier": 390,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 398,
+      "market": {
+        "low": 400000,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/W_Sword016.png"
+    }
+  },
+  {
+    "id": 179,
+    "fetchedAt": "2026-03-04T04:51:46.572Z",
+    "item": {
+      "id": 179,
+      "name": "Abyss",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 59,
+      "rarity": "Legendary",
+      "value": 23600,
+      "stat1": "str",
+      "stat1modifier": 400,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 350,
+      "market": {
+        "low": 400000,
+        "high": 99999999
+      },
+      "image_url": "/img/icons/S_Sword04.png"
+    }
+  },
+  {
+    "id": 180,
+    "fetchedAt": "2026-03-04T04:51:56.228Z",
+    "item": {
+      "id": 180,
+      "name": "Cheese",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "hp",
+      "stat1modifier": 7,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 79121260,
+      "market": {
+        "low": 100,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/I_C_Cheese.png"
+    }
+  },
+  {
+    "id": 181,
+    "fetchedAt": "2026-03-04T04:52:04.011Z",
+    "item": {
+      "id": 181,
+      "name": "Mushroom",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "hp",
+      "stat1modifier": 7,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 643533,
+      "market": {
+        "low": 13000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/I_C_Mushroom.png"
+    }
+  },
+  {
+    "id": 182,
+    "fetchedAt": "2026-03-04T04:52:11.675Z",
+    "item": {
+      "id": 182,
+      "name": "Pie",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "hp",
+      "stat1modifier": 10,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "4877620",
+      "market": {
+        "low": 100,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/I_C_Pie.png"
+    }
+  },
+  {
+    "id": 183,
+    "fetchedAt": "2026-03-04T04:52:18.806Z",
+    "item": {
+      "id": 183,
+      "name": "Orange",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "hp",
+      "stat1modifier": 12,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "663024",
+      "market": {
+        "low": 500,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/I_C_Orange.png"
+    }
+  },
+  {
+    "id": 184,
+    "fetchedAt": "2026-03-04T04:52:26.607Z",
+    "item": null
+  },
+  {
+    "id": 185,
+    "fetchedAt": "2026-03-04T04:52:34.539Z",
+    "item": null
+  },
+  {
+    "id": 186,
+    "fetchedAt": "2026-03-04T04:52:42.328Z",
+    "item": null
+  },
+  {
+    "id": 187,
+    "fetchedAt": "2026-03-04T04:52:50.064Z",
+    "item": null
+  },
+  {
+    "id": 188,
+    "fetchedAt": "2026-03-04T04:52:58.244Z",
+    "item": null
+  },
+  {
+    "id": 189,
+    "fetchedAt": "2026-03-04T04:53:06.244Z",
+    "item": null
+  },
+  {
+    "id": 190,
+    "fetchedAt": "2026-03-04T04:53:14.202Z",
+    "item": null
+  },
+  {
+    "id": 191,
+    "fetchedAt": "2026-03-04T04:53:21.989Z",
+    "item": null
+  },
+  {
+    "id": 192,
+    "fetchedAt": "2026-03-04T04:53:30.027Z",
+    "item": null
+  },
+  {
+    "id": 193,
+    "fetchedAt": "2026-03-04T04:53:37.707Z",
+    "item": null
+  },
+  {
+    "id": 194,
+    "fetchedAt": "2026-03-04T04:53:45.865Z",
+    "item": null
+  },
+  {
+    "id": 195,
+    "fetchedAt": "2026-03-04T04:53:53.526Z",
+    "item": null
+  },
+  {
+    "id": 196,
+    "fetchedAt": "2026-03-04T04:54:01.543Z",
+    "item": null
+  },
+  {
+    "id": 197,
+    "fetchedAt": "2026-03-04T04:54:09.752Z",
+    "item": null
+  },
+  {
+    "id": 198,
+    "fetchedAt": "2026-03-04T04:54:17.479Z",
+    "item": null
+  },
+  {
+    "id": 199,
+    "fetchedAt": "2026-03-04T04:54:25.182Z",
+    "item": null
+  },
+  {
+    "id": 200,
+    "fetchedAt": "2026-03-04T04:54:33.044Z",
+    "item": null
+  },
+  {
+    "id": 201,
+    "fetchedAt": "2026-03-04T04:54:41.211Z",
+    "item": {
+      "id": 201,
+      "name": "Shirt of Defence",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Common",
+      "value": 240,
+      "stat1": "def",
+      "stat1modifier": 6,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "253780",
+      "market": {
+        "low": 11000,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 202,
+    "fetchedAt": "2026-03-04T04:54:48.872Z",
+    "item": null
+  },
+  {
+    "id": 203,
+    "fetchedAt": "2026-03-04T04:54:56.878Z",
+    "item": null
+  },
+  {
+    "id": 204,
+    "fetchedAt": "2026-03-04T04:55:05.195Z",
+    "item": null
+  },
+  {
+    "id": 205,
+    "fetchedAt": "2026-03-04T04:55:13.017Z",
+    "item": null
+  },
+  {
+    "id": 206,
+    "fetchedAt": "2026-03-04T04:55:21.604Z",
+    "item": null
+  },
+  {
+    "id": 207,
+    "fetchedAt": "2026-03-04T04:55:28.679Z",
+    "item": null
+  },
+  {
+    "id": 208,
+    "fetchedAt": "2026-03-04T04:55:36.507Z",
+    "item": null
+  },
+  {
+    "id": 209,
+    "fetchedAt": "2026-03-04T04:55:44.284Z",
+    "item": null
+  },
+  {
+    "id": 210,
+    "fetchedAt": "2026-03-04T04:55:51.859Z",
+    "item": null
+  },
+  {
+    "id": 211,
+    "fetchedAt": "2026-03-04T04:55:58.961Z",
+    "item": {
+      "id": 211,
+      "name": "Extra Padded Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 5,
+      "rarity": "Uncommon",
+      "value": 300,
+      "stat1": "def",
+      "stat1modifier": 7,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "133068",
+      "market": {
+        "low": 16000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 212,
+    "fetchedAt": "2026-03-04T04:56:05.411Z",
+    "item": null
+  },
+  {
+    "id": 213,
+    "fetchedAt": "2026-03-04T04:56:10.976Z",
+    "item": null
+  },
+  {
+    "id": 214,
+    "fetchedAt": "2026-03-04T04:56:16.629Z",
+    "item": null
+  },
+  {
+    "id": 215,
+    "fetchedAt": "2026-03-04T04:56:22.271Z",
+    "item": null
+  },
+  {
+    "id": 216,
+    "fetchedAt": "2026-03-04T04:56:27.920Z",
+    "item": null
+  },
+  {
+    "id": 217,
+    "fetchedAt": "2026-03-04T04:56:33.555Z",
+    "item": null
+  },
+  {
+    "id": 218,
+    "fetchedAt": "2026-03-04T04:56:39.264Z",
+    "item": null
+  },
+  {
+    "id": 219,
+    "fetchedAt": "2026-03-04T04:56:44.914Z",
+    "item": null
+  },
+  {
+    "id": 221,
+    "fetchedAt": "2026-03-04T04:56:56.445Z",
+    "item": {
+      "id": 221,
+      "name": "Padded Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Rare",
+      "value": 400,
+      "stat1": "def",
+      "stat1modifier": 9,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 49227,
+      "market": {
+        "low": 17490,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 222,
+    "fetchedAt": "2026-03-04T04:57:02.281Z",
+    "item": null
+  },
+  {
+    "id": 223,
+    "fetchedAt": "2026-03-04T04:57:07.905Z",
+    "item": null
+  },
+  {
+    "id": 224,
+    "fetchedAt": "2026-03-04T04:57:13.542Z",
+    "item": null
+  },
+  {
+    "id": 225,
+    "fetchedAt": "2026-03-04T04:57:19.139Z",
+    "item": null
+  },
+  {
+    "id": 226,
+    "fetchedAt": "2026-03-04T04:57:24.904Z",
+    "item": null
+  },
+  {
+    "id": 227,
+    "fetchedAt": "2026-03-04T04:57:30.413Z",
+    "item": null
+  },
+  {
+    "id": 228,
+    "fetchedAt": "2026-03-04T04:57:36.121Z",
+    "item": null
+  },
+  {
+    "id": 229,
+    "fetchedAt": "2026-03-04T04:57:41.746Z",
+    "item": null
+  },
+  {
+    "id": 230,
+    "fetchedAt": "2026-03-04T04:57:47.371Z",
+    "item": null
+  },
+  {
+    "id": 233,
+    "fetchedAt": "2026-03-04T04:57:58.822Z",
+    "item": null
+  },
+  {
+    "id": 234,
+    "fetchedAt": "2026-03-04T04:58:04.489Z",
+    "item": null
+  },
+  {
+    "id": 235,
+    "fetchedAt": "2026-03-04T04:58:10.285Z",
+    "item": null
+  },
+  {
+    "id": 236,
+    "fetchedAt": "2026-03-04T04:58:16.097Z",
+    "item": null
+  },
+  {
+    "id": 237,
+    "fetchedAt": "2026-03-04T04:58:21.764Z",
+    "item": null
+  },
+  {
+    "id": 238,
+    "fetchedAt": "2026-03-04T04:58:27.445Z",
+    "item": null
+  },
+  {
+    "id": 239,
+    "fetchedAt": "2026-03-04T04:58:33.071Z",
+    "item": null
+  },
+  {
+    "id": 240,
+    "fetchedAt": "2026-03-04T04:58:38.876Z",
+    "item": null
+  },
+  {
+    "id": 241,
+    "fetchedAt": "2026-03-04T04:58:44.737Z",
+    "item": {
+      "id": 241,
+      "name": "Generic Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 8,
+      "rarity": "Uncommon",
+      "value": 480,
+      "stat1": "def",
+      "stat1modifier": 11,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "194212",
+      "market": {
+        "low": 3000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 242,
+    "fetchedAt": "2026-03-04T04:58:50.260Z",
+    "item": null
+  },
+  {
+    "id": 244,
+    "fetchedAt": "2026-03-04T04:58:59.072Z",
+    "item": null
+  },
+  {
+    "id": 245,
+    "fetchedAt": "2026-03-04T04:59:04.779Z",
+    "item": null
+  },
+  {
+    "id": 246,
+    "fetchedAt": "2026-03-04T04:59:10.502Z",
+    "item": null
+  },
+  {
+    "id": 247,
+    "fetchedAt": "2026-03-04T04:59:16.218Z",
+    "item": null
+  },
+  {
+    "id": 248,
+    "fetchedAt": "2026-03-04T04:59:21.912Z",
+    "item": null
+  },
+  {
+    "id": 249,
+    "fetchedAt": "2026-03-04T04:59:27.505Z",
+    "item": null
+  },
+  {
+    "id": 250,
+    "fetchedAt": "2026-03-04T04:59:33.186Z",
+    "item": null
+  },
+  {
+    "id": 251,
+    "fetchedAt": "2026-03-04T04:59:38.912Z",
+    "item": {
+      "id": 251,
+      "name": "Rare Generic Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Rare",
+      "value": 900,
+      "stat1": "def",
+      "stat1modifier": 13,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 49644,
+      "market": {
+        "low": 15000,
+        "high": 696969669
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 252,
+    "fetchedAt": "2026-03-04T04:59:44.643Z",
+    "item": null
+  },
+  {
+    "id": 253,
+    "fetchedAt": "2026-03-04T04:59:50.285Z",
+    "item": null
+  },
+  {
+    "id": 256,
+    "fetchedAt": "2026-03-04T05:00:01.410Z",
+    "item": null
+  },
+  {
+    "id": 257,
+    "fetchedAt": "2026-03-04T05:00:07.476Z",
+    "item": null
+  },
+  {
+    "id": 258,
+    "fetchedAt": "2026-03-04T05:00:13.431Z",
+    "item": null
+  },
+  {
+    "id": 259,
+    "fetchedAt": "2026-03-04T05:00:19.060Z",
+    "item": null
+  },
+  {
+    "id": 260,
+    "fetchedAt": "2026-03-04T05:00:24.653Z",
+    "item": null
+  },
+  {
+    "id": 261,
+    "fetchedAt": "2026-03-04T05:00:30.328Z",
+    "item": {
+      "id": 261,
+      "name": "Holy Shirt of Nothing",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 10,
+      "rarity": "Uncommon",
+      "value": 600,
+      "stat1": "def",
+      "stat1modifier": 14,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "136287",
+      "market": {
+        "low": 10491,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 262,
+    "fetchedAt": "2026-03-04T05:00:36.060Z",
+    "item": null
+  },
+  {
+    "id": 263,
+    "fetchedAt": "2026-03-04T05:00:41.677Z",
+    "item": null
+  },
+  {
+    "id": 264,
+    "fetchedAt": "2026-03-04T05:00:47.356Z",
+    "item": null
+  },
+  {
+    "id": 265,
+    "fetchedAt": "2026-03-04T05:00:52.912Z",
+    "item": null
+  },
+  {
+    "id": 268,
+    "fetchedAt": "2026-03-04T05:01:03.864Z",
+    "item": null
+  },
+  {
+    "id": 269,
+    "fetchedAt": "2026-03-04T05:01:09.544Z",
+    "item": null
+  },
+  {
+    "id": 270,
+    "fetchedAt": "2026-03-04T05:01:15.309Z",
+    "item": null
+  },
+  {
+    "id": 271,
+    "fetchedAt": "2026-03-04T05:01:21.003Z",
+    "item": {
+      "id": 271,
+      "name": "A Nothing Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 11,
+      "rarity": "Uncommon",
+      "value": 660,
+      "stat1": "def",
+      "stat1modifier": 15,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 133745,
+      "market": {
+        "low": 14400,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
+  },
+  {
+    "id": 272,
+    "fetchedAt": "2026-03-04T05:01:26.592Z",
+    "item": null
+  },
+  {
+    "id": 273,
+    "fetchedAt": "2026-03-04T05:01:32.245Z",
+    "item": null
+  },
+  {
+    "id": 274,
+    "fetchedAt": "2026-03-04T05:01:37.792Z",
+    "item": null
+  },
+  {
+    "id": 275,
+    "fetchedAt": "2026-03-04T05:01:43.396Z",
+    "item": null
+  },
+  {
+    "id": 276,
+    "fetchedAt": "2026-03-04T05:01:49.335Z",
+    "item": null
+  },
+  {
+    "id": 277,
+    "fetchedAt": "2026-03-04T05:01:55.121Z",
+    "item": null
+  },
+  {
+    "id": 280,
+    "fetchedAt": "2026-03-04T05:02:06.060Z",
+    "item": null
+  },
+  {
+    "id": 281,
+    "fetchedAt": "2026-03-04T05:02:11.738Z",
+    "item": {
+      "id": 281,
+      "name": "Leather Armour",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 12,
+      "rarity": "Uncommon",
+      "value": 720,
+      "stat1": "def",
+      "stat1modifier": 16,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "207659",
+      "market": {
+        "low": 3000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Armor01.png"
+    }
+  },
+  {
+    "id": 282,
+    "fetchedAt": "2026-03-04T05:02:17.395Z",
+    "item": null
+  },
+  {
+    "id": 283,
+    "fetchedAt": "2026-03-04T05:02:23.093Z",
+    "item": null
+  },
+  {
+    "id": 284,
+    "fetchedAt": "2026-03-04T05:02:28.687Z",
+    "item": null
+  },
+  {
+    "id": 285,
+    "fetchedAt": "2026-03-04T05:02:35.018Z",
+    "item": null
+  },
+  {
+    "id": 286,
+    "fetchedAt": "2026-03-04T05:02:42.205Z",
+    "item": null
+  },
+  {
+    "id": 287,
+    "fetchedAt": "2026-03-04T05:02:49.605Z",
+    "item": null
+  },
+  {
+    "id": 288,
+    "fetchedAt": "2026-03-04T05:02:57.327Z",
+    "item": null
+  },
+  {
+    "id": 289,
+    "fetchedAt": "2026-03-04T05:03:04.587Z",
+    "item": null
+  },
+  {
+    "id": 290,
+    "fetchedAt": "2026-03-04T05:03:10.414Z",
+    "item": null
+  },
+  {
+    "id": 291,
+    "fetchedAt": "2026-03-04T05:03:16.264Z",
+    "item": {
+      "id": 291,
+      "name": "A Geordies T-Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 13,
+      "rarity": "Rare",
+      "value": 1300,
+      "stat1": "def",
+      "stat1modifier": 18,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "49880",
+      "market": {
+        "low": 9187,
+        "high": 10000000
+      },
+      "image_url": "/img/icons/A_Armor01.png"
+    }
+  },
+  {
+    "id": 292,
+    "fetchedAt": "2026-03-04T05:03:22.017Z",
+    "item": null
+  },
+  {
+    "id": 293,
+    "fetchedAt": "2026-03-04T05:03:27.743Z",
+    "item": null
+  },
+  {
+    "id": 294,
+    "fetchedAt": "2026-03-04T05:03:33.567Z",
+    "item": null
+  },
+  {
+    "id": 295,
+    "fetchedAt": "2026-03-04T05:03:39.141Z",
+    "item": null
+  },
+  {
+    "id": 296,
+    "fetchedAt": "2026-03-04T05:03:44.792Z",
+    "item": null
+  },
+  {
+    "id": 297,
+    "fetchedAt": "2026-03-04T05:03:50.744Z",
+    "item": null
+  },
+  {
+    "id": 298,
+    "fetchedAt": "2026-03-04T05:03:56.426Z",
+    "item": null
+  },
+  {
+    "id": 300,
+    "fetchedAt": "2026-03-04T05:04:08.092Z",
+    "item": null
+  },
+  {
+    "id": 301,
+    "fetchedAt": "2026-03-04T05:04:13.726Z",
+    "item": {
+      "id": 301,
+      "name": "Armour of Defence",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 14,
+      "rarity": "Uncommon",
+      "value": 840,
+      "stat1": "def",
+      "stat1modifier": 18,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 133548,
+      "market": {
+        "low": 11000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/A_Armor01.png"
+    }
+  },
+  {
+    "id": 302,
+    "fetchedAt": "2026-03-04T05:04:19.510Z",
+    "item": null
+  },
+  {
+    "id": 303,
+    "fetchedAt": "2026-03-04T05:04:25.256Z",
+    "item": null
+  },
+  {
+    "id": 304,
+    "fetchedAt": "2026-03-04T05:04:31.080Z",
+    "item": null
+  },
+  {
+    "id": 305,
+    "fetchedAt": "2026-03-04T05:04:36.671Z",
+    "item": null
+  },
+  {
+    "id": 306,
+    "fetchedAt": "2026-03-04T05:04:42.343Z",
+    "item": null
+  },
+  {
+    "id": 307,
+    "fetchedAt": "2026-03-04T05:04:48.387Z",
+    "item": null
+  },
+  {
+    "id": 308,
+    "fetchedAt": "2026-03-04T05:04:54.022Z",
+    "item": null
+  },
+  {
+    "id": 309,
+    "fetchedAt": "2026-03-04T05:04:59.676Z",
+    "item": null
+  },
+  {
+    "id": 312,
+    "fetchedAt": "2026-03-04T05:05:11.605Z",
+    "item": null
+  },
+  {
+    "id": 313,
+    "fetchedAt": "2026-03-04T05:05:17.309Z",
+    "item": null
+  },
+  {
+    "id": 314,
+    "fetchedAt": "2026-03-04T05:05:23.009Z",
+    "item": null
+  },
+  {
+    "id": 315,
+    "fetchedAt": "2026-03-04T05:05:28.714Z",
+    "item": null
+  },
+  {
+    "id": 316,
+    "fetchedAt": "2026-03-04T05:05:34.355Z",
+    "item": null
+  },
+  {
+    "id": 317,
+    "fetchedAt": "2026-03-04T05:05:40.420Z",
+    "item": null
+  },
+  {
+    "id": 318,
+    "fetchedAt": "2026-03-04T05:05:46.188Z",
+    "item": null
+  },
+  {
+    "id": 319,
+    "fetchedAt": "2026-03-04T05:05:52.000Z",
+    "item": null
+  },
+  {
+    "id": 320,
+    "fetchedAt": "2026-03-04T05:05:57.680Z",
+    "item": null
+  },
+  {
+    "id": 321,
+    "fetchedAt": "2026-03-04T05:06:03.570Z",
+    "item": {
+      "id": 321,
+      "name": "Metal Plate",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 16,
+      "rarity": "Legendary",
+      "value": 6400,
+      "stat1": "def",
+      "stat1modifier": 20,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 521,
+      "market": {
+        "low": 299999,
+        "high": 5000000
+      },
+      "image_url": "/img/icons/A_Armor02.png"
+    }
+  },
+  {
+    "id": 323,
+    "fetchedAt": "2026-03-04T05:06:11.991Z",
+    "item": null
+  },
+  {
+    "id": 324,
+    "fetchedAt": "2026-03-04T05:06:17.677Z",
+    "item": null
+  },
+  {
+    "id": 325,
+    "fetchedAt": "2026-03-04T05:06:23.268Z",
+    "item": null
+  },
+  {
+    "id": 326,
+    "fetchedAt": "2026-03-04T05:06:28.921Z",
+    "item": null
+  },
+  {
+    "id": 327,
+    "fetchedAt": "2026-03-04T05:06:36.092Z",
+    "item": null
+  },
+  {
+    "id": 328,
+    "fetchedAt": "2026-03-04T05:06:41.819Z",
+    "item": null
+  },
+  {
+    "id": 329,
+    "fetchedAt": "2026-03-04T05:06:47.518Z",
+    "item": null
+  },
+  {
+    "id": 330,
+    "fetchedAt": "2026-03-04T05:06:55.389Z",
+    "item": null
+  },
+  {
+    "id": 331,
+    "fetchedAt": "2026-03-04T05:07:03.226Z",
+    "item": {
+      "id": 331,
+      "name": "Smart Price Armour Mk II",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Epic",
+      "value": 3060,
+      "stat1": "def",
+      "stat1modifier": 22,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1210,
+      "market": {
+        "low": 30000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/A_Armor02.png"
+    }
+  },
+  {
+    "id": 332,
+    "fetchedAt": "2026-03-04T05:07:11.344Z",
+    "item": null
+  },
+  {
+    "id": 333,
+    "fetchedAt": "2026-03-04T05:07:19.290Z",
+    "item": null
+  },
+  {
+    "id": 334,
+    "fetchedAt": "2026-03-04T05:07:27.042Z",
+    "item": null
+  },
+  {
+    "id": 335,
+    "fetchedAt": "2026-03-04T05:07:34.900Z",
+    "item": null
+  },
+  {
+    "id": 336,
+    "fetchedAt": "2026-03-04T05:07:42.797Z",
+    "item": null
+  },
+  {
+    "id": 337,
+    "fetchedAt": "2026-03-04T05:07:50.620Z",
+    "item": null
+  },
+  {
+    "id": 338,
+    "fetchedAt": "2026-03-04T05:07:56.272Z",
+    "item": null
+  },
+  {
+    "id": 339,
+    "fetchedAt": "2026-03-04T05:08:01.916Z",
+    "item": null
+  },
+  {
+    "id": 340,
+    "fetchedAt": "2026-03-04T05:08:07.547Z",
+    "item": null
+  },
+  {
+    "id": 341,
+    "fetchedAt": "2026-03-04T05:08:13.238Z",
+    "item": {
+      "id": 341,
+      "name": "Metal Plate",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 18,
+      "rarity": "Uncommon",
+      "value": 1080,
+      "stat1": "def",
+      "stat1modifier": 23,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 129425,
+      "market": {
+        "low": 10999,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/A_Armor02.png"
+    }
+  },
+  {
+    "id": 342,
+    "fetchedAt": "2026-03-04T05:08:18.884Z",
+    "item": null
+  },
+  {
+    "id": 343,
+    "fetchedAt": "2026-03-04T05:08:24.675Z",
+    "item": null
+  },
+  {
+    "id": 344,
+    "fetchedAt": "2026-03-04T05:08:30.323Z",
+    "item": null
+  },
+  {
+    "id": 345,
+    "fetchedAt": "2026-03-04T05:08:35.911Z",
+    "item": null
+  },
+  {
+    "id": 346,
+    "fetchedAt": "2026-03-04T05:08:41.748Z",
+    "item": null
+  },
+  {
+    "id": 347,
+    "fetchedAt": "2026-03-04T05:08:47.470Z",
+    "item": null
+  },
+  {
+    "id": 348,
+    "fetchedAt": "2026-03-04T05:08:53.042Z",
+    "item": null
+  },
+  {
+    "id": 349,
+    "fetchedAt": "2026-03-04T05:08:58.750Z",
+    "item": null
+  },
+  {
+    "id": 350,
+    "fetchedAt": "2026-03-04T05:09:04.538Z",
+    "item": null
+  },
+  {
+    "id": 353,
+    "fetchedAt": "2026-03-04T05:09:15.535Z",
+    "item": null
+  },
+  {
+    "id": 354,
+    "fetchedAt": "2026-03-04T05:09:21.322Z",
+    "item": null
+  },
+  {
+    "id": 355,
+    "fetchedAt": "2026-03-04T05:09:27.277Z",
+    "item": null
+  },
+  {
+    "id": 356,
+    "fetchedAt": "2026-03-04T05:09:32.870Z",
+    "item": null
+  },
+  {
+    "id": 357,
+    "fetchedAt": "2026-03-04T05:09:38.562Z",
+    "item": null
+  },
+  {
+    "id": 358,
+    "fetchedAt": "2026-03-04T05:09:44.216Z",
+    "item": null
+  },
+  {
+    "id": 359,
+    "fetchedAt": "2026-03-04T05:09:49.906Z",
+    "item": null
+  },
+  {
+    "id": 360,
+    "fetchedAt": "2026-03-04T05:09:55.559Z",
+    "item": null
+  },
+  {
+    "id": 361,
+    "fetchedAt": "2026-03-04T05:10:01.276Z",
+    "item": {
+      "id": 361,
+      "name": "Upgraded Metal Plate",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 20,
+      "rarity": "Rare",
+      "value": 2000,
+      "stat1": "def",
+      "stat1modifier": 26,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 44372,
+      "market": {
+        "low": 10950,
+        "high": 50000000
+      },
+      "image_url": "/img/icons/A_Armor03.png"
+    }
+  },
+  {
+    "id": 362,
+    "fetchedAt": "2026-03-04T05:10:07.058Z",
+    "item": null
+  },
+  {
+    "id": 364,
+    "fetchedAt": "2026-03-04T05:10:15.614Z",
+    "item": null
+  },
+  {
+    "id": 365,
+    "fetchedAt": "2026-03-04T05:10:21.406Z",
+    "item": null
+  },
+  {
+    "id": 366,
+    "fetchedAt": "2026-03-04T05:10:27.167Z",
+    "item": null
+  },
+  {
+    "id": 367,
+    "fetchedAt": "2026-03-04T05:10:32.753Z",
+    "item": null
+  },
+  {
+    "id": 368,
+    "fetchedAt": "2026-03-04T05:10:38.362Z",
+    "item": null
+  },
+  {
+    "id": 369,
+    "fetchedAt": "2026-03-04T05:10:44.070Z",
+    "item": null
+  },
+  {
+    "id": 370,
+    "fetchedAt": "2026-03-04T05:10:49.676Z",
+    "item": null
+  },
+  {
+    "id": 371,
+    "fetchedAt": "2026-03-04T05:10:55.278Z",
+    "item": {
+      "id": 371,
+      "name": "Armour of Nobody",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 21,
+      "rarity": "Uncommon",
+      "value": 1260,
+      "stat1": "def",
+      "stat1modifier": 30,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "131367",
+      "market": {
+        "low": 11750,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/A_Armor03.png"
+    }
+  },
+  {
+    "id": 372,
+    "fetchedAt": "2026-03-04T05:11:01.153Z",
+    "item": null
+  },
+  {
+    "id": 373,
+    "fetchedAt": "2026-03-04T05:11:06.878Z",
+    "item": null
+  },
+  {
+    "id": 376,
+    "fetchedAt": "2026-03-04T05:11:17.912Z",
+    "item": null
+  },
+  {
+    "id": 377,
+    "fetchedAt": "2026-03-04T05:11:23.559Z",
+    "item": null
+  },
+  {
+    "id": 378,
+    "fetchedAt": "2026-03-04T05:11:29.167Z",
+    "item": null
+  },
+  {
+    "id": 379,
+    "fetchedAt": "2026-03-04T05:11:34.800Z",
+    "item": null
+  },
+  {
+    "id": 380,
+    "fetchedAt": "2026-03-04T05:11:40.342Z",
+    "item": null
+  },
+  {
+    "id": 381,
+    "fetchedAt": "2026-03-04T05:11:46.126Z",
+    "item": {
+      "id": 381,
+      "name": "Armour for No One",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 21,
+      "rarity": "Rare",
+      "value": 2100,
+      "stat1": "def",
+      "stat1modifier": 35,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 46259,
+      "market": {
+        "low": 15000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/A_Armor03.png"
+    }
+  },
+  {
+    "id": 382,
+    "fetchedAt": "2026-03-04T05:11:51.729Z",
+    "item": null
+  },
+  {
+    "id": 383,
+    "fetchedAt": "2026-03-04T05:11:57.402Z",
+    "item": null
+  },
+  {
+    "id": 384,
+    "fetchedAt": "2026-03-04T05:12:03.050Z",
+    "item": null
+  },
+  {
+    "id": 385,
+    "fetchedAt": "2026-03-04T05:12:08.730Z",
+    "item": null
+  },
+  {
+    "id": 388,
+    "fetchedAt": "2026-03-04T05:12:19.904Z",
+    "item": null
+  },
+  {
+    "id": 389,
+    "fetchedAt": "2026-03-04T05:12:25.608Z",
+    "item": null
+  },
+  {
+    "id": 390,
+    "fetchedAt": "2026-03-04T05:12:31.341Z",
+    "item": null
+  },
+  {
+    "id": 391,
+    "fetchedAt": "2026-03-04T05:12:36.911Z",
+    "item": {
+      "id": 391,
+      "name": "Inconsistent Armour of Holyness",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 24,
+      "rarity": "Uncommon",
+      "value": 1440,
+      "stat1": "def",
+      "stat1modifier": 39,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "129284",
+      "market": {
+        "low": 20355,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/A_Armor03.png"
+    }
+  },
+  {
+    "id": 392,
+    "fetchedAt": "2026-03-04T05:12:42.637Z",
+    "item": null
+  },
+  {
+    "id": 393,
+    "fetchedAt": "2026-03-04T05:12:48.379Z",
+    "item": null
+  },
+  {
+    "id": 394,
+    "fetchedAt": "2026-03-04T05:12:54.108Z",
+    "item": null
+  },
+  {
+    "id": 395,
+    "fetchedAt": "2026-03-04T05:12:59.740Z",
+    "item": null
+  },
+  {
+    "id": 396,
+    "fetchedAt": "2026-03-04T05:13:05.366Z",
+    "item": null
+  },
+  {
+    "id": 397,
+    "fetchedAt": "2026-03-04T05:13:10.919Z",
+    "item": null
+  },
+  {
+    "id": 400,
+    "fetchedAt": "2026-03-04T05:13:22.137Z",
+    "item": null
+  },
+  {
+    "id": 401,
+    "fetchedAt": "2026-03-04T05:13:27.764Z",
+    "item": {
+      "id": 401,
+      "name": "Upgraded Metal Plate",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 27,
+      "rarity": "Uncommon",
+      "value": 1620,
+      "stat1": "def",
+      "stat1modifier": 45,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 125530,
+      "market": {
+        "low": 15700,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/A_Armor03.png"
+    }
+  },
+  {
+    "id": 402,
+    "fetchedAt": "2026-03-04T05:13:33.318Z",
+    "item": null
+  },
+  {
+    "id": 403,
+    "fetchedAt": "2026-03-04T05:13:39.213Z",
+    "item": null
+  },
+  {
+    "id": 404,
+    "fetchedAt": "2026-03-04T05:13:44.895Z",
+    "item": null
+  },
+  {
+    "id": 405,
+    "fetchedAt": "2026-03-04T05:13:50.517Z",
+    "item": null
+  },
+  {
+    "id": 406,
+    "fetchedAt": "2026-03-04T05:13:56.149Z",
+    "item": null
+  },
+  {
+    "id": 407,
+    "fetchedAt": "2026-03-04T05:14:01.716Z",
+    "item": null
+  },
+  {
+    "id": 408,
+    "fetchedAt": "2026-03-04T05:14:07.331Z",
+    "item": null
+  },
+  {
+    "id": 409,
+    "fetchedAt": "2026-03-04T05:14:12.912Z",
+    "item": null
+  },
+  {
+    "id": 412,
+    "fetchedAt": "2026-03-04T05:14:23.866Z",
+    "item": null
+  },
+  {
+    "id": 413,
+    "fetchedAt": "2026-03-04T05:14:29.507Z",
+    "item": null
+  },
+  {
+    "id": 414,
+    "fetchedAt": "2026-03-04T05:14:35.223Z",
+    "item": null
+  },
+  {
+    "id": 415,
+    "fetchedAt": "2026-03-04T05:14:40.917Z",
+    "item": null
+  },
+  {
+    "id": 416,
+    "fetchedAt": "2026-03-04T05:14:46.600Z",
+    "item": null
+  },
+  {
+    "id": 417,
+    "fetchedAt": "2026-03-04T05:14:52.241Z",
+    "item": null
+  },
+  {
+    "id": 418,
+    "fetchedAt": "2026-03-04T05:14:57.877Z",
+    "item": null
+  },
+  {
+    "id": 419,
+    "fetchedAt": "2026-03-04T05:15:04.593Z",
+    "item": null
+  },
+  {
+    "id": 420,
+    "fetchedAt": "2026-03-04T05:15:10.484Z",
+    "item": null
+  },
+  {
+    "id": 421,
+    "fetchedAt": "2026-03-04T05:15:16.210Z",
+    "item": {
+      "id": 421,
+      "name": "Fire Plate",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 27,
+      "rarity": "Uncommon",
+      "value": 1620,
+      "stat1": "def",
+      "stat1modifier": 60,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 187338,
+      "market": {
+        "low": 4900,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Armor03.png"
+    }
+  },
+  {
+    "id": 423,
+    "fetchedAt": "2026-03-04T05:15:24.457Z",
+    "item": null
+  },
+  {
+    "id": 424,
+    "fetchedAt": "2026-03-04T05:15:30.174Z",
+    "item": null
+  },
+  {
+    "id": 425,
+    "fetchedAt": "2026-03-04T05:15:36.343Z",
+    "item": null
+  },
+  {
+    "id": 426,
+    "fetchedAt": "2026-03-04T05:15:42.092Z",
+    "item": null
+  },
+  {
+    "id": 427,
+    "fetchedAt": "2026-03-04T05:15:47.735Z",
+    "item": null
+  },
+  {
+    "id": 428,
+    "fetchedAt": "2026-03-04T05:15:53.312Z",
+    "item": null
+  },
+  {
+    "id": 429,
+    "fetchedAt": "2026-03-04T05:15:59.271Z",
+    "item": null
+  },
+  {
+    "id": 430,
+    "fetchedAt": "2026-03-04T05:16:05.157Z",
+    "item": null
+  },
+  {
+    "id": 431,
+    "fetchedAt": "2026-03-04T05:16:11.161Z",
+    "item": {
+      "id": 431,
+      "name": "Holy Shirt of Holyness",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 5,
+      "rarity": "Elite",
+      "value": 700,
+      "stat1": "def",
+      "stat1modifier": 12,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 8597,
+      "market": {
+        "low": 69419,
+        "high": 420420420
+      },
+      "image_url": "/img/icons/A_Clothing02.png"
+    }
   }
 ]

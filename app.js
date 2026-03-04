@@ -14,6 +14,7 @@
     const sortButton = qs('sortButton');
     const levelInput = qs('levelInput');
     const goldInput = qs('goldInput');
+    const minPowerInput = qs('minPowerInput');
     const statusEl = qs('status');
     const resultsList = qs('resultsList');
     const summary = qs('summary');
@@ -94,12 +95,13 @@
 
         // Filter items: must have level requirement met AND must have a cost
         // (marketLow preferred, falls back to price). Blank/404 items are skipped.
+        const minPower = Number(minPowerInput.value) || 0;
         const usable = items.filter(it => {
           if (!it || !it.id) return false;
           // Use marketLow if available, fallback to price
           const cost = it.marketLow != null ? it.marketLow : (it.price != null ? it.price : null);
           if (cost == null) return false;
-          return (it.minLevel || 0) <= level && cost <= gold;
+          return (it.minLevel || 0) <= level && cost <= gold && it.power >= minPower;
         });
 
         console.log('Filtered to usable items', { usableCount: usable.length, level, gold });
@@ -142,20 +144,49 @@
         } else {
           summary.hidden = false;
           resultsList.hidden = false;
-          // Sort by current sortBy mode
-          if (sortBy === 'power') {
-            usable.sort((a, b) => b.power - a.power);
-          } else {
-            // Sort by bestValue descending
-            usable.sort((a, b) => b.bestValue - a.bestValue);
-          }
+          
+          // Group items by slot and get top 5 for each slot
+          const slots = {};
           for (const it of usable) {
-            const div = document.createElement('div');
-            div.className = 'resultItem';
-            const valueDisplay = (it.bestValue != null) ? it.bestValue.toFixed(4) : '—';
-            div.textContent = `${it.slot}: ${it.name} (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`;
-            resultsList.appendChild(div);
+            if (!slots[it.slot]) slots[it.slot] = [];
+            slots[it.slot].push(it);
           }
+          
+          // Sort each slot by current sortBy mode and take top 5
+          let totalItems = 0;
+          for (const slotName in slots) {
+            const slotItems = slots[slotName];
+            
+            // Sort by current sortBy mode
+            if (sortBy === 'power') {
+              slotItems.sort((a, b) => b.power - a.power);
+            } else {
+              // Sort by bestValue descending
+              slotItems.sort((a, b) => b.bestValue - a.bestValue);
+            }
+            
+            // Take top 5 items for this slot
+            const top5 = slotItems.slice(0, 5);
+            totalItems += top5.length;
+            
+            // Add slot header
+            const slotHeader = document.createElement('div');
+            slotHeader.className = 'slotHeader';
+            slotHeader.textContent = `${slotName} (${top5.length} items)`;
+            resultsList.appendChild(slotHeader);
+            
+            // Add items for this slot
+            for (const it of top5) {
+              const div = document.createElement('div');
+              div.className = 'resultItem';
+              const valueDisplay = (it.bestValue != null) ? it.bestValue.toFixed(4) : '—';
+              div.textContent = `${it.name} (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`;
+              resultsList.appendChild(div);
+            }
+          }
+          
+          // Update summary with total count
+          slotsFilled.textContent = totalItems;
           statusEl.textContent = 'Ready.';
         }
       } catch (e) {
@@ -173,6 +204,7 @@
         // Re-render with new sort
         const level = Number(levelInput.value) || 1;
         const gold = Number(goldInput.value) || 0;
+        const minPower = Number(minPowerInput.value) || 0;
         const rawLogs = (window.SMMO_ITEM_LOGS && Array.isArray(window.SMMO_ITEM_LOGS)) ? window.SMMO_ITEM_LOGS : [];
         let items = [];
         if (rawLogs.length > 0) {
@@ -186,7 +218,7 @@
           if (!it || !it.id) return false;
           const cost = it.marketLow != null ? it.marketLow : (it.price != null ? it.price : null);
           if (cost == null) return false;
-          return (it.minLevel || 0) <= level && cost <= gold;
+          return (it.minLevel || 0) <= level && cost <= gold && it.power >= minPower;
         });
         usable.forEach(it => {
           const cost = it.marketLow != null ? it.marketLow : it.price;
