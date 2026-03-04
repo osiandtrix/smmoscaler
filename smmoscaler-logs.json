@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "fetchedAt": "2026-03-03T14:16:16.508Z",
+    "fetchedAt": "2026-03-03T13:32:58.431Z",
     "item": {
       "id": 1,
       "name": "Wooden Stick",
@@ -20,7 +20,7 @@
       "custom_item": 0,
       "tradable": 1,
       "locked": 0,
-      "circulation": "619418",
+      "circulation": "619422",
       "market": {
         "low": 10805,
         "high": 1111111111
@@ -30,7 +30,7 @@
   },
   {
     "id": 2,
-    "fetchedAt": "2026-03-03T12:59:13.947Z",
+    "fetchedAt": "2026-03-03T13:33:03.497Z",
     "item": {
       "id": 2,
       "name": "Simple Dagger",
@@ -59,7 +59,7 @@
   },
   {
     "id": 6,
-    "fetchedAt": "2026-03-03T14:07:47.893Z",
+    "fetchedAt": "2026-03-03T14:06:12.521Z",
     "item": {
       "id": 6,
       "name": "Bootleg T-Shirt",
@@ -302,6 +302,2829 @@
         "high": 2000000000
       },
       "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 14,
+    "fetchedAt": "2026-03-04T03:52:21.487Z",
+    "item": {
+      "id": 14,
+      "name": "Throwing Stars",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Common",
+      "value": 120,
+      "stat1": "str",
+      "stat1modifier": 14,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 230297,
+      "market": {
+        "low": 7073,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Throw003.png"
+    }
+  },
+  {
+    "id": 15,
+    "fetchedAt": "2026-03-04T03:52:26.976Z",
+    "item": {
+      "id": 15,
+      "name": "Nightsky",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Uncommon",
+      "value": 180,
+      "stat1": "str",
+      "stat1modifier": 15,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "144998",
+      "market": {
+        "low": 19990,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Throw004.png"
+    }
+  },
+  {
+    "id": 16,
+    "fetchedAt": "2026-03-04T03:52:32.181Z",
+    "item": {
+      "id": 16,
+      "name": "Staff of Fire",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Uncommon",
+      "value": 180,
+      "stat1": "str",
+      "stat1modifier": 16,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 146340,
+      "market": {
+        "low": 3299,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Staff03.png"
+    }
+  },
+  {
+    "id": 17,
+    "fetchedAt": "2026-03-04T03:52:37.359Z",
+    "item": {
+      "id": 17,
+      "name": "Stalker",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Uncommon",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 17,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "132114",
+      "market": {
+        "low": 13000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Spear003.png"
+    }
+  },
+  {
+    "id": 18,
+    "fetchedAt": "2026-03-04T03:52:42.581Z",
+    "item": {
+      "id": 18,
+      "name": "Bronze Key",
+      "type": "Other",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Uncommon",
+      "value": 60,
+      "stat1": null,
+      "stat1modifier": null,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 0,
+      "locked": 1,
+      "circulation": 1129490,
+      "market": {
+        "low": 0,
+        "high": 0
+      },
+      "image_url": "/img/icons/I_Key01.png"
+    }
+  },
+  {
+    "id": 19,
+    "fetchedAt": "2026-03-04T03:52:47.642Z",
+    "item": {
+      "id": 19,
+      "name": "Massacre",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Uncommon",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 18,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "134429",
+      "market": {
+        "low": 19800,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Mace008.png"
+    }
+  },
+  {
+    "id": 20,
+    "fetchedAt": "2026-03-04T03:52:52.732Z",
+    "item": {
+      "id": 20,
+      "name": "Shifting Sands",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Uncommon",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 20,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "131031",
+      "market": {
+        "low": 11000,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Mace012.png"
+    }
+  },
+  {
+    "id": 21,
+    "fetchedAt": "2026-03-04T03:52:57.891Z",
+    "item": {
+      "id": 21,
+      "name": "Crusader",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 5,
+      "rarity": "Uncommon",
+      "value": 300,
+      "stat1": "str",
+      "stat1modifier": 22,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "134012",
+      "market": {
+        "low": 11000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword009.png"
+    }
+  },
+  {
+    "id": 22,
+    "fetchedAt": "2026-03-04T03:53:02.916Z",
+    "item": {
+      "id": 22,
+      "name": "Dawn of Ruin",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Rare",
+      "value": 600,
+      "stat1": "str",
+      "stat1modifier": 24,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "51359",
+      "market": {
+        "low": 17000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword014.png"
+    }
+  },
+  {
+    "id": 23,
+    "fetchedAt": "2026-03-04T03:53:08.170Z",
+    "item": {
+      "id": 23,
+      "name": "The Last Thing You'll Ever See",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 7,
+      "rarity": "Common",
+      "value": 280,
+      "stat1": "str",
+      "stat1modifier": 26,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "257756",
+      "market": {
+        "low": 7000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 28,
+    "fetchedAt": "2026-03-04T03:53:22.367Z",
+    "item": {
+      "id": 28,
+      "name": "Attuned Ice Longsword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 14,
+      "rarity": "Rare",
+      "value": 1400,
+      "stat1": "str",
+      "stat1modifier": 42,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "47615",
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword018.png"
+    }
+  },
+  {
+    "id": 29,
+    "fetchedAt": "2026-03-04T03:53:27.624Z",
+    "item": {
+      "id": 29,
+      "name": "Frozen Protector",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 15,
+      "rarity": "Uncommon",
+      "value": 900,
+      "stat1": "str",
+      "stat1modifier": 45,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 137987,
+      "market": {
+        "low": 15000,
+        "high": 16000000
+      },
+      "image_url": "/img/icons/W_Sword017.png"
+    }
+  },
+  {
+    "id": 30,
+    "fetchedAt": "2026-03-04T03:53:32.718Z",
+    "item": {
+      "id": 30,
+      "name": "Needle Staff",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 15,
+      "rarity": "Elilte",
+      "value": 600,
+      "stat1": "str",
+      "stat1modifier": 50,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 0,
+      "market": {
+        "low": 0,
+        "high": 0
+      },
+      "image_url": "/img/icons/W_Staff06.png"
+    }
+  },
+  {
+    "id": 31,
+    "fetchedAt": "2026-03-04T03:53:37.767Z",
+    "item": {
+      "id": 31,
+      "name": "Storm Caller",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Uncommon",
+      "value": 1020,
+      "stat1": "str",
+      "stat1modifier": 56,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "131334",
+      "market": {
+        "low": 11100,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Staff06.png"
+    }
+  },
+  {
+    "id": 32,
+    "fetchedAt": "2026-03-04T03:53:42.815Z",
+    "item": {
+      "id": 32,
+      "name": "Unholy Might",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Rare",
+      "value": 1700,
+      "stat1": "str",
+      "stat1modifier": 59,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 45970,
+      "market": {
+        "low": 15000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Mace007.png"
+    }
+  },
+  {
+    "id": 33,
+    "fetchedAt": "2026-03-04T03:53:48.110Z",
+    "item": {
+      "id": 33,
+      "name": "Chaos",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 20,
+      "rarity": "Rare",
+      "value": 2000,
+      "stat1": "str",
+      "stat1modifier": 67,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 48250,
+      "market": {
+        "low": 15000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword020.png"
+    }
+  },
+  {
+    "id": 34,
+    "fetchedAt": "2026-03-04T03:53:53.224Z",
+    "item": {
+      "id": 34,
+      "name": "Extinction",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 22,
+      "rarity": "Elite",
+      "value": 3080,
+      "stat1": "str",
+      "stat1modifier": 82,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 6570,
+      "market": {
+        "low": 55000,
+        "high": 100000000
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 35,
+    "fetchedAt": "2026-03-04T03:53:58.489Z",
+    "item": {
+      "id": 35,
+      "name": "Gladiators Longblade",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 26,
+      "rarity": "Rare",
+      "value": 2600,
+      "stat1": "str",
+      "stat1modifier": 91,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 44441,
+      "market": {
+        "low": 15000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword019.png"
+    }
+  },
+  {
+    "id": 36,
+    "fetchedAt": "2026-03-04T03:54:03.990Z",
+    "item": {
+      "id": 36,
+      "name": "The Middle Finger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 30,
+      "rarity": "Uncommon",
+      "value": 1800,
+      "stat1": "str",
+      "stat1modifier": 98,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 185600,
+      "market": {
+        "low": 14000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/S_Sword10.png"
+    }
+  },
+  {
+    "id": 37,
+    "fetchedAt": "2026-03-04T03:54:09.257Z",
+    "item": {
+      "id": 37,
+      "name": "The Dark One",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 32,
+      "rarity": "Epic",
+      "value": 5760,
+      "stat1": "str",
+      "stat1modifier": 101,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1962,
+      "market": {
+        "low": 88000,
+        "high": 4999999
+      },
+      "image_url": "/img/icons/W_Axe008.png"
+    }
+  },
+  {
+    "id": 42,
+    "fetchedAt": "2026-03-04T03:54:22.886Z",
+    "item": {
+      "id": 42,
+      "name": "Red Obsidian",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 44,
+      "rarity": "Elite",
+      "value": 6160,
+      "stat1": "str",
+      "stat1modifier": 170,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4122,
+      "market": {
+        "low": 31000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Axe013.png"
+    }
+  },
+  {
+    "id": 43,
+    "fetchedAt": "2026-03-04T03:54:27.958Z",
+    "item": {
+      "id": 43,
+      "name": "Ragnar Lothbrok",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 45,
+      "rarity": "Elite",
+      "value": 6300,
+      "stat1": "str",
+      "stat1modifier": 185,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 4452,
+      "market": {
+        "low": 45000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Bow10.png"
+    }
+  },
+  {
+    "id": 44,
+    "fetchedAt": "2026-03-04T03:54:33.141Z",
+    "item": {
+      "id": 44,
+      "name": "Shadow Eater",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 46,
+      "rarity": "Epic",
+      "value": 8280,
+      "stat1": "str",
+      "stat1modifier": 190,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 894,
+      "market": {
+        "low": 50000,
+        "high": 5000000
+      },
+      "image_url": "/img/icons/W_Bow06.png"
+    }
+  },
+  {
+    "id": 45,
+    "fetchedAt": "2026-03-04T03:54:38.190Z",
+    "item": {
+      "id": 45,
+      "name": "Soul Eater",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 49,
+      "rarity": "Legendary",
+      "value": 19600,
+      "stat1": "str",
+      "stat1modifier": 220,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 337,
+      "market": {
+        "low": 290000,
+        "high": 20000000
+      },
+      "image_url": "/img/icons/W_Bow13.png"
+    }
+  },
+  {
+    "id": 46,
+    "fetchedAt": "2026-03-04T03:54:43.257Z",
+    "item": {
+      "id": 46,
+      "name": "Knights Fall",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 49,
+      "rarity": "Legendary",
+      "value": 19600,
+      "stat1": "str",
+      "stat1modifier": 240,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 324,
+      "market": {
+        "low": 300000,
+        "high": 5000000
+      },
+      "image_url": "/img/icons/W_Dagger015.png"
+    }
+  },
+  {
+    "id": 47,
+    "fetchedAt": "2026-03-04T03:54:48.267Z",
+    "item": {
+      "id": 47,
+      "name": "Blade of the North",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Rare",
+      "value": 5000,
+      "stat1": "str",
+      "stat1modifier": 260,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "41002",
+      "market": {
+        "low": 20000,
+        "high": 9999999
+      },
+      "image_url": "/img/icons/W_Dagger019.png"
+    }
+  },
+  {
+    "id": 48,
+    "fetchedAt": "2026-03-04T03:54:53.265Z",
+    "item": {
+      "id": 48,
+      "name": "Needle",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 50,
+      "rarity": "Rare",
+      "value": 5000,
+      "stat1": "str",
+      "stat1modifier": 280,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 39437,
+      "market": {
+        "low": 15300,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Sword021.png"
+    }
+  },
+  {
+    "id": 49,
+    "fetchedAt": "2026-03-04T03:54:58.274Z",
+    "item": {
+      "id": 49,
+      "name": "Twilight",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 52,
+      "rarity": "Rare",
+      "value": 5200,
+      "stat1": "str",
+      "stat1modifier": 320,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 39345,
+      "market": {
+        "low": 19900,
+        "high": 9999999
+      },
+      "image_url": "/img/icons/W_Sword015.png"
+    }
+  },
+  {
+    "id": 50,
+    "fetchedAt": "2026-03-04T03:55:03.407Z",
+    "item": {
+      "id": 50,
+      "name": "Destiny",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 55,
+      "rarity": "Legendary",
+      "value": 22000,
+      "stat1": "str",
+      "stat1modifier": 350,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 393,
+      "market": {
+        "low": 199999,
+        "high": 10000000
+      },
+      "image_url": "/img/icons/W_Sword016.png"
+    }
+  },
+  {
+    "id": 51,
+    "fetchedAt": "2026-03-04T03:55:08.728Z",
+    "item": {
+      "id": 51,
+      "name": "Avengers Avenger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 57,
+      "rarity": "Epic",
+      "value": 10260,
+      "stat1": "str",
+      "stat1modifier": 370,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 956,
+      "market": {
+        "low": 83000,
+        "high": 220000
+      },
+      "image_url": "/img/icons/S_Sword04.png"
+    }
+  },
+  {
+    "id": 24,
+    "fetchedAt": "2026-03-04T04:32:33.939Z",
+    "item": {
+      "id": 24,
+      "name": "Promised Longsword of Destiny",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 7,
+      "rarity": "Rare",
+      "value": 700,
+      "stat1": "str",
+      "stat1modifier": 30,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 49463,
+      "market": {
+        "low": 15999,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword012.png"
+    }
+  },
+  {
+    "id": 25,
+    "fetchedAt": "2026-03-04T04:32:39.475Z",
+    "item": {
+      "id": 25,
+      "name": "The Death Star",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 8,
+      "rarity": "Rare",
+      "value": 800,
+      "stat1": "str",
+      "stat1modifier": 28,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 62672,
+      "market": {
+        "low": 10000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Spear014.png"
+    }
+  },
+  {
+    "id": 26,
+    "fetchedAt": "2026-03-04T04:32:45.136Z",
+    "item": {
+      "id": 26,
+      "name": "Endbringer",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Common",
+      "value": 360,
+      "stat1": "str",
+      "stat1modifier": 30,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "233159",
+      "market": {
+        "low": 9999,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Throw001.png"
+    }
+  },
+  {
+    "id": 27,
+    "fetchedAt": "2026-03-04T04:32:52.532Z",
+    "item": {
+      "id": 27,
+      "name": "Attuned Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 10,
+      "rarity": "Common",
+      "value": 400,
+      "stat1": "str",
+      "stat1modifier": 40,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 369505,
+      "market": {
+        "low": 3960,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Throw002.png"
+    }
+  },
+  {
+    "id": 38,
+    "fetchedAt": "2026-03-04T04:33:00.275Z",
+    "item": {
+      "id": 38,
+      "name": "Frail Quickblade",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 36,
+      "rarity": "Epic",
+      "value": 6480,
+      "stat1": "str",
+      "stat1modifier": 120,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1062,
+      "market": {
+        "low": 75000,
+        "high": 1000000
+      },
+      "image_url": "/img/icons/W_Axe009.png"
+    }
+  },
+  {
+    "id": 39,
+    "fetchedAt": "2026-03-04T04:33:07.474Z",
+    "item": {
+      "id": 39,
+      "name": "Mighty Axe of Might",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 37,
+      "rarity": "Rare",
+      "value": 3700,
+      "stat1": "str",
+      "stat1modifier": 124,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "42761",
+      "market": {
+        "low": 15000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Axe010.png"
+    }
+  },
+  {
+    "id": 40,
+    "fetchedAt": "2026-03-04T04:33:15.173Z",
+    "item": {
+      "id": 40,
+      "name": "Tiger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 41,
+      "rarity": "Epic",
+      "value": 7380,
+      "stat1": "str",
+      "stat1modifier": 150,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1067,
+      "market": {
+        "low": 50000,
+        "high": 30000000
+      },
+      "image_url": "/img/icons/W_Axe011.png"
+    }
+  },
+  {
+    "id": 41,
+    "fetchedAt": "2026-03-04T04:33:23.069Z",
+    "item": {
+      "id": 41,
+      "name": "Worldslayer Axe",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 42,
+      "rarity": "Epic",
+      "value": 7560,
+      "stat1": "str",
+      "stat1modifier": 155,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 970,
+      "market": {
+        "low": 107000,
+        "high": 2100000
+      },
+      "image_url": "/img/icons/W_Axe014.png"
+    }
+  },
+  {
+    "id": 52,
+    "fetchedAt": "2026-03-04T04:33:30.847Z",
+    "item": {
+      "id": 52,
+      "name": "Twig",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 59,
+      "rarity": "Legendary",
+      "value": 23600,
+      "stat1": "str",
+      "stat1modifier": 500,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 1365,
+      "market": {
+        "low": 4887777,
+        "high": 100000000
+      },
+      "image_url": "/img/icons/W_Stick01.png"
+    }
+  },
+  {
+    "id": 53,
+    "fetchedAt": "2026-03-04T04:33:38.666Z",
+    "item": null
+  },
+  {
+    "id": 54,
+    "fetchedAt": "2026-03-04T04:33:45.705Z",
+    "item": null
+  },
+  {
+    "id": 55,
+    "fetchedAt": "2026-03-04T04:33:53.509Z",
+    "item": {
+      "id": 55,
+      "name": "Special Carrot",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Uncommon",
+      "value": 60,
+      "stat1": "hp",
+      "stat1modifier": 10,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 337040,
+      "market": {
+        "low": 8000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/I_C_Carrot.png"
+    }
+  },
+  {
+    "id": 56,
+    "fetchedAt": "2026-03-04T04:34:01.274Z",
+    "item": {
+      "id": 56,
+      "name": "Special Carrot",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 5,
+      "rarity": "Uncommon",
+      "value": 300,
+      "stat1": "hp",
+      "stat1modifier": 20,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "1831286",
+      "market": {
+        "low": 2163,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/I_C_Carrot.png"
+    }
+  },
+  {
+    "id": 57,
+    "fetchedAt": "2026-03-04T04:34:07.607Z",
+    "item": {
+      "id": 57,
+      "name": "Special Carrot",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Elite",
+      "value": 140,
+      "stat1": "hp",
+      "stat1modifier": 50,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 39787,
+      "market": {
+        "low": 30000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/I_C_Carrot.png"
+    }
+  },
+  {
+    "id": 58,
+    "fetchedAt": "2026-03-04T04:34:13.138Z",
+    "item": {
+      "id": 58,
+      "name": "Special Carrot",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Epic",
+      "value": 180,
+      "stat1": "hp",
+      "stat1modifier": 100,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 3396,
+      "market": {
+        "low": 125000,
+        "high": 420420420
+      },
+      "image_url": "/img/icons/I_C_Carrot.png"
+    }
+  },
+  {
+    "id": 59,
+    "fetchedAt": "2026-03-04T04:34:18.842Z",
+    "item": {
+      "id": 59,
+      "name": "Special Carrot",
+      "type": "Food",
+      "description": "",
+      "equipable": "0",
+      "level": 1,
+      "rarity": "Epic",
+      "value": 180,
+      "stat1": "hp",
+      "stat1modifier": 1000,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 3547,
+      "market": {
+        "low": 140000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/I_C_Carrot.png"
+    }
+  },
+  {
+    "id": 60,
+    "fetchedAt": "2026-03-04T04:34:24.524Z",
+    "item": {
+      "id": 60,
+      "name": "Knockoff T-Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "def",
+      "stat1modifier": 2,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "222693",
+      "market": {
+        "low": 6000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Clothing01.png"
+    }
+  },
+  {
+    "id": 61,
+    "fetchedAt": "2026-03-04T04:34:30.212Z",
+    "item": {
+      "id": 61,
+      "name": "Commoners Shirt of Nothingness",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 2,
+      "rarity": "Common",
+      "value": 80,
+      "stat1": "def",
+      "stat1modifier": 3,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "228782",
+      "market": {
+        "low": 8664,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Clothing01.png"
+    }
+  },
+  {
+    "id": 62,
+    "fetchedAt": "2026-03-04T04:34:36.007Z",
+    "item": {
+      "id": 62,
+      "name": "T-Shirt for the Homeless",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Rare",
+      "value": 100,
+      "stat1": "def",
+      "stat1modifier": 4,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 172219,
+      "market": {
+        "low": 15888,
+        "high": 1111111111
+      },
+      "image_url": "/img/icons/A_Clothing01.png"
+    }
+  },
+  {
+    "id": 63,
+    "fetchedAt": "2026-03-04T04:34:41.690Z",
+    "item": {
+      "id": 63,
+      "name": "Barbarians T-Shirt",
+      "type": "Armour",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Common",
+      "value": 120,
+      "stat1": "def",
+      "stat1modifier": 6,
+      "stat2": "",
+      "stat2modifier": 0,
+      "stat3": "",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "256535",
+      "market": {
+        "low": 15990,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/A_Clothing01.png"
+    }
+  },
+  {
+    "id": 64,
+    "fetchedAt": "2026-03-04T04:34:47.420Z",
+    "item": {
+      "id": 64,
+      "name": "Light Dagger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "str",
+      "stat1modifier": 1,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "249650",
+      "market": {
+        "low": 8400,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Dagger003.png"
+    }
+  },
+  {
+    "id": 65,
+    "fetchedAt": "2026-03-04T04:34:53.347Z",
+    "item": {
+      "id": 65,
+      "name": "Simple Dagger Mk II",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "str",
+      "stat1modifier": 2,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 245974,
+      "market": {
+        "low": 3999,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Dagger003.png"
+    }
+  },
+  {
+    "id": 66,
+    "fetchedAt": "2026-03-04T04:34:59.088Z",
+    "item": {
+      "id": 66,
+      "name": "Plan B",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Uncommon",
+      "value": 60,
+      "stat1": "str",
+      "stat1modifier": 4,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "137844",
+      "market": {
+        "low": 12799,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Dagger003.png"
+    }
+  },
+  {
+    "id": 67,
+    "fetchedAt": "2026-03-04T04:35:04.916Z",
+    "item": {
+      "id": 67,
+      "name": "Stinger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "str",
+      "stat1modifier": 5,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "235301",
+      "market": {
+        "low": 24900,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Dagger003.png"
+    }
+  },
+  {
+    "id": 68,
+    "fetchedAt": "2026-03-04T04:35:10.675Z",
+    "item": {
+      "id": 68,
+      "name": "Upgraded Dagger",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Uncommon",
+      "value": 60,
+      "stat1": "str",
+      "stat1modifier": 5,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 141990,
+      "market": {
+        "low": 5500,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Dagger004.png"
+    }
+  },
+  {
+    "id": 69,
+    "fetchedAt": "2026-03-04T04:35:16.434Z",
+    "item": {
+      "id": 69,
+      "name": "A Simple Dagger But It's Red",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Rare",
+      "value": 100,
+      "stat1": "str",
+      "stat1modifier": 6,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 55651,
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Dagger004.png"
+    }
+  },
+  {
+    "id": 70,
+    "fetchedAt": "2026-03-04T04:35:22.313Z",
+    "item": {
+      "id": 70,
+      "name": "Lucille",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Rare",
+      "value": 100,
+      "stat1": "str",
+      "stat1modifier": 7,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "52545",
+      "market": {
+        "low": 16000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword013.png"
+    }
+  },
+  {
+    "id": 71,
+    "fetchedAt": "2026-03-04T04:35:27.888Z",
+    "item": {
+      "id": 71,
+      "name": "Budget Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Common",
+      "value": 40,
+      "stat1": "str",
+      "stat1modifier": 8,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "230445",
+      "market": {
+        "low": 17400,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword013.png"
+    }
+  },
+  {
+    "id": 73,
+    "fetchedAt": "2026-03-04T04:35:38.019Z",
+    "item": {
+      "id": 73,
+      "name": "Bow for Bandits",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Uncommon",
+      "value": 180,
+      "stat1": "str",
+      "stat1modifier": 14,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 135323,
+      "market": {
+        "low": 5685,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Bow04.png"
+    }
+  },
+  {
+    "id": 74,
+    "fetchedAt": "2026-03-04T04:35:45.818Z",
+    "item": {
+      "id": 74,
+      "name": "Some Geezers Bow",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Common",
+      "value": 160,
+      "stat1": "str",
+      "stat1modifier": 17,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "390609",
+      "market": {
+        "low": 4440,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Bow04.png"
+    }
+  },
+  {
+    "id": 75,
+    "fetchedAt": "2026-03-04T04:35:53.639Z",
+    "item": {
+      "id": 75,
+      "name": "Bow of Saint Nicholas",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Common",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 20,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 258852,
+      "market": {
+        "low": 3500,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Bow04.png"
+    }
+  },
+  {
+    "id": 76,
+    "fetchedAt": "2026-03-04T04:36:00.879Z",
+    "item": {
+      "id": 76,
+      "name": "Broad Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Common",
+      "value": 120,
+      "stat1": "str",
+      "stat1modifier": 14,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 231763,
+      "market": {
+        "low": 8030,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 77,
+    "fetchedAt": "2026-03-04T04:36:08.605Z",
+    "item": {
+      "id": 77,
+      "name": "Huge Sword",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 3,
+      "rarity": "Common",
+      "value": 120,
+      "stat1": "str",
+      "stat1modifier": 15,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "246684",
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 78,
+    "fetchedAt": "2026-03-04T04:36:16.324Z",
+    "item": {
+      "id": 78,
+      "name": "A Star of Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 1,
+      "rarity": "Rare",
+      "value": 100,
+      "stat1": "str",
+      "stat1modifier": 11,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 52349,
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Throw003.png"
+    }
+  },
+  {
+    "id": 79,
+    "fetchedAt": "2026-03-04T04:36:24.054Z",
+    "item": {
+      "id": 79,
+      "name": "Surprise Mothertrucker",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Uncommon",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 17,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 159663,
+      "market": {
+        "low": 13400,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Throw004.png"
+    }
+  },
+  {
+    "id": 80,
+    "fetchedAt": "2026-03-04T04:36:31.930Z",
+    "item": {
+      "id": 80,
+      "name": "Stars to Throw",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 5,
+      "rarity": "Common",
+      "value": 200,
+      "stat1": "str",
+      "stat1modifier": 19,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "238107",
+      "market": {
+        "low": 10570,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Throw004.png"
+    }
+  },
+  {
+    "id": 81,
+    "fetchedAt": "2026-03-04T04:36:38.891Z",
+    "item": {
+      "id": 81,
+      "name": "Staff of Leeroy",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 4,
+      "rarity": "Uncommon",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 17,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "141419",
+      "market": {
+        "low": 11000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Staff03.png"
+    }
+  },
+  {
+    "id": 82,
+    "fetchedAt": "2026-03-04T04:36:46.820Z",
+    "item": {
+      "id": 82,
+      "name": "Staff of Destiny",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 5,
+      "rarity": "Common",
+      "value": 200,
+      "stat1": "str",
+      "stat1modifier": 18,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 238365,
+      "market": {
+        "low": 7000,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Staff03.png"
+    }
+  },
+  {
+    "id": 83,
+    "fetchedAt": "2026-03-04T04:36:54.698Z",
+    "item": {
+      "id": 83,
+      "name": "Staff of Everything Ever",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Common",
+      "value": 240,
+      "stat1": "str",
+      "stat1modifier": 20,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "239805",
+      "market": {
+        "low": 10040,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Staff03.png"
+    }
+  },
+  {
+    "id": 84,
+    "fetchedAt": "2026-03-04T04:37:00.467Z",
+    "item": {
+      "id": 84,
+      "name": "Smart Price Spear",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 5,
+      "rarity": "Uncommon",
+      "value": 300,
+      "stat1": "str",
+      "stat1modifier": 18,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 139296,
+      "market": {
+        "low": 14500,
+        "high": 1000000001
+      },
+      "image_url": "/img/icons/W_Spear003.png"
+    }
+  },
+  {
+    "id": 85,
+    "fetchedAt": "2026-03-04T04:37:06.171Z",
+    "item": {
+      "id": 85,
+      "name": "Asda",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Uncommon",
+      "value": 360,
+      "stat1": "str",
+      "stat1modifier": 20,
+      "stat2": null,
+      "stat2modifier": null,
+      "stat3": null,
+      "stat3modifier": null,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "139642",
+      "market": {
+        "low": 6000,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Spear003.png"
+    }
+  },
+  {
+    "id": 86,
+    "fetchedAt": "2026-03-04T04:37:11.715Z",
+    "item": {
+      "id": 86,
+      "name": "Smart Price Mace",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Uncommon",
+      "value": 360,
+      "stat1": "str",
+      "stat1modifier": 25,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 140868,
+      "market": {
+        "low": 10900,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Mace008.png"
+    }
+  },
+  {
+    "id": 87,
+    "fetchedAt": "2026-03-04T04:37:18.286Z",
+    "item": {
+      "id": 87,
+      "name": "Silence",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 6,
+      "rarity": "Uncommon",
+      "value": 360,
+      "stat1": "str",
+      "stat1modifier": 24,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "137031",
+      "market": {
+        "low": 11500,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Mace012.png"
+    }
+  },
+  {
+    "id": 88,
+    "fetchedAt": "2026-03-04T04:37:25.060Z",
+    "item": {
+      "id": 88,
+      "name": "Crusader",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 7,
+      "rarity": "Uncommon",
+      "value": 420,
+      "stat1": "str",
+      "stat1modifier": 25,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 138425,
+      "market": {
+        "low": 12000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Sword009.png"
+    }
+  },
+  {
+    "id": 89,
+    "fetchedAt": "2026-03-04T04:37:34.285Z",
+    "item": {
+      "id": 89,
+      "name": "Inside Job",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 8,
+      "rarity": "Rare",
+      "value": 800,
+      "stat1": "str",
+      "stat1modifier": 27,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 51419,
+      "market": {
+        "low": 11826,
+        "high": 90000000
+      },
+      "image_url": "/img/icons/W_Sword014.png"
+    }
+  },
+  {
+    "id": 90,
+    "fetchedAt": "2026-03-04T04:37:41.388Z",
+    "item": {
+      "id": 90,
+      "name": "Slapling",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Common",
+      "value": 360,
+      "stat1": "str",
+      "stat1modifier": 28,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "264167",
+      "market": {
+        "low": 9999,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword014.png"
+    }
+  },
+  {
+    "id": 91,
+    "fetchedAt": "2026-03-04T04:37:48.599Z",
+    "item": {
+      "id": 91,
+      "name": "The Devils Right Hand",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Common",
+      "value": 360,
+      "stat1": "str",
+      "stat1modifier": 30,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "275366",
+      "market": {
+        "low": 14990,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 92,
+    "fetchedAt": "2026-03-04T04:37:54.463Z",
+    "item": {
+      "id": 92,
+      "name": "The Devils Left Hand",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 10,
+      "rarity": "Rare",
+      "value": 1000,
+      "stat1": "str",
+      "stat1modifier": 32,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 56557,
+      "market": {
+        "low": 15000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 93,
+    "fetchedAt": "2026-03-04T04:38:00.255Z",
+    "item": {
+      "id": 93,
+      "name": "Sword of Doughnuts",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 10,
+      "rarity": "Rare",
+      "value": 1000,
+      "stat1": "str",
+      "stat1modifier": 33,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 54879,
+      "market": {
+        "low": 17900,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 94,
+    "fetchedAt": "2026-03-04T04:38:06.353Z",
+    "item": {
+      "id": 94,
+      "name": "Knockoff sabre of light",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Rare",
+      "value": 900,
+      "stat1": "str",
+      "stat1modifier": 28,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 48900,
+      "market": {
+        "low": 15000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword012.png"
+    }
+  },
+  {
+    "id": 95,
+    "fetchedAt": "2026-03-04T04:38:11.879Z",
+    "item": {
+      "id": 95,
+      "name": "Sword for Sloths",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 11,
+      "rarity": "Common",
+      "value": 440,
+      "stat1": "str",
+      "stat1modifier": 35,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "452104",
+      "market": {
+        "low": 999,
+        "high": 2000000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 96,
+    "fetchedAt": "2026-03-04T04:38:17.680Z",
+    "item": {
+      "id": 96,
+      "name": "Lion",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 12,
+      "rarity": "Rare",
+      "value": 1200,
+      "stat1": "str",
+      "stat1modifier": 40,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 50477,
+      "market": {
+        "low": 15000,
+        "high": 150000000
+      },
+      "image_url": "/img/icons/W_Sword005.png"
+    }
+  },
+  {
+    "id": 97,
+    "fetchedAt": "2026-03-04T04:38:23.415Z",
+    "item": {
+      "id": 97,
+      "name": "Bootleg sabre of light",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Rare",
+      "value": 900,
+      "stat1": "str",
+      "stat1modifier": 30,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 49260,
+      "market": {
+        "low": 11000,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Sword012.png"
+    }
+  },
+  {
+    "id": 98,
+    "fetchedAt": "2026-03-04T04:38:29.173Z",
+    "item": {
+      "id": 98,
+      "name": "The Shoulders",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 9,
+      "rarity": "Rare",
+      "value": 900,
+      "stat1": "str",
+      "stat1modifier": 29,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "47907",
+      "market": {
+        "low": 15741,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Spear014.png"
+    }
+  },
+  {
+    "id": 99,
+    "fetchedAt": "2026-03-04T04:38:34.736Z",
+    "item": {
+      "id": 99,
+      "name": "Lagatha",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 10,
+      "rarity": "Common",
+      "value": 400,
+      "stat1": "str",
+      "stat1modifier": 30,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "233741",
+      "market": {
+        "low": 8061,
+        "high": 888888888
+      },
+      "image_url": "/img/icons/W_Spear014.png"
+    }
+  },
+  {
+    "id": 100,
+    "fetchedAt": "2026-03-04T04:38:40.680Z",
+    "item": {
+      "id": 100,
+      "name": "Agatha",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 10,
+      "rarity": "Rare",
+      "value": 1000,
+      "stat1": "str",
+      "stat1modifier": 32,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "49484",
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Spear014.png"
+    }
+  },
+  {
+    "id": 101,
+    "fetchedAt": "2026-03-04T04:38:46.332Z",
+    "item": {
+      "id": 101,
+      "name": "Enchanted Diamond Thrower",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 11,
+      "rarity": "Uncommon",
+      "value": 660,
+      "stat1": "str",
+      "stat1modifier": 35,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 135021,
+      "market": {
+        "low": 8000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Throw001.png"
+    }
+  },
+  {
+    "id": 102,
+    "fetchedAt": "2026-03-04T04:38:51.896Z",
+    "item": {
+      "id": 102,
+      "name": "Light Ender",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 11,
+      "rarity": "Rare",
+      "value": 1100,
+      "stat1": "str",
+      "stat1modifier": 37,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 52762,
+      "market": {
+        "low": 19000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Throw001.png"
+    }
+  },
+  {
+    "id": 103,
+    "fetchedAt": "2026-03-04T04:38:57.582Z",
+    "item": {
+      "id": 103,
+      "name": "Panty Dropper",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 12,
+      "rarity": "Rare",
+      "value": 1200,
+      "stat1": "str",
+      "stat1modifier": 40,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 70832,
+      "market": {
+        "low": 8000,
+        "high": 696969696
+      },
+      "image_url": "/img/icons/W_Throw001.png"
+    }
+  },
+  {
+    "id": 104,
+    "fetchedAt": "2026-03-04T04:39:03.073Z",
+    "item": {
+      "id": 104,
+      "name": "A Bloody Throwing Thing",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 13,
+      "rarity": "Rare",
+      "value": 1300,
+      "stat1": "str",
+      "stat1modifier": 41,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "51175",
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Throw002.png"
+    }
+  },
+  {
+    "id": 105,
+    "fetchedAt": "2026-03-04T04:39:08.603Z",
+    "item": {
+      "id": 105,
+      "name": "Throwing Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 15,
+      "rarity": "Rare",
+      "value": 1500,
+      "stat1": "str",
+      "stat1modifier": 45,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 46392,
+      "market": {
+        "low": 20000,
+        "high": 1999999999
+      },
+      "image_url": "/img/icons/W_Throw002.png"
+    }
+  },
+  {
+    "id": 106,
+    "fetchedAt": "2026-03-04T04:39:14.291Z",
+    "item": {
+      "id": 106,
+      "name": "Warrior",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 15,
+      "rarity": "Rare",
+      "value": 1500,
+      "stat1": "str",
+      "stat1modifier": 45,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 47256,
+      "market": {
+        "low": 15000,
+        "high": 100000000
+      },
+      "image_url": "/img/icons/W_Sword018.png"
+    }
+  },
+  {
+    "id": 107,
+    "fetchedAt": "2026-03-04T04:39:19.850Z",
+    "item": {
+      "id": 107,
+      "name": "FIREY ICE OF DEATH",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 15,
+      "rarity": "Rare",
+      "value": 1500,
+      "stat1": "str",
+      "stat1modifier": 48,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 49042,
+      "market": {
+        "low": 15000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Sword018.png"
+    }
+  },
+  {
+    "id": 108,
+    "fetchedAt": "2026-03-04T04:39:25.514Z",
+    "item": {
+      "id": 108,
+      "name": "Frozen",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 15,
+      "rarity": "Uncommon",
+      "value": 900,
+      "stat1": "str",
+      "stat1modifier": 50,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "197029",
+      "market": {
+        "low": 3983,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Sword017.png"
+    }
+  },
+  {
+    "id": 109,
+    "fetchedAt": "2026-03-04T04:39:31.200Z",
+    "item": {
+      "id": 109,
+      "name": "The Ugly One",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Rare",
+      "value": 1700,
+      "stat1": "str",
+      "stat1modifier": 52,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "47223",
+      "market": {
+        "low": 12000,
+        "high": 999999999
+      },
+      "image_url": "/img/icons/W_Sword017.png"
+    }
+  },
+  {
+    "id": 112,
+    "fetchedAt": "2026-03-04T04:39:42.188Z",
+    "item": {
+      "id": 112,
+      "name": "Spellblade",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Rare",
+      "value": 1700,
+      "stat1": "str",
+      "stat1modifier": 53,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 46258,
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Staff06.png"
+    }
+  },
+  {
+    "id": 113,
+    "fetchedAt": "2026-03-04T04:39:47.741Z",
+    "item": {
+      "id": 113,
+      "name": "LDR",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 17,
+      "rarity": "Rare",
+      "value": 1700,
+      "stat1": "str",
+      "stat1modifier": 56,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "45911",
+      "market": {
+        "low": 3999,
+        "high": 500000000
+      },
+      "image_url": "/img/icons/W_Staff06.png"
+    }
+  },
+  {
+    "id": 114,
+    "fetchedAt": "2026-03-04T04:39:53.386Z",
+    "item": {
+      "id": 114,
+      "name": "Weapon of Death",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 18,
+      "rarity": "Uncommon",
+      "value": 1080,
+      "stat1": "str",
+      "stat1modifier": 59,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": "146166",
+      "market": {
+        "low": 8006,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Staff06.png"
+    }
+  },
+  {
+    "id": 115,
+    "fetchedAt": "2026-03-04T04:39:58.890Z",
+    "item": {
+      "id": 115,
+      "name": "Staff of Savages",
+      "type": "Weapon",
+      "description": "",
+      "equipable": "1",
+      "level": 18,
+      "rarity": "Rare",
+      "value": 1800,
+      "stat1": "str",
+      "stat1modifier": 61,
+      "stat2": "none",
+      "stat2modifier": 0,
+      "stat3": "none",
+      "stat3modifier": 0,
+      "custom_item": 0,
+      "tradable": 1,
+      "locked": 0,
+      "circulation": 45896,
+      "market": {
+        "low": 15000,
+        "high": 1000000000
+      },
+      "image_url": "/img/icons/W_Staff06.png"
     }
   }
 ]
