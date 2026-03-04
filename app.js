@@ -96,12 +96,15 @@
 
         // Filter items: must have level requirement met AND must have a cost
         // (marketLow preferred, falls back to price). Blank/404 items are skipped.
+        // Exclude Food and Other item types from showing up in the UI output
         const minPower = Number(minPowerInput.value) || 0;
         const usable = items.filter(it => {
           if (!it || !it.id) return false;
           // Use marketLow if available, fallback to price
           const cost = it.marketLow != null ? it.marketLow : (it.price != null ? it.price : null);
           if (cost == null) return false;
+          // Exclude Food and Other item types
+          if (it.slot === 'Food' || it.slot === 'Other') return false;
           return (it.minLevel || 0) <= level && cost <= gold && it.power >= minPower;
         });
 
