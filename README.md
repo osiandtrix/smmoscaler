@@ -1,9 +1,16 @@
 # Alpha's SimpleMMO Scaler (ASS) and Dataminer
 Made with love by Raven (Alpha, 28790)
+
 A dedicated tool for SimpleMMO, an old-school browser MMORPG. (https://web.simple-mmo.com)
+
+
 Tells you what the best item you can get for your level, and gold for the webgame SimpleMMO.
 https://totallynotaduck.github.io/smmoscaler/
+
+
 Uses datamined logsheet of every possible item in the game, tool included in the webpage.
+
+
 Dataminer runs at 1 request per 2 seconds. Slow but you would not get HTTP429.
 
 HOW TO USE:
