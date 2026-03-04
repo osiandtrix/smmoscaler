@@ -43,6 +43,9 @@ body {
     radial-gradient(900px 600px at 60% 85%, rgba(52, 211, 153, 0.1), transparent 55%),
     var(--bg);
   color: var(--text);
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 code {

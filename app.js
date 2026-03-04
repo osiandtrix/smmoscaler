@@ -209,6 +209,17 @@
               link.textContent = it.name;
               link.target = '_blank';
               link.rel = 'noopener noreferrer';
+              
+              // Add rarity color styling
+              const rarityColor = getRarityColor(it.rarity);
+              if (rarityColor) {
+                link.style.color = rarityColor;
+                link.style.fontWeight = 'bold';
+                // Also style the hyperlink color (visited links)
+                link.style.textDecoration = 'none';
+                link.style.textDecorationColor = rarityColor;
+              }
+              
               textContainer.appendChild(link);
               textContainer.appendChild(document.createTextNode(` (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`));
               
@@ -226,6 +237,21 @@
         console.error('Error rendering results:', e);
         statusEl.textContent = `Render error: ${e.message || e}`;
       }
+    }
+
+    function getRarityColor(rarity) {
+      if (!rarity) return null;
+      const rarityMap = {
+        'Common': '#FFFFFF',      // White
+        'Uncommon': '#00BFFF',    // Blue
+        'Rare': '#FFA500',        // Orange
+        'Elite': '#FF0000',       // Red
+        'Epic': '#800080',        // Purple
+        'Legendary': '#FFD700',   // Yellow
+        'Celestial': '#ADD8E6',   // Light Blue
+        'Exotic': '#00FF00'       // Green
+      };
+      return rarityMap[rarity] || null;
     }
 
     sortButton.addEventListener('click', () => {
