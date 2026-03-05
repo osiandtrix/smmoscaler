@@ -98,26 +98,21 @@
             <details>
               <summary>How it works</summary>
               <div class="hintBody">
-                <ul>
-                  <li>
-                    Fetches items from your configured API (or uses demo data by
-                    default).
+                <ol>
+                  <li>Input your level and budget in gold.</li>
+                  <li>The tool will list the top 5 items ranked by total Power (higher power = better item).</li>
+                  <li>Toggle between sorting by most power or best value to find the best bang-for-buck equipment.</li>
+                  <li>Power Calculation:
+                    <ul>
+                      <li>Strength = 1 point</li>
+                      <li>Defence = 0.3 points</li>
+                      <li>Crit% = Level × 2 points (when special attacks are toggled)</li>
+                    </ul>
                   </li>
-                  <li>
-                    Filters to items you can use (level requirement) that have
-                    a market‑low at or below your available gold.
-                  </li>
-                  <li>
-                    Calculates power for each item using: <strong>str × 1 + def × 0.3</strong>.
-                  </li>
-                  <li>
-                    Lists all matching items sorted by power (highest first).
-                  </li>
-                </ul>
-                <p class="hintNote">
-                  Configure the API in <code>config.js</code>. Make sure your
-                  key is public/read-only.
-                </p>
+                  <li>Special Attacks: Considers Crit-based Gear and determines the best Crit gear for your current level.</li>
+                  <li>Unavailable items: Potentially better, but not found in market.</li>
+                  <li>Interesting Items: Non-equipment items.</li>
+                </ol>
               </div>
             </details>
           </div>
