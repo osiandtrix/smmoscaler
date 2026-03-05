@@ -6,11 +6,107 @@
 (function attachLogger(global) {
   function qs(id) { return document.getElementById(id); }
 
+  // Auto-load smmoscaler-logs.json if it exists
+  async function autoLoadLogs() {
+    try {
+      const response = await fetch('smmoscaler-logs.json');
+      if (!response.ok) {
+        // File doesn't exist or can't be fetched, that's okay
+        console.debug('logger: smmoscaler-logs.json not found, skipping auto-load');
+        return;
+      }
+      
+      const data = await response.json();
+      console.debug('logger: auto-loading smmoscaler-logs.json', data);
+      
+      // Process the loaded data using the same logic as the import function
+      let parsed = data;
+      
+      // Accept common wrappers
+      if (!Array.isArray(parsed)) {
+        if (parsed && Array.isArray(parsed.logs)) parsed = parsed.logs;
+        else if (parsed && Array.isArray(parsed.items)) parsed = parsed.items;
+        else if (parsed && Array.isArray(parsed.data)) parsed = parsed.data;
+      }
+
+      if (!Array.isArray(parsed)) {
+        console.warn('logger: smmoscaler-logs.json format invalid, skipping auto-load');
+        return;
+      }
+
+      const existing = (global.SMMO_LOGS && typeof global.SMMO_LOGS.get === 'function') 
+        ? global.SMMO_LOGS.get() 
+        : (global.SMMO_ITEM_LOGS || []);
+
+      function extractId(obj) {
+        if (obj == null) return null;
+        if (typeof obj === 'string' || typeof obj === 'number') return String(obj);
+        if (obj.id) return String(obj.id);
+        if (obj.item && (obj.item.id || obj.item.item_id)) return String(obj.item.id || obj.item.item_id);
+        if (obj.item_id) return String(obj.item_id);
+        if (obj.data && (obj.data.id || obj.data.item_id)) return String(obj.data.id || obj.data.item_id);
+        return null;
+      }
+
+      const seen = new Set(existing.map(e => extractId(e)).filter(Boolean));
+      let imported = 0;
+      const merged = existing.slice();
+      const now = new Date().toISOString();
+      
+      for (const entry of parsed) {
+        let id = extractId(entry);
+        // If parsed entry is a plain item object (no outer id), try its nested id
+        if (!id && entry && typeof entry === 'object' && (entry.name || entry.item_name || entry.minLevel)) {
+          id = extractId(entry);
+        }
+        if (!id && entry && entry.item && typeof entry.item === 'object') id = extractId(entry.item);
+        if (!id) continue;
+        if (seen.has(String(id))) continue;
+
+        // Normalize: if entry already looks like {id, fetchedAt, item}, keep it.
+        let toPush = entry;
+        if (!(entry && entry.id) && entry && entry.item) {
+          // maybe entry.item is the real item
+          toPush = { id: id, fetchedAt: now, item: entry.item };
+        } else if (!(entry && entry.id) && (entry && (entry.name || entry.item_name))) {
+          // entry is a plain item
+          toPush = { id: id, fetchedAt: now, item: entry };
+        } else if (typeof entry === 'string' || typeof entry === 'number') {
+          toPush = { id: id, fetchedAt: now };
+        }
+
+        merged.push(toPush);
+        seen.add(String(id));
+        imported++;
+      }
+
+      if (global.SMMO_LOGS && typeof global.SMMO_LOGS.set === 'function') {
+        global.SMMO_LOGS.set(merged);
+      } else {
+        global.SMMO_ITEM_LOGS = merged;
+      }
+      
+      console.debug('logger: auto-loaded', { imported, total: merged.length, existing: existing.length, parsed: parsed.length });
+      
+      // Update status if available
+      const status = qs('loggerStatus');
+      if (status) {
+        status.textContent = `Auto-loaded ${imported} items from smmoscaler-logs.json.`;
+      }
+    } catch (e) {
+      console.error('logger: auto-load failed', e);
+      // Don't show error in status for auto-load failures, as the file may simply not exist
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const startBtn = qs('loggerStartButton');
     const exportBtn = qs('loggerExportButton');
     const apiInput = qs('loggerApiKeyInput');
     const status = qs('loggerStatus');
+
+    // Auto-load smmoscaler-logs.json if it exists
+    autoLoadLogs();
 
     let running = false;
     let abortController = null;
