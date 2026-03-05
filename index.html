@@ -76,6 +76,15 @@
                 value="0"
               />
             </label>
+
+            <label class="field checkbox-field">
+              <input
+                id="specialAttacksCheckbox"
+                name="specialAttacks"
+                type="checkbox"
+              />
+              <span class="label">Special Attacks</span>
+            </label>
           </div>
 
           <div class="actions">
@@ -193,6 +202,15 @@
           >
             Logger idle.
           </div>
+        </section>
+
+        <section class="interesting-items" aria-labelledby="interestingItemsTitle">
+          <details id="interestingItemsSection">
+            <summary id="interestingItemsTitle" class="interestingItemsTitle">Interesting items</summary>
+            <div class="interestingItemsContent">
+              <div id="interestingItemsList" class="interestingItemsList"></div>
+            </div>
+          </details>
         </section>
       </main>
 

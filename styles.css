@@ -328,6 +328,27 @@ summary {
   margin-top: 8px;
 }
 
+.unavailableHeader {
+  font-weight: 800;
+  color: var(--danger);
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 107, 107, 0.08);
+  margin-top: 16px;
+}
+
+.noItemsMsg {
+  color: var(--muted);
+  font-size: 13px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.12);
+  margin-top: 8px;
+}
+
 .resultItem {
   display: flex;
   align-items: center;
