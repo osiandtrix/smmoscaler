@@ -535,6 +535,81 @@ summary {
   margin-top: 12px;
 }
 
+/* Documentation section */
+.documentation {
+  padding: 18px;
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.documentationTitle {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+
+.documentationContent {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.documentationContent h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 16px 0 10px 0;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.documentationContent p {
+  margin: 8px 0;
+}
+
+.documentationContent p:first-child {
+  margin-top: 0;
+}
+
+.documentationContent p:last-child {
+  margin-bottom: 0;
+}
+
+.creatorInfo {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(110, 231, 255, 0.08);
+}
+
+.features ul {
+  margin: 8px 0 8px 20px;
+  padding: 0;
+}
+
+.features li {
+  margin-bottom: 6px;
+}
+
+.features strong {
+  color: var(--text);
+}
+
+.techStack {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.techStack p {
+  font-weight: 600;
+  color: var(--primary2);
+}
+
 /* Details/Summary styling */
 details {
   outline: none;
