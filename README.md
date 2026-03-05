@@ -15,12 +15,16 @@ Dataminer runs at 1 request per 2 seconds. Slow but you would not get HTTP429.
 
 HOW TO USE:
 Local:Download all files and run index.html
+
 Or
+
 Use page above.
 
 Logging: The scaler is a calculator/sorter that sorts by the logged items in the smmoscaler-logs.json file. 
 Mine items with your own APIkey from https://web.simple-mmo.com/p-api/home, and download results...
+
 or
+
 Download a pre-mined log file provided already in the files :)
 NOTE: Since the data is MINED and stored to a log file MANUALLY, they may become outdated. 
 
