@@ -391,5 +391,201 @@
         importInput.value = '';
       });
     }
+
+    // Update database functionality
+    const updateDbStartBtn = qs('updateDbStartButton');
+    const updateDbStartIdInput = qs('updateDbStartIdInput');
+    const updateDbStatus = qs('updateDbStatus');
+
+    let updateDbRunning = false;
+    let updateDbAbortController = null;
+
+    updateDbStartBtn.addEventListener('click', async () => {
+      if (updateDbRunning) {
+        // Stop requested
+        updateDbRunning = false;
+        if (updateDbAbortController) updateDbAbortController.abort();
+        updateDbStartBtn.textContent = 'Update database';
+        updateDbStatus.textContent = 'Stopping…';
+        return;
+      }
+
+      const apiKey = (apiInput && apiInput.value || '').trim();
+      if (!apiKey) { updateDbStatus.textContent = 'Provide a public API key to start updating database.'; return; }
+
+      const startId = parseInt(updateDbStartIdInput.value, 10);
+      if (!Number.isInteger(startId) || startId < 1) { updateDbStatus.textContent = 'Please enter a valid start item ID (>= 1).'; return; }
+
+      const config = global.SMMO_SCALER_CONFIG || {};
+      const base = (config.API_BASE_URL || 'https://api.simple-mmo.com/v1').replace(/\/$/, '');
+      const endpointTemplate = (config.ITEM_BY_ID_ENDPOINT || '/item/info/{id}');
+      const method = (config.ITEM_BY_ID_METHOD || 'POST').toUpperCase();
+      const apiKeyMode = (config.API_KEY_MODE || 'header');
+      const apiKeyHeader = config.API_KEY_HEADER_NAME || 'api_key';
+
+      updateDbRunning = true;
+      updateDbAbortController = new AbortController();
+      updateDbStartBtn.textContent = 'Stop updating';
+      updateDbStatus.textContent = `Starting database update from ID ${startId}…`;
+
+      let updated = 0;
+      let skipped = 0;
+      let errors = 0;
+
+      async function attemptFetchWithFallback(initialUrl, initialOptions, ctx) {
+        // Try initial request first, then fall back if 401.
+        const attempts = [];
+        attempts.push({ url: initialUrl, options: initialOptions, label: 'initial' });
+
+        // If initial used header mode, try Authorization: Bearer next
+        if (ctx.apiKeyMode === 'header' && String(ctx.apiKeyHeader).toLowerCase() !== 'authorization') {
+          const h = Object.assign({}, initialOptions.headers || {});
+          h['Authorization'] = ctx.apiKey.startsWith('Bearer ') ? ctx.apiKey : `Bearer ${ctx.apiKey}`;
+          attempts.push({ url: initialUrl, options: Object.assign({}, initialOptions, { headers: h }), label: 'bearer' });
+        }
+
+        // Try query param
+        const paramName = (ctx.config && ctx.config.API_KEY_QUERY_PARAM) || 'apiKey';
+        const sep = initialUrl.includes('?') ? '&' : '?';
+        const urlWithQuery = `${initialUrl}${sep}${encodeURIComponent(paramName)}=${encodeURIComponent(ctx.apiKey)}`;
+        attempts.push({ url: urlWithQuery, options: initialOptions, label: 'query' });
+
+        // If POST, try including api_key in JSON body as last resort
+        if ((ctx.method || 'POST').toUpperCase() === 'POST') {
+          const opts = Object.assign({}, initialOptions);
+          const h = Object.assign({}, opts.headers || {});
+          h['Content-Type'] = 'application/json';
+          const body = Object.assign({}, opts.body ? JSON.parse(opts.body) : {}, { api_key: ctx.apiKey });
+          opts.headers = h;
+          opts.body = JSON.stringify(body);
+          attempts.push({ url: initialUrl, options: opts, label: 'body' });
+        }
+
+        for (const a of attempts) {
+          console.debug('logger: requesting', a.label, a.url, a.options);
+          const res = await fetchItem(a.url, a.options);
+          if (res.ok) return { ok: true, data: res.data, used: a.label };
+          // If fetch failed with 401, continue to next attempt; otherwise return error
+          if (res.error && res.error.message && res.error.message.includes('HTTP 401')) {
+            console.debug('logger: 401 received for', a.label);
+            // small delay before next attempt
+            await sleep(300);
+            continue;
+          }
+          return { ok: false, error: res.error };
+        }
+
+        return { ok: false, error: new Error('All auth attempts failed (401)') };
+      }
+
+      // Build candidate ID list
+      let ids = [];
+      if (Array.isArray(config.ITEM_IDS) && config.ITEM_IDS.length > 0) ids = config.ITEM_IDS.slice();
+      else {
+        for (let i = startId; i <= 999000; i++) ids.push(i);
+      }
+
+      // Filter to IDs starting from startId
+      const pending = ids.filter(id => id >= startId);
+      if (pending.length === 0) { updateDbStatus.textContent = 'No item IDs found from the start ID.'; return; }
+
+      for (const id of pending) {
+        if (!updateDbRunning) break;
+
+        const idStr = String(id);
+        const urlPath = endpointTemplate.includes('{id}')
+          ? endpointTemplate.replace('{id}', encodeURIComponent(idStr))
+          : `${endpointTemplate}/${encodeURIComponent(idStr)}`;
+        const url = `${base}${urlPath.startsWith('/') ? '' : '/'}${urlPath}`;
+
+        const headers = { 'Accept': 'application/json' };
+
+        // Support header mode (including Authorization: Bearer) and query mode
+        let requestUrl = url;
+        if (apiKeyMode === 'header') {
+          // If header name is Authorization, send as Bearer token
+          if (typeof apiKeyHeader === 'string' && apiKeyHeader.toLowerCase() === 'authorization') {
+            headers['Authorization'] = apiKey.startsWith('Bearer ') ? apiKey : `Bearer ${apiKey}`;
+          } else {
+            headers[apiKeyHeader] = apiKey;
+          }
+        } else if (apiKeyMode === 'query') {
+          const paramName = config.API_KEY_QUERY_PARAM || 'apiKey';
+          const sep = requestUrl.includes('?') ? '&' : '?';
+          requestUrl = `${requestUrl}${sep}${encodeURIComponent(paramName)}=${encodeURIComponent(apiKey)}`;
+        }
+
+        const options = { method, headers, signal: updateDbAbortController.signal };
+        if (method === 'POST' && !endpointTemplate.includes('{id}')) {
+          options.headers['Content-Type'] = 'application/json';
+          options.body = JSON.stringify({ id });
+        }
+
+        updateDbStatus.textContent = `Fetching ${idStr}…`;
+        const ctx = { apiKeyMode, apiKeyHeader, apiKey, config, method };
+        const attemptResult = await attemptFetchWithFallback(url, options, ctx);
+        if (attemptResult.ok) {
+          const entry = { id: id, fetchedAt: new Date().toISOString(), item: attemptResult.data };
+          
+          // Replace existing entry with same ID or add new
+          const logs = global.SMMO_ITEM_LOGS || [];
+          const existingIndex = logs.findIndex(e => String(e.id) === String(id));
+          if (existingIndex !== -1) {
+            logs[existingIndex] = entry;
+            updated++;
+          } else {
+            logs.push(entry);
+            updated++;
+          }
+          
+          if (global.SMMO_LOGS && typeof global.SMMO_LOGS.set === 'function') {
+            global.SMMO_LOGS.set(logs);
+          } else {
+            global.SMMO_ITEM_LOGS = logs;
+          }
+          
+          updateDbStatus.textContent = `Updated ${updated} items — last ${idStr} (auth: ${attemptResult.used || 'unknown'})`;
+        } else {
+          // If the only failure was a 404 Not Found, treat it as "nonexistent" and
+          // record it so we don't keep retrying the same ID.  This satisfies the
+          // requirement of skipping missing items without spamming the console or
+          // aborting the whole run.
+          const msg = attemptResult.error && attemptResult.error.message ? attemptResult.error.message : String(attemptResult.error);
+          if (msg.includes('HTTP 404')) {
+            // push an entry with no item (could also mark with special flag) so that
+            // the ID counts as existing and won't be requested again.
+            const entry = { id: id, fetchedAt: new Date().toISOString(), item: null };
+            const logs = global.SMMO_ITEM_LOGS || [];
+            const existingIndex = logs.findIndex(e => String(e.id) === String(id));
+            if (existingIndex !== -1) {
+              logs[existingIndex] = entry;
+              skipped++;
+            } else {
+              logs.push(entry);
+              skipped++;
+            }
+            
+            if (global.SMMO_LOGS && typeof global.SMMO_LOGS.set === 'function') {
+              global.SMMO_LOGS.set(logs);
+            } else {
+              global.SMMO_ITEM_LOGS = logs;
+            }
+            
+            updateDbStatus.textContent = `Item ${idStr} not found – skipping`;
+          } else {
+            console.warn('Fetch failed for', idStr, attemptResult.error);
+            updateDbStatus.textContent = `Fetch error for ${idStr}: ${msg}`;
+            errors++;
+          }
+        }
+
+        try { await sleep(2000); } catch (e) { /* ignore */ }
+      }
+
+      updateDbRunning = false;
+      updateDbAbortController = null;
+      updateDbStartBtn.textContent = 'Update database';
+      updateDbStatus.textContent = `Database update completed — updated ${updated}, skipped ${skipped}, errors ${errors}.`;
+    });
   });
 })(window);

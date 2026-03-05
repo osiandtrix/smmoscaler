@@ -212,6 +212,39 @@
             Logger idle.
           </div>
         </section>
+
+        <section class="logger" aria-labelledby="updateDbTitle">
+          <h2 id="updateDbTitle" class="loggerTitle">Update database</h2>
+          <p class="loggerHelp">
+            Fetch item details starting from a specific item ID and replace existing entries with the same ID.
+          </p>
+          <div class="loggerRow">
+            <label class="field loggerField">
+              <span class="label">Start from item ID</span>
+              <input
+                id="updateDbStartIdInput"
+                name="updateDbStartId"
+                type="number"
+                min="1"
+                step="1"
+                value="1"
+              />
+            </label>
+            <div class="loggerButtons">
+                <button id="updateDbStartButton" class="primary small" type="button">
+                  Update database
+                </button>
+            </div>
+          </div>
+          <div
+            id="updateDbStatus"
+            class="status loggerStatus"
+            role="status"
+            aria-live="polite"
+          >
+            Database update idle.
+          </div>
+        </section>
       </main>
 
       <footer class="footer">
