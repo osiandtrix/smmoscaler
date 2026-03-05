@@ -411,6 +411,34 @@ summary {
   margin-left: 16px;
 }
 
+.resultsList > .slotHeader + .resultItem,
+.unavailableContent > .slotHeader + .resultItem,
+.interestingItemsList > .slotHeader + .resultItem {
+  border-color: var(--primary2);
+  background: linear-gradient(
+    135deg,
+    rgba(110, 231, 255, 0.12),
+    rgba(167, 139, 250, 0.12)
+  );
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.22);
+}
+
+.resultsList > .slotHeader + .resultItem .itemText::before,
+.unavailableContent > .slotHeader + .resultItem .itemText::before,
+.interestingItemsList > .slotHeader + .resultItem .itemText::before {
+  content: "Top Pick";
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(110, 231, 255, 0.35);
+  background: rgba(110, 231, 255, 0.12);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
 .itemIcon {
   flex: 0 0 auto;
   width: 40px;
