@@ -26,7 +26,6 @@
     const summary = qs('summary');
     const totalCost = qs('totalCost');
     const totalPower = qs('totalPower');
-    const bestValue = qs('bestValue');
     const slotsFilled = qs('slotsFilled');
     const INTERESTING_TYPES = ['Collectable', 'Tome', 'Avatar', 'Item Sprite', 'Grenade', 'Food'];
 
@@ -89,11 +88,9 @@
 
       const estimatedCost = bestPerSlot.reduce((sum, item) => sum + (item.cost || 0), 0);
       const totalEquipmentStrength = bestPerSlot.reduce((sum, item) => sum + (item.power || 0), 0);
-      const maxValue = mainAvailableItems.reduce((m, i) => Math.max(m, i.bestValue || 0), 0);
 
       totalCost.textContent = Math.round(estimatedCost).toLocaleString();
       totalPower.textContent = totalEquipmentStrength.toFixed(1);
-      bestValue.textContent = maxValue.toFixed(4);
       slotsFilled.textContent = mainAvailableItems.length;
     }
 
@@ -117,7 +114,6 @@
       }
       totalCost.textContent = '—';
       totalPower.textContent = '—';
-      bestValue.textContent = '—';
       slotsFilled.textContent = '—';
       statusEl.textContent = 'Ready.';
     }
@@ -127,7 +123,6 @@
         'SMMO Scaler Summary',
         `Estimated Cost: ${totalCost.textContent}`,
         `Equipment Strength: ${totalPower.textContent}`,
-        `Best Value: ${bestValue.textContent}`,
         `Items available: ${slotsFilled.textContent}`
       ];
 
