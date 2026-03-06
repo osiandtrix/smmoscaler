@@ -124,7 +124,8 @@
       }
     }
 
-    startBtn.addEventListener('click', async () => {
+    startBtn.addEventListener('click', async (ev) => {
+      ev.preventDefault();
       if (running) {
         // Stop requested
         running = false;
@@ -287,7 +288,8 @@
       status.textContent = `Logging completed — added ${added} items.`;
     });
 
-    exportBtn.addEventListener('click', () => {
+    exportBtn.addEventListener('click', (ev) => {
+      ev.preventDefault();
       const data = JSON.stringify((global.SMMO_LOGS && typeof global.SMMO_LOGS.get === 'function') ? global.SMMO_LOGS.get() : (global.SMMO_ITEM_LOGS || []), null, 2);
       const blob = new Blob([data], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -304,7 +306,10 @@
     const importBtn = qs('loggerImportButton');
     const importInput = qs('loggerImportInput');
     if (importBtn && importInput) {
-      importBtn.addEventListener('click', () => importInput.click());
+      importBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        importInput.click();
+      });
       importInput.addEventListener('change', (ev) => {
         const f = ev.target.files && ev.target.files[0];
         if (!f) return;
@@ -400,7 +405,14 @@
     let updateDbRunning = false;
     let updateDbAbortController = null;
 
-    updateDbStartBtn.addEventListener('click', async () => {
+    window.addEventListener('beforeunload', (ev) => {
+      if (!running && !updateDbRunning) return;
+      ev.preventDefault();
+      ev.returnValue = '';
+    });
+
+    updateDbStartBtn.addEventListener('click', async (ev) => {
+      ev.preventDefault();
       if (updateDbRunning) {
         // Stop requested
         updateDbRunning = false;
