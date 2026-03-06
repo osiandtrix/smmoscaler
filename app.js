@@ -14,6 +14,7 @@
     const runButton = qs('runButton');
     const resetButton = qs('resetButton');
     const sortButton = qs('sortButton');
+    const copyButton = qs('copyButton');
     const levelInput = qs('levelInput');
     const goldInput = qs('goldInput');
     const minPowerInput = qs('minPowerInput');
@@ -100,6 +101,10 @@
       sortBy = 'power';
       sortButton.textContent = 'Sort by: Power';
       sortButton.disabled = true;
+      if (copyButton) {
+        copyButton.disabled = true;
+        copyButton.textContent = 'Copy summary';
+      }
       summary.hidden = true;
       resultsList.hidden = true;
       resultsList.innerHTML = '';
@@ -115,6 +120,47 @@
       bestValue.textContent = '—';
       slotsFilled.textContent = '—';
       statusEl.textContent = 'Ready.';
+    }
+
+    function buildSummaryText() {
+      const lines = [
+        'SMMO Scaler Summary',
+        `Estimated Cost: ${totalCost.textContent}`,
+        `Equipment Strength: ${totalPower.textContent}`,
+        `Best Value: ${bestValue.textContent}`,
+        `Items available: ${slotsFilled.textContent}`
+      ];
+
+      const topPickLinks = resultsList.querySelectorAll('.slotGroup .topPickItem .itemText > a');
+      if (topPickLinks.length > 0) {
+        lines.push('', 'Top Picks:');
+        topPickLinks.forEach(link => {
+          lines.push(`- ${link.textContent}`);
+        });
+      }
+
+      return lines.join('\n');
+    }
+
+    async function writeTextToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const fallback = document.createElement('textarea');
+      fallback.value = text;
+      fallback.setAttribute('readonly', '');
+      fallback.style.position = 'fixed';
+      fallback.style.opacity = '0';
+      fallback.style.pointerEvents = 'none';
+      document.body.appendChild(fallback);
+      fallback.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(fallback);
+      if (!ok) {
+        throw new Error('Clipboard unavailable');
+      }
     }
 
     function getStatDisplayName(statKey) {
@@ -280,6 +326,9 @@
         updateSummary(availableItems);
 
         sortButton.disabled = false;
+        if (copyButton) {
+          copyButton.disabled = availableItems.length === 0 && unavailableItems.length === 0;
+        }
         renderResults(availableItems, unavailableItems);
       } catch (e) {
         console.error('Error in calculator:', e);
@@ -563,11 +612,31 @@
         updateSummary(availableItems);
         
         renderResults(availableItems, unavailableItems);
+        if (copyButton) {
+          copyButton.disabled = availableItems.length === 0 && unavailableItems.length === 0;
+        }
       } catch (e) {
         console.error('Error in sort button:', e);
         statusEl.textContent = `Sort error: ${e.message || e}`;
       }
     });
+
+    if (copyButton) {
+      copyButton.addEventListener('click', async () => {
+        try {
+          const summaryText = buildSummaryText();
+          await writeTextToClipboard(summaryText);
+          copyButton.textContent = 'Copied!';
+          statusEl.textContent = 'Summary copied to clipboard.';
+          window.setTimeout(() => {
+            copyButton.textContent = 'Copy summary';
+          }, 1400);
+        } catch (e) {
+          console.error('Error copying summary:', e);
+          statusEl.textContent = 'Could not copy summary.';
+        }
+      });
+    }
 
     resetButton.addEventListener('click', (ev) => {
       ev.preventDefault();
