@@ -200,6 +200,10 @@
         const primaryB = sortBy === 'power' ? (b.power || 0) : (b.bestValue || 0);
         if (primaryB !== primaryA) return primaryB - primaryA;
 
+        const secondaryA = sortBy === 'power' ? (a.bestValue || 0) : (a.power || 0);
+        const secondaryB = sortBy === 'power' ? (b.bestValue || 0) : (b.power || 0);
+        if (secondaryB !== secondaryA) return secondaryB - secondaryA;
+
         if (slotName === 'Collectable') {
           const tagA = normalizeCustomTag(a.customItemTag ?? a.custom_item);
           const tagB = normalizeCustomTag(b.customItemTag ?? b.custom_item);
