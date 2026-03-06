@@ -266,72 +266,8 @@
                 // Sort by bestValue descending
                 slotItems.sort((a, b) => b.bestValue - a.bestValue);
               }
-              
-              // Take top 5 items for this slot
-              const top5 = slotItems.slice(0, 5);
-              totalItems += top5.length;
-              
-              // Add slot header
-              const slotHeader = document.createElement('div');
-              slotHeader.className = 'slotHeader';
-              slotHeader.textContent = `${slotName} (${top5.length} items)`;
-              resultsList.appendChild(slotHeader);
-              
-              // Add items for this slot
-              for (const it of top5) {
-                const div = document.createElement('div');
-                div.className = 'resultItem';
-                
-                // Create icon container
-                const iconContainer = document.createElement('div');
-                iconContainer.className = 'itemIcon';
-                const iconImg = document.createElement('img');
-                // Use image_url from logs if available, otherwise construct from item ID
-                // Always prefix with https://web.simple-mmo.com for complete URLs
-                let imageUrl = '/img/icons/default.png';
-                if (it.image_url) {
-                  // Add prefix to existing image_url from logs
-                  imageUrl = `https://web.simple-mmo.com${it.image_url}`;
-                } else if (it.id) {
-                  // Construct URL using item ID
-                  imageUrl = `https://web.simple-mmo.com/item/inspect/${it.id}`;
-                }
-                iconImg.src = imageUrl;
-                iconImg.alt = '';
-                iconImg.title = it.name;
-                iconContainer.appendChild(iconImg);
-                
-                // Create text container
-                const textContainer = document.createElement('div');
-                textContainer.className = 'itemText';
-                const valueDisplay = (it.bestValue != null) ? it.bestValue.toFixed(4) : '—';
-                const link = document.createElement('a');
-                link.href = `https://web.simple-mmo.com/item/inspect/${it.id}`;
-                link.textContent = it.name;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                
-                // Add rarity color styling
-                const rarityColor = getRarityColor(it.rarity);
-                if (rarityColor) {
-                  link.style.color = rarityColor;
-                  link.style.fontWeight = 'bold';
-                  // Also style the hyperlink color (visited links)
-                  link.style.textDecoration = 'none';
-                  link.style.textDecorationColor = rarityColor;
-                }
-                
-                textContainer.appendChild(link);
-                textContainer.appendChild(document.createTextNode(` (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`));
-                const statsLine = document.createElement('div');
-                statsLine.className = 'itemStatsLine';
-                statsLine.textContent = formatItemStats(it);
-                textContainer.appendChild(statsLine);
-                
-                div.appendChild(iconContainer);
-                div.appendChild(textContainer);
-                resultsList.appendChild(div);
-              }
+
+              totalItems += renderSlotGroup(resultsList, slotName, slotItems);
             }
             
             // Update summary with total count
@@ -380,71 +316,8 @@
                 // Sort by bestValue descending
                 slotItems.sort((a, b) => b.bestValue - a.bestValue);
               }
-              
-              // Take top 5 items for this slot
-              const top5 = slotItems.slice(0, 5);
-              
-              // Add slot header
-              const slotHeader = document.createElement('div');
-              slotHeader.className = 'slotHeader';
-              slotHeader.textContent = `${slotName} (${top5.length} items)`;
-              unavailableContent.appendChild(slotHeader);
-              
-              // Add items for this slot
-              for (const it of top5) {
-                const div = document.createElement('div');
-                div.className = 'resultItem';
-                
-                // Create icon container
-                const iconContainer = document.createElement('div');
-                iconContainer.className = 'itemIcon';
-                const iconImg = document.createElement('img');
-                // Use image_url from logs if available, otherwise construct from item ID
-                // Always prefix with https://web.simple-mmo.com for complete URLs
-                let imageUrl = '/img/icons/default.png';
-                if (it.image_url) {
-                  // Add prefix to existing image_url from logs
-                  imageUrl = `https://web.simple-mmo.com${it.image_url}`;
-                } else if (it.id) {
-                  // Construct URL using item ID
-                  imageUrl = `https://web.simple-mmo.com/item/inspect/${it.id}`;
-                }
-                iconImg.src = imageUrl;
-                iconImg.alt = '';
-                iconImg.title = it.name;
-                iconContainer.appendChild(iconImg);
-                
-                // Create text container
-                const textContainer = document.createElement('div');
-                textContainer.className = 'itemText';
-                const valueDisplay = (it.bestValue != null) ? it.bestValue.toFixed(4) : '—';
-                const link = document.createElement('a');
-                link.href = `https://web.simple-mmo.com/item/inspect/${it.id}`;
-                link.textContent = it.name;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                
-                // Add rarity color styling
-                const rarityColor = getRarityColor(it.rarity);
-                if (rarityColor) {
-                  link.style.color = rarityColor;
-                  link.style.fontWeight = 'bold';
-                  // Also style the hyperlink color (visited links)
-                  link.style.textDecoration = 'none';
-                  link.style.textDecorationColor = rarityColor;
-                }
-                
-                textContainer.appendChild(link);
-                textContainer.appendChild(document.createTextNode(` (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`));
-                const statsLine = document.createElement('div');
-                statsLine.className = 'itemStatsLine';
-                statsLine.textContent = formatItemStats(it);
-                textContainer.appendChild(statsLine);
-                
-                div.appendChild(iconContainer);
-                div.appendChild(textContainer);
-                unavailableContent.appendChild(div);
-              }
+
+              renderSlotGroup(unavailableContent, slotName, slotItems);
             }
           }
           
@@ -492,75 +365,96 @@
             // Sort by bestValue descending
             slotItems.sort((a, b) => b.bestValue - a.bestValue);
           }
-          
-          // Take top 5 items for this slot
-          const top5 = slotItems.slice(0, 5);
-          
-          // Add slot header
-          const slotHeader = document.createElement('div');
-          slotHeader.className = 'slotHeader';
-          slotHeader.textContent = `${slotName} (${top5.length} items)`;
-          interestingItemsList.appendChild(slotHeader);
-          
-          // Add items for this slot
-          for (const it of top5) {
-            const div = document.createElement('div');
-            div.className = 'resultItem';
-            
-            // Create icon container
-            const iconContainer = document.createElement('div');
-            iconContainer.className = 'itemIcon';
-            const iconImg = document.createElement('img');
-            // Use image_url from logs if available, otherwise construct from item ID
-            // Always prefix with https://web.simple-mmo.com for complete URLs
-            let imageUrl = '/img/icons/default.png';
-            if (it.image_url) {
-              // Add prefix to existing image_url from logs
-              imageUrl = `https://web.simple-mmo.com${it.image_url}`;
-            } else if (it.id) {
-              // Construct URL using item ID
-              imageUrl = `https://web.simple-mmo.com/item/inspect/${it.id}`;
-            }
-            iconImg.src = imageUrl;
-            iconImg.alt = '';
-            iconImg.title = it.name;
-            iconContainer.appendChild(iconImg);
-            
-            // Create text container
-            const textContainer = document.createElement('div');
-            textContainer.className = 'itemText';
-            const valueDisplay = (it.bestValue != null) ? it.bestValue.toFixed(4) : '—';
-            const link = document.createElement('a');
-            link.href = `https://web.simple-mmo.com/item/inspect/${it.id}`;
-            link.textContent = it.name;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            
-            // Add rarity color styling
-            const rarityColor = getRarityColor(it.rarity);
-            if (rarityColor) {
-              link.style.color = rarityColor;
-              link.style.fontWeight = 'bold';
-              // Also style the hyperlink color (visited links)
-              link.style.textDecoration = 'none';
-              link.style.textDecorationColor = rarityColor;
-            }
-            
-            textContainer.appendChild(link);
-            textContainer.appendChild(document.createTextNode(` (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`));
-            const statsLine = document.createElement('div');
-            statsLine.className = 'itemStatsLine';
-            statsLine.textContent = formatItemStats(it);
-            textContainer.appendChild(statsLine);
-            
-            div.appendChild(iconContainer);
-            div.appendChild(textContainer);
-            interestingItemsList.appendChild(div);
-          }
+
+          renderSlotGroup(interestingItemsList, slotName, slotItems);
         }
       } catch (e) {
         console.error('Error rendering interesting items:', e);
       }
+    }
+
+    function createResultItemElement(it) {
+      const div = document.createElement('div');
+      div.className = 'resultItem';
+
+      const iconContainer = document.createElement('div');
+      iconContainer.className = 'itemIcon';
+      const iconImg = document.createElement('img');
+      let imageUrl = '/img/icons/default.png';
+      if (it.image_url) {
+        imageUrl = `https://web.simple-mmo.com${it.image_url}`;
+      } else if (it.id) {
+        imageUrl = `https://web.simple-mmo.com/item/inspect/${it.id}`;
+      }
+      iconImg.src = imageUrl;
+      iconImg.alt = '';
+      iconImg.title = it.name;
+      iconContainer.appendChild(iconImg);
+
+      const textContainer = document.createElement('div');
+      textContainer.className = 'itemText';
+      const valueDisplay = (it.bestValue != null) ? it.bestValue.toFixed(4) : '—';
+      const link = document.createElement('a');
+      link.href = `https://web.simple-mmo.com/item/inspect/${it.id}`;
+      link.textContent = it.name;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      const rarityColor = getRarityColor(it.rarity);
+      if (rarityColor) {
+        link.style.color = rarityColor;
+        link.style.fontWeight = 'bold';
+        link.style.textDecoration = 'none';
+        link.style.textDecorationColor = rarityColor;
+      }
+
+      textContainer.appendChild(link);
+      textContainer.appendChild(document.createTextNode(` (Power ${it.power.toFixed(1)}, Estimated cost ${it.cost}, Value ${valueDisplay})`));
+      const statsLine = document.createElement('div');
+      statsLine.className = 'itemStatsLine';
+      statsLine.textContent = formatItemStats(it);
+      textContainer.appendChild(statsLine);
+
+      div.appendChild(iconContainer);
+      div.appendChild(textContainer);
+      return div;
+    }
+
+    function renderSlotGroup(container, slotName, sortedSlotItems) {
+      const top5 = sortedSlotItems.slice(0, 5);
+
+      const slotGroup = document.createElement('section');
+      slotGroup.className = 'slotGroup';
+
+      const slotHeader = document.createElement('div');
+      slotHeader.className = 'slotHeader';
+      slotHeader.textContent = `${slotName} (${top5.length} items)`;
+      slotGroup.appendChild(slotHeader);
+
+      const slotLayout = document.createElement('div');
+      slotLayout.className = 'slotLayout';
+
+      if (top5.length > 0) {
+        const topPickItem = createResultItemElement(top5[0]);
+        topPickItem.classList.add('topPickItem');
+        slotLayout.appendChild(topPickItem);
+      }
+
+      const secondaryItems = top5.slice(1);
+      if (secondaryItems.length > 0) {
+        const secondaryList = document.createElement('div');
+        secondaryList.className = 'slotSecondaryList';
+        for (const item of secondaryItems) {
+          const secondaryItem = createResultItemElement(item);
+          secondaryItem.classList.add('secondaryItem');
+          secondaryList.appendChild(secondaryItem);
+        }
+        slotLayout.appendChild(secondaryList);
+      }
+
+      slotGroup.appendChild(slotLayout);
+      container.appendChild(slotGroup);
+      return top5.length;
     }
 
     function getRarityColor(rarity) {

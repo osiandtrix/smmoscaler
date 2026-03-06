@@ -366,6 +366,15 @@ summary {
   gap: 10px;
 }
 
+.slotGroup {
+  display: grid;
+  gap: 10px;
+}
+
+.slotGroup .slotHeader {
+  margin-top: 0;
+}
+
 .slotHeader {
   font-weight: 800;
   color: var(--primary);
@@ -411,9 +420,25 @@ summary {
   margin-left: 16px;
 }
 
-.resultsList > .slotHeader + .resultItem,
-.unavailableContent > .slotHeader + .resultItem,
-.interestingItemsList > .slotHeader + .resultItem {
+.slotLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 10px;
+  margin-left: 16px;
+}
+
+.slotSecondaryList {
+  display: grid;
+  gap: 8px;
+}
+
+.slotLayout .resultItem {
+  margin-left: 0;
+}
+
+.topPickItem {
+  min-height: 124px;
+  padding: 14px;
   border-color: var(--primary2);
   background: linear-gradient(
     135deg,
@@ -423,9 +448,12 @@ summary {
   box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.22);
 }
 
-.resultsList > .slotHeader + .resultItem .itemText::before,
-.unavailableContent > .slotHeader + .resultItem .itemText::before,
-.interestingItemsList > .slotHeader + .resultItem .itemText::before {
+.topPickItem .itemIcon {
+  width: 52px;
+  height: 52px;
+}
+
+.topPickItem .itemText::before {
   content: "Top Pick";
   display: inline-block;
   margin-right: 8px;
@@ -437,6 +465,16 @@ summary {
   font-size: 11px;
   font-weight: 700;
   vertical-align: middle;
+}
+
+.secondaryItem {
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.secondaryItem .itemIcon {
+  width: 30px;
+  height: 30px;
 }
 
 .itemIcon {
@@ -468,6 +506,16 @@ summary {
   font-size: 11px;
   line-height: 1.2;
   color: var(--faint);
+}
+
+@media (max-width: 820px) {
+  .slotLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .topPickItem {
+    min-height: 0;
+  }
 }
 
 .resultItem:hover {
@@ -560,7 +608,6 @@ summary {
 
 .unavailableContent {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 12px;
 }
 
