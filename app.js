@@ -453,7 +453,7 @@
           slots[it.slot].push(it);
         }
         
-        // Sort each slot by current sortBy mode and take top 5
+        // Sort each slot by current sortBy mode and render all items (no limit)
         for (const slotName in slots) {
           const slotItems = slots[slotName];
           
@@ -659,4 +659,3 @@
 
   global.SMMO_APP = { CONFIG };
 })(window);
-
