@@ -63,29 +63,83 @@
   }
 
   async function fetchJsonIfPresent(filePath) {
+    // For file:// protocol, use XMLHttpRequest instead of fetch to avoid CORS issues
+    const isLocalFile = typeof window !== 'undefined' && window.location.protocol === 'file:';
+    
+    if (isLocalFile) {
+      return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+          if (xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300)) {
+            try {
+              const data = JSON.parse(xhr.responseText);
+              console.debug('logger: successfully fetched (xhr)', filePath, { entriesLoaded: Array.isArray(data) ? data.length : (data?.files ? '(index)' : 'unknown') });
+              resolve(data);
+            } catch (e) {
+              console.debug('logger: JSON parse failed', filePath, e.message);
+              resolve(null);
+            }
+          } else {
+            console.debug('logger: xhr returned non-ok status', filePath, xhr.status);
+            resolve(null);
+          }
+        };
+        xhr.onerror = () => {
+          console.debug('logger: xhr request failed', filePath);
+          resolve(null);
+        };
+        xhr.ontimeout = () => {
+          console.debug('logger: xhr request timed out', filePath);
+          resolve(null);
+        };
+        xhr.open('GET', filePath, true);
+        xhr.timeout = 5000;
+        xhr.send();
+      });
+    }
+    
+    // For HTTP(S), use fetch
     try {
       const response = await fetch(filePath);
-      if (!response.ok) return null;
-      return await response.json();
+      if (!response.ok) {
+        console.debug('logger: fetch returned non-ok status', filePath, response.status);
+        return null;
+      }
+      const data = await response.json();
+      console.debug('logger: successfully fetched', filePath, { entriesLoaded: Array.isArray(data) ? data.length : (data?.files ? '(index)' : 'unknown') });
+      return data;
     } catch (e) {
+      console.debug('logger: fetch failed', filePath, e.message);
       return null;
     }
   }
 
   async function getSplitFileListFromIndex() {
     const indexPayload = await fetchJsonIfPresent('smmoscaler-logs.index.json');
-    if (!indexPayload || !Array.isArray(indexPayload.files)) return null;
+    if (!indexPayload || !Array.isArray(indexPayload.files)) {
+      if (indexPayload) console.debug('logger: index file found but missing .files array', indexPayload);
+      return null;
+    }
     const files = indexPayload.files
       .map(x => (typeof x === 'string' ? x.trim() : ''))
       .filter(Boolean);
+    console.debug('logger: index file found with files', { 
+      count: files.length, 
+      type: files[0]?.startsWith('http') ? 'absolute-urls' : 'relative-paths',
+      files: files.slice(0, 3) 
+    });
     return files.length > 0 ? files : null;
   }
 
   async function probeSequentialLogFiles() {
+    console.debug('logger: probing for sequential log files');
     const discovered = [];
 
     const base = await fetchJsonIfPresent('smmoscaler-logs.json');
-    if (base) discovered.push({ path: 'smmoscaler-logs.json', payload: base });
+    if (base) {
+      console.debug('logger: found smmoscaler-logs.json');
+      discovered.push({ path: 'smmoscaler-logs.json', payload: base });
+    }
 
     const templates = [
       i => `smmoscaler-logs.part${i}.json`,
@@ -117,12 +171,18 @@
       unique.push(item);
     }
 
+    console.debug('logger: probe complete', { filesFound: unique.map(u => u.path) });
     return unique;
   }
 
   // Auto-load smmoscaler-logs.json if it exists
   async function autoLoadLogs() {
     try {
+      console.debug('logger: autoLoadLogs starting', { 
+        location: typeof window !== 'undefined' ? window.location.href : 'unknown',
+        existingLogs: (global.SMMO_ITEM_LOGS || []).length 
+      });
+      
       const existing = (global.SMMO_LOGS && typeof global.SMMO_LOGS.get === 'function') 
         ? global.SMMO_LOGS.get() 
         : (global.SMMO_ITEM_LOGS || []);
@@ -131,12 +191,14 @@
       const sources = [];
 
       if (indexedFiles) {
+        console.debug('logger: using indexed files from smmoscaler-logs.index.json');
         for (const filePath of indexedFiles) {
           const payload = await fetchJsonIfPresent(filePath);
           if (payload) sources.push({ path: filePath, payload });
           else console.warn('logger: listed log file missing/unreadable', filePath);
         }
       } else {
+        console.debug('logger: no index file found, probing for log files');
         const discovered = await probeSequentialLogFiles();
         sources.push(...discovered);
       }
@@ -163,34 +225,53 @@
         global.SMMO_LOGS.set(merged);
       } else {
         global.SMMO_ITEM_LOGS = merged;
+        console.debug('logger: set SMMO_ITEM_LOGS', { count: merged.length });
       }
+      
+      // Calculate and store the maximum item ID for resume logging
+      const extractedIds = merged
+        .map(e => {
+          const id = extractId(e);
+          return id ? parseInt(id, 10) : null;
+        })
+        .filter(id => id !== null && !isNaN(id) && id > 0);
+      
+      const maxId = extractedIds.length > 0 ? Math.max(...extractedIds) : 0;
+      global.LATEST_LOG_ITEM_ID = maxId;
       
       console.debug('logger: auto-loaded', {
         imported,
         total: merged.length,
         existing: existing.length,
         filesLoaded: sources.length,
+        latestItemId: maxId,
+        validIdCount: extractedIds.length,
       });
       
       // Update status if available
       const status = qs('loggerStatus');
       if (status) {
-        status.textContent = `Auto-loaded ${imported} items from ${sources.length} log file(s).`;
+        status.textContent = `Auto-loaded ${imported} items from ${sources.length} log file(s). Latest ID: ${maxId}`;
       }
     } catch (e) {
       console.error('logger: auto-load failed', e);
+      console.debug('logger: SMMO_ITEM_LOGS state', {
+        isArray: Array.isArray(global.SMMO_ITEM_LOGS),
+        count: (global.SMMO_ITEM_LOGS || []).length,
+        firstId: (global.SMMO_ITEM_LOGS?.[0]?.id),
+      });
       // Don't show error in status for auto-load failures, as the file may simply not exist
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
     const startBtn = qs('loggerStartButton');
     const exportBtn = qs('loggerExportButton');
     const apiInput = qs('loggerApiKeyInput');
     const status = qs('loggerStatus');
 
     // Auto-load smmoscaler-logs.json if it exists
-    autoLoadLogs();
+    await autoLoadLogs();
 
     let running = false;
     let abortController = null;
@@ -233,7 +314,10 @@
       let ids = [];
       if (Array.isArray(config.ITEM_IDS) && config.ITEM_IDS.length > 0) ids = config.ITEM_IDS.slice();
       else {
-        for (let i = 1; i <= 999000; i++) ids.push(i);
+        // Start from latest logged ID + 1 to resume logging
+        const latestId = global.LATEST_LOG_ITEM_ID || 0;
+        const startId = latestId > 0 ? latestId + 1 : 1;
+        for (let i = startId; i <= 999000; i++) ids.push(i);
       }
 
       const logs = global.SMMO_ITEM_LOGS || [];
@@ -242,11 +326,23 @@
       // Filter to unlogged IDs
       const pending = ids.filter(id => !existing.has(String(id)));
       if (pending.length === 0) { status.textContent = 'No unlogged item IDs found.'; return; }
+      
+      const resumeFrom = global.LATEST_LOG_ITEM_ID || 0;
+      const statusMsg = resumeFrom > 0 ? ` (resuming from ID ${resumeFrom})` : '';
+      
+      console.debug('logger: starting session', {
+        latestLoggedId: resumeFrom,
+        totalLogsLoaded: logs.length,
+        candidateIds: ids.length,
+        unloggedIds: pending.length,
+        firstPending: pending[0],
+        lastPending: pending[pending.length - 1],
+      });
 
       running = true;
       abortController = new AbortController();
       startBtn.textContent = 'Stop logging';
-      status.textContent = `Starting logging — ${pending.length} items available.`;
+      status.textContent = `Starting logging — ${pending.length} items available${statusMsg}.`;
 
       let added = 0;
       async function attemptFetchWithFallback(initialUrl, initialOptions, ctx) {
@@ -338,6 +434,11 @@
             logs.push(entry);
             global.SMMO_ITEM_LOGS = logs;
           }
+          // Update max logged ID for resume capability
+          const numId = parseInt(idStr) || 0;
+          if (numId > (global.LATEST_LOG_ITEM_ID || 0)) {
+            global.LATEST_LOG_ITEM_ID = numId;
+          }
           added++;
           status.textContent = `Added ${added} items — last ${idStr} (auth: ${attemptResult.used || 'unknown'})`;
         } else {
@@ -355,6 +456,11 @@
             } else {
               logs.push(entry);
               global.SMMO_ITEM_LOGS = logs;
+            }
+            // Update max logged ID for resume capability even for 404s
+            const numId = parseInt(idStr) || 0;
+            if (numId > (global.LATEST_LOG_ITEM_ID || 0)) {
+              global.LATEST_LOG_ITEM_ID = numId;
             }
             status.textContent = `Item ${idStr} not found – skipping`;
           } else {

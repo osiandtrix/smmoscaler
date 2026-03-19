@@ -41,6 +41,26 @@ py scripts/split_logs.py
 - If smmoscaler-logs.json is 100 MB or less, it keeps a single file and writes smmoscaler-logs.index.json pointing to that file.
 - If smmoscaler-logs.json exceeds 100 MB, it writes chunk files and updates smmoscaler-logs.index.json so the app auto-loads all chunks.
 
+### GitHub Actions: Automatic Log Splitting & Release
+
+For teams hosting on GitHub Pages, a workflow is included that automatically:
+1. Detects changes to `smmoscaler-logs.json`
+2. Runs the split_logs.py script
+3. Creates a GitHub Release with all log chunks as downloadable assets
+4. Updates the index file to point to the release URLs
+5. Commits the index back to the repository
+
+**How it works:**
+- Place this workflow (already in `.github/workflows/split-and-release-logs.yml`)
+- Push changes to `smmoscaler-logs.json` to the `main` branch
+- Workflow automatically runs, creates a release, and updates the index
+- The app will load split log files directly from GitHub releases
+
+**For multi-user shared hosting:**
+- Everyone uses `http://localhost:8000` locally (with Python: `python -m http.server 8000`)
+- When deployed, users access via `https://yourname.github.io/smmoscaler/`
+- Large logs are served from Release CDN (no 100 MB GitHub limit issues)
+
 Special thanks to Winikolo for helping out with the logging work uwu
 
 Thanks to Fluxeon for playtesting the tool and providing feedback.
