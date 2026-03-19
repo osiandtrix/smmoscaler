@@ -45,5 +45,7 @@ Special thanks to Winikolo for helping out with the logging work uwu
 
 Thanks to Fluxeon for playtesting the tool and providing feedback.
 
+Thanks to Y0mu for providing database files.
+
 All code is free to use, free to distribute, but not free to sell and profit.
 All the names of the items and icons of the output items belong to Galahad Creative LLC.
