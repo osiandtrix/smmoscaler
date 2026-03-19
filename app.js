@@ -197,6 +197,39 @@
           return loggedB - loggedA;
         }
 
+        // Special sorting for tool types: Wood Axe, Fishing Rod, Pickaxe, Shovel
+        const toolTypes = ['Wood Axe', 'Fishing Rod', 'Pickaxe', 'Shovel'];
+        if (toolTypes.includes(slotName)) {
+          // Sort by rarity first (Celestial > Legendary > Epic > Elite > Rare > Uncommon > Common)
+          const rarityOrder = {
+            'Celestial': 7,
+            'Legendary': 6,
+            'Epic': 5,
+            'Elite': 4,
+            'Rare': 3,
+            'Uncommon': 2,
+            'Common': 1
+          };
+          
+          const rarityA = rarityOrder[a.rarity] || 0;
+          const rarityB = rarityOrder[b.rarity] || 0;
+          
+          if (rarityB !== rarityA) return rarityB - rarityA;
+          
+          // If same rarity, sort by power descending
+          const powerA = a.power || 0;
+          const powerB = b.power || 0;
+          if (powerB !== powerA) return powerB - powerA;
+          
+          // If same power, sort by cost ascending
+          const costA = a.cost || 0;
+          const costB = b.cost || 0;
+          if (costA !== costB) return costA - costB;
+          
+          // Final tiebreaker: by ID
+          return Number(a.id || 0) - Number(b.id || 0);
+        }
+
         const primaryA = sortBy === 'power' ? (a.power || 0) : (a.bestValue || 0);
         const primaryB = sortBy === 'power' ? (b.power || 0) : (b.bestValue || 0);
         if (primaryB !== primaryA) return primaryB - primaryA;
