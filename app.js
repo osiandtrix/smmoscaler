@@ -51,7 +51,8 @@
     }
 
     function isMainOutputItem(item) {
-      return !INTERESTING_TYPES.includes(item.slot) && !item.custom_item;
+      return !INTERESTING_TYPES.includes(item.slot) && !item.custom_item && item.slot !== 'Tools' && 
+             !['Wood Axe', 'Pickaxe', 'Fishing Rod', 'Shovel', 'Rusty Axe', 'Rusty Fishing Rod', 'Rusty Shovel', 'Rusty Pickaxe'].includes(item.name);
     }
 
     function pickBestItemsBySlot(items, sortMode) {
