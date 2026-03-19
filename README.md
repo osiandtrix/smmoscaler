@@ -28,6 +28,19 @@ or
 Download a pre-mined log file provided already in the files :)
 NOTE: Since the data is MINED and stored to a log file MANUALLY, they may become outdated. 
 
+Large log files:
+- The loader now supports multi-file logs and will auto-load all files listed in smmoscaler-logs.index.json.
+- If no index file exists, it also probes common split names (for example smmoscaler-logs.part1.json, smmoscaler-logs.part2.json, ...).
+- Use the splitter utility to keep logs GitHub-safe when they grow too large:
+
+```bash
+py scripts/split_logs.py
+```
+
+- Behavior of splitter:
+- If smmoscaler-logs.json is 100 MB or less, it keeps a single file and writes smmoscaler-logs.index.json pointing to that file.
+- If smmoscaler-logs.json exceeds 100 MB, it writes chunk files and updates smmoscaler-logs.index.json so the app auto-loads all chunks.
+
 Special thanks to Winikolo for helping out with the logging work uwu
 
 Thanks to Fluxeon for playtesting the tool and providing feedback.

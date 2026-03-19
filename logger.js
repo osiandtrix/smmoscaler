@@ -6,78 +6,157 @@
 (function attachLogger(global) {
   function qs(id) { return document.getElementById(id); }
 
+  function extractId(obj) {
+    if (obj == null) return null;
+    if (typeof obj === 'string' || typeof obj === 'number') return String(obj);
+    if (obj.id) return String(obj.id);
+    if (obj.item && (obj.item.id || obj.item.item_id)) return String(obj.item.id || obj.item.item_id);
+    if (obj.item_id) return String(obj.item_id);
+    if (obj.data && (obj.data.id || obj.data.item_id)) return String(obj.data.id || obj.data.item_id);
+    return null;
+  }
+
+  function unwrapArrayPayload(payload) {
+    let parsed = payload;
+    if (!Array.isArray(parsed)) {
+      if (parsed && Array.isArray(parsed.logs)) parsed = parsed.logs;
+      else if (parsed && Array.isArray(parsed.items)) parsed = parsed.items;
+      else if (parsed && Array.isArray(parsed.data)) parsed = parsed.data;
+    }
+    return Array.isArray(parsed) ? parsed : null;
+  }
+
+  function mergeLogEntries(existing, incomingEntries) {
+    const seen = new Set(existing.map(e => extractId(e)).filter(Boolean));
+    let imported = 0;
+    const merged = existing.slice();
+    const now = new Date().toISOString();
+
+    for (const entry of incomingEntries) {
+      let id = extractId(entry);
+      // If parsed entry is a plain item object (no outer id), try its nested id
+      if (!id && entry && typeof entry === 'object' && (entry.name || entry.item_name || entry.minLevel)) {
+        id = extractId(entry);
+      }
+      if (!id && entry && entry.item && typeof entry.item === 'object') id = extractId(entry.item);
+      if (!id) continue;
+      if (seen.has(String(id))) continue;
+
+      // Normalize: if entry already looks like {id, fetchedAt, item}, keep it.
+      let toPush = entry;
+      if (!(entry && entry.id) && entry && entry.item) {
+        // maybe entry.item is the real item
+        toPush = { id: id, fetchedAt: now, item: entry.item };
+      } else if (!(entry && entry.id) && (entry && (entry.name || entry.item_name))) {
+        // entry is a plain item
+        toPush = { id: id, fetchedAt: now, item: entry };
+      } else if (typeof entry === 'string' || typeof entry === 'number') {
+        toPush = { id: id, fetchedAt: now };
+      }
+
+      merged.push(toPush);
+      seen.add(String(id));
+      imported++;
+    }
+
+    return { merged, imported };
+  }
+
+  async function fetchJsonIfPresent(filePath) {
+    try {
+      const response = await fetch(filePath);
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function getSplitFileListFromIndex() {
+    const indexPayload = await fetchJsonIfPresent('smmoscaler-logs.index.json');
+    if (!indexPayload || !Array.isArray(indexPayload.files)) return null;
+    const files = indexPayload.files
+      .map(x => (typeof x === 'string' ? x.trim() : ''))
+      .filter(Boolean);
+    return files.length > 0 ? files : null;
+  }
+
+  async function probeSequentialLogFiles() {
+    const discovered = [];
+
+    const base = await fetchJsonIfPresent('smmoscaler-logs.json');
+    if (base) discovered.push({ path: 'smmoscaler-logs.json', payload: base });
+
+    const templates = [
+      i => `smmoscaler-logs.part${i}.json`,
+      i => `smmoscaler-logs-part${i}.json`,
+      i => `smmoscaler-logs-${i}.json`,
+      i => `smmoscaler-logs.${i}.json`,
+    ];
+
+    for (const buildName of templates) {
+      const firstName = buildName(1);
+      const firstPayload = await fetchJsonIfPresent(firstName);
+      if (!firstPayload) continue;
+
+      discovered.push({ path: firstName, payload: firstPayload });
+      for (let i = 2; i <= 500; i++) {
+        const name = buildName(i);
+        const payload = await fetchJsonIfPresent(name);
+        if (!payload) break;
+        discovered.push({ path: name, payload });
+      }
+    }
+
+    // Deduplicate by file path in case multiple patterns resolve the same files.
+    const seenPaths = new Set();
+    const unique = [];
+    for (const item of discovered) {
+      if (seenPaths.has(item.path)) continue;
+      seenPaths.add(item.path);
+      unique.push(item);
+    }
+
+    return unique;
+  }
+
   // Auto-load smmoscaler-logs.json if it exists
   async function autoLoadLogs() {
     try {
-      const response = await fetch('smmoscaler-logs.json');
-      if (!response.ok) {
-        // File doesn't exist or can't be fetched, that's okay
-        console.debug('logger: smmoscaler-logs.json not found, skipping auto-load');
-        return;
-      }
-      
-      const data = await response.json();
-      console.debug('logger: auto-loading smmoscaler-logs.json', data);
-      
-      // Process the loaded data using the same logic as the import function
-      let parsed = data;
-      
-      // Accept common wrappers
-      if (!Array.isArray(parsed)) {
-        if (parsed && Array.isArray(parsed.logs)) parsed = parsed.logs;
-        else if (parsed && Array.isArray(parsed.items)) parsed = parsed.items;
-        else if (parsed && Array.isArray(parsed.data)) parsed = parsed.data;
-      }
-
-      if (!Array.isArray(parsed)) {
-        console.warn('logger: smmoscaler-logs.json format invalid, skipping auto-load');
-        return;
-      }
-
       const existing = (global.SMMO_LOGS && typeof global.SMMO_LOGS.get === 'function') 
         ? global.SMMO_LOGS.get() 
         : (global.SMMO_ITEM_LOGS || []);
 
-      function extractId(obj) {
-        if (obj == null) return null;
-        if (typeof obj === 'string' || typeof obj === 'number') return String(obj);
-        if (obj.id) return String(obj.id);
-        if (obj.item && (obj.item.id || obj.item.item_id)) return String(obj.item.id || obj.item.item_id);
-        if (obj.item_id) return String(obj.item_id);
-        if (obj.data && (obj.data.id || obj.data.item_id)) return String(obj.data.id || obj.data.item_id);
-        return null;
+      const indexedFiles = await getSplitFileListFromIndex();
+      const sources = [];
+
+      if (indexedFiles) {
+        for (const filePath of indexedFiles) {
+          const payload = await fetchJsonIfPresent(filePath);
+          if (payload) sources.push({ path: filePath, payload });
+          else console.warn('logger: listed log file missing/unreadable', filePath);
+        }
+      } else {
+        const discovered = await probeSequentialLogFiles();
+        sources.push(...discovered);
       }
 
-      const seen = new Set(existing.map(e => extractId(e)).filter(Boolean));
+      if (sources.length === 0) {
+        console.debug('logger: no log files discovered, skipping auto-load');
+        return;
+      }
+
+      let merged = existing.slice();
       let imported = 0;
-      const merged = existing.slice();
-      const now = new Date().toISOString();
-      
-      for (const entry of parsed) {
-        let id = extractId(entry);
-        // If parsed entry is a plain item object (no outer id), try its nested id
-        if (!id && entry && typeof entry === 'object' && (entry.name || entry.item_name || entry.minLevel)) {
-          id = extractId(entry);
+      for (const source of sources) {
+        const parsed = unwrapArrayPayload(source.payload);
+        if (!parsed) {
+          console.warn('logger: invalid log source format, skipping', source.path);
+          continue;
         }
-        if (!id && entry && entry.item && typeof entry.item === 'object') id = extractId(entry.item);
-        if (!id) continue;
-        if (seen.has(String(id))) continue;
-
-        // Normalize: if entry already looks like {id, fetchedAt, item}, keep it.
-        let toPush = entry;
-        if (!(entry && entry.id) && entry && entry.item) {
-          // maybe entry.item is the real item
-          toPush = { id: id, fetchedAt: now, item: entry.item };
-        } else if (!(entry && entry.id) && (entry && (entry.name || entry.item_name))) {
-          // entry is a plain item
-          toPush = { id: id, fetchedAt: now, item: entry };
-        } else if (typeof entry === 'string' || typeof entry === 'number') {
-          toPush = { id: id, fetchedAt: now };
-        }
-
-        merged.push(toPush);
-        seen.add(String(id));
-        imported++;
+        const result = mergeLogEntries(merged, parsed);
+        merged = result.merged;
+        imported += result.imported;
       }
 
       if (global.SMMO_LOGS && typeof global.SMMO_LOGS.set === 'function') {
@@ -86,12 +165,17 @@
         global.SMMO_ITEM_LOGS = merged;
       }
       
-      console.debug('logger: auto-loaded', { imported, total: merged.length, existing: existing.length, parsed: parsed.length });
+      console.debug('logger: auto-loaded', {
+        imported,
+        total: merged.length,
+        existing: existing.length,
+        filesLoaded: sources.length,
+      });
       
       // Update status if available
       const status = qs('loggerStatus');
       if (status) {
-        status.textContent = `Auto-loaded ${imported} items from smmoscaler-logs.json.`;
+        status.textContent = `Auto-loaded ${imported} items from ${sources.length} log file(s).`;
       }
     } catch (e) {
       console.error('logger: auto-load failed', e);
