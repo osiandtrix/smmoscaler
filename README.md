@@ -1,71 +1,107 @@
-# Alpha's SimpleMMO Scaler (A.S.S.) and Dataminer
-Made with love by Raven (Alpha, 28790)
+# Alpha's SimpleMMO Scaler (A.S.S.)
 
-A dedicated tool for SimpleMMO, an old-school browser MMORPG. (https://web.simple-mmo.com)
+Made with love by Raven (Alpha, 28790).
 
+A dedicated tool for SimpleMMO, an old-school browser MMORPG.
 
-Tells you what the best item you can get for your level, and gold for the webgame SimpleMMO.
-https://totallynotaduck.github.io/smmoscaler/
+- Game: https://web.simple-mmo.com
+- Tool: https://totallynotaduck.github.io/smmoscaler/
 
+This project helps you find the best item choices based on your level and available gold. It uses a large item database logsheet and includes a built-in API caller/logging tool.
 
-Uses datamined logsheet of every possible item in the game, tool included in the webpage.
+API calling runs at 1 request every 2 seconds. Slow, but helps avoid HTTP 429 rate-limit errors.
 
+## How To Use
 
-Dataminer runs at 1 request per 2 seconds. Slow but you would not get HTTP429.
+### Quick Start
 
-HOW TO USE:
-Local:Download all files and run index.html
+1. Download all files.
+2. Open `index.html` locally.
 
-Or
+Or use the hosted page:
 
-Use page above.
+- https://totallynotaduck.github.io/smmoscaler/
 
-Logging: The scaler is a calculator/sorter that sorts by the logged items in the smmoscaler-logs.json file. 
-Mine items with your own APIkey from https://web.simple-mmo.com/p-api/home, and download results...
+## Tutorial For Non-Geeks
 
-or
+1. Input your player level.
+2. Input your available gold (budget).
+3. Input minimum power (treat this like minimum strength).
+4. Optional: enable Special Attacks if you want to factor in special attack damage.
+5. Click **Find Best Gear**.
 
-Download a pre-mined log file provided already in the files :)
-NOTE: Since the data is MINED and stored to a log file MANUALLY, they may become outdated. 
+The tool shows gear suggestions that best match your inputs.
 
-Large log files:
-- The loader now supports multi-file logs and will auto-load all files listed in smmoscaler-logs.index.json.
-- If no index file exists, it also probes common split names (for example smmoscaler-logs.part1.json, smmoscaler-logs.part2.json, ...).
-- Use the splitter utility to keep logs GitHub-safe when they grow too large:
+### Sorting Tips
+
+- Sort by **Power** for strongest stats.
+- Sort by **Value** for best bang-for-buck.
+- Add a minimum power filter to refine searches when low-power items clutter results.
+
+### Unavailable / Interesting Items
+
+Some entries may be unavailable or unusual. This section is not always perfectly accurate because item logs may be outdated.
+
+## Logging And Data
+
+The scaler sorts and calculates using items stored in `smmoscaler-logs.json`.
+
+- You can call item IDs with your own API key from: https://web.simple-mmo.com/p-api/home
+- You can also use a provided pre-mined log file in this repository.
+
+Note: Data is manually called via API and stored locally, so it can become outdated.
+
+## Large Log Files
+
+The loader supports split logs and auto-load behavior:
+
+- Auto-loads files listed in `smmoscaler-logs.index.json`
+- If no index file exists, probes common split names such as:
+	- `smmoscaler-logs.part1.json`
+	- `smmoscaler-logs.part2.json`
+
+Use the splitter utility when logs get too large:
 
 ```bash
 py scripts/split_logs.py
 ```
 
-- Behavior of splitter:
-- If smmoscaler-logs.json is 100 MB or less, it keeps a single file and writes smmoscaler-logs.index.json pointing to that file.
-- If smmoscaler-logs.json exceeds 100 MB, it writes chunk files and updates smmoscaler-logs.index.json so the app auto-loads all chunks.
+Splitter behavior:
 
-### GitHub Actions: Automatic Log Splitting & Release
+- If `smmoscaler-logs.json` is 100 MB or less, keeps one file and writes an index pointing to it.
+- If `smmoscaler-logs.json` is above 100 MB, writes chunk files and updates the index so the app auto-loads all chunks.
 
-For teams hosting on GitHub Pages, a workflow is included that automatically:
-1. Detects changes to `smmoscaler-logs.json`
-2. Runs the split_logs.py script
-3. Creates a GitHub Release with all log chunks as downloadable assets
-4. Updates the index file to point to the release URLs
-5. Commits the index back to the repository
+## GitHub Actions: Automatic Log Splitting And Release
 
-**How it works:**
-- Place this workflow (already in `.github/workflows/split-and-release-logs.yml`)
-- Push changes to `smmoscaler-logs.json` to the `main` branch
-- Workflow automatically runs, creates a release, and updates the index
-- The app will load split log files directly from GitHub releases
+For GitHub Pages hosting, the workflow can automatically:
 
-**For multi-user shared hosting:**
-- Everyone uses `http://localhost:8000` locally (with Python: `python -m http.server 8000`)
-- When deployed, users access via `https://yourname.github.io/smmoscaler/`
-- Large logs are served from Release CDN (no 100 MB GitHub limit issues)
+1. Detect changes to `smmoscaler-logs.json`
+2. Run `scripts/split_logs.py`
+3. Create a GitHub Release with all log chunks as assets
+4. Update the index file to point to release URLs
+5. Commit the index back to the repository
 
-Special thanks to Winikolo for helping out with the logging work uwu
+### How It Works
 
-Thanks to Fluxeon for playtesting the tool and providing feedback.
+1. Use the workflow at `.github/workflows/split-and-release-logs.yml`.
+2. Push changes to `smmoscaler-logs.json` on `main`.
+3. Workflow runs, creates a release, and updates the index.
+4. App loads split logs directly from GitHub Releases.
 
-Thanks to Y0mu for providing database files.
+### Multi-User Shared Hosting
 
-All code is free to use, free to distribute, but not free to sell and profit.
-All the names of the items and icons of the output items belong to Galahad Creative LLC.
+- Local use: `http://localhost:8000` via `python -m http.server 8000`
+- Deployed use: `https://yourname.github.io/smmoscaler/`
+- Large logs are served from Release CDN to avoid GitHub's 100 MB repo file limit.
+
+## Credits
+
+- Winikolo for helping with logging work.
+- Fluxeon for playtesting and feedback.
+- Y0mu for providing database files.
+
+## License Note
+
+All code is free to use and distribute, but not free to sell for profit.
+
+All item names and item icon assets belong to Galahad Creative LLC.
