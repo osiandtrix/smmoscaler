@@ -16,6 +16,28 @@
     return null;
   }
 
+  function toPositiveInt(value) {
+    const n = Number.parseInt(String(value), 10);
+    return Number.isInteger(n) && n > 0 ? n : 0;
+  }
+
+  function getLatestLoggedItemId(entries) {
+    let maxId = 0;
+    for (const entry of (entries || [])) {
+      const directId = toPositiveInt(extractId(entry));
+      if (directId > maxId) maxId = directId;
+
+      if (entry && typeof entry === 'object') {
+        const nestedItemId = toPositiveInt(extractId(entry.item));
+        if (nestedItemId > maxId) maxId = nestedItemId;
+
+        const nestedDataId = toPositiveInt(extractId(entry.data));
+        if (nestedDataId > maxId) maxId = nestedDataId;
+      }
+    }
+    return maxId;
+  }
+
   function unwrapArrayPayload(payload) {
     let parsed = payload;
     if (!Array.isArray(parsed)) {
@@ -229,14 +251,7 @@
       }
       
       // Calculate and store the maximum item ID for resume logging
-      const extractedIds = merged
-        .map(e => {
-          const id = extractId(e);
-          return id ? parseInt(id, 10) : null;
-        })
-        .filter(id => id !== null && !isNaN(id) && id > 0);
-      
-      const maxId = extractedIds.length > 0 ? Math.max(...extractedIds) : 0;
+      const maxId = getLatestLoggedItemId(merged);
       global.LATEST_LOG_ITEM_ID = maxId;
       
       console.debug('logger: auto-loaded', {
@@ -245,7 +260,7 @@
         existing: existing.length,
         filesLoaded: sources.length,
         latestItemId: maxId,
-        validIdCount: extractedIds.length,
+        validIdCount: merged.length,
       });
       
       // Update status if available
@@ -309,25 +324,31 @@
       const method = (config.ITEM_BY_ID_METHOD || 'POST').toUpperCase();
       const apiKeyMode = (config.API_KEY_MODE || 'header');
       const apiKeyHeader = config.API_KEY_HEADER_NAME || 'api_key';
+      const logs = global.SMMO_ITEM_LOGS || [];
+      const existing = new Set(logs.map(l => String(l.id)));
+
+      // Determine latest known item ID from both cached value and current logs.
+      const latestLoggedId = Math.max(global.LATEST_LOG_ITEM_ID || 0, getLatestLoggedItemId(logs));
+      global.LATEST_LOG_ITEM_ID = latestLoggedId;
 
       // Build candidate ID list
       let ids = [];
-      if (Array.isArray(config.ITEM_IDS) && config.ITEM_IDS.length > 0) ids = config.ITEM_IDS.slice();
+      if (Array.isArray(config.ITEM_IDS) && config.ITEM_IDS.length > 0) {
+        ids = config.ITEM_IDS
+          .map(id => toPositiveInt(id))
+          .filter(id => id > latestLoggedId);
+      }
       else {
         // Start from latest logged ID + 1 to resume logging
-        const latestId = global.LATEST_LOG_ITEM_ID || 0;
-        const startId = latestId > 0 ? latestId + 1 : 1;
+        const startId = latestLoggedId > 0 ? latestLoggedId + 1 : 1;
         for (let i = startId; i <= 999000; i++) ids.push(i);
       }
-
-      const logs = global.SMMO_ITEM_LOGS || [];
-      const existing = new Set(logs.map(l => String(l.id)));
 
       // Filter to unlogged IDs
       const pending = ids.filter(id => !existing.has(String(id)));
       if (pending.length === 0) { status.textContent = 'No unlogged item IDs found.'; return; }
       
-      const resumeFrom = global.LATEST_LOG_ITEM_ID || 0;
+      const resumeFrom = latestLoggedId;
       const statusMsg = resumeFrom > 0 ? ` (resuming from ID ${resumeFrom})` : '';
       
       console.debug('logger: starting session', {
@@ -570,8 +591,9 @@
             } else {
               global.SMMO_ITEM_LOGS = merged;
             }
+            global.LATEST_LOG_ITEM_ID = getLatestLoggedItemId(merged);
             console.debug('logger: import merged', { imported, total: merged.length, existing: existing.length, parsed: parsed.length });
-            status.textContent = `Imported ${imported} items (existing ${existing.length}, parsed ${parsed.length}).`;
+            status.textContent = `Imported ${imported} items (existing ${existing.length}, parsed ${parsed.length}). Latest ID: ${global.LATEST_LOG_ITEM_ID}`;
           } catch (e) {
             console.error('logger: import error', e);
             status.textContent = `Import failed: ${e && e.message ? e.message : e}`;
