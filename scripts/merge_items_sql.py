@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
-SQL_PATH = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r"c:\Users\rvem\Downloads\items_backup.sql")
+SQL_PATH = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("items_backup.sql")
 LOGS_PATH = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).resolve().parent.parent / "smmoscaler-logs.json"
 
 INSERT_MARKERS = ["INSERT INTO `items` VALUES", "INSERT INTO items VALUES"]

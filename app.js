@@ -327,7 +327,23 @@
       budgetSortButton.textContent = budgetCapEnabled ? 'Budget Cap: On' : 'Budget Cap: Off';
     }
 
+    function showError(msg) {
+      if (errorEl) {
+        errorEl.textContent = msg;
+        errorEl.hidden = false;
+      }
+      statusEl.textContent = 'Error occurred.';
+    }
+
+    function clearError() {
+      if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.hidden = true;
+      }
+    }
+
     function recomputeAndRender() {
+      clearError();
       const level = toFiniteNumber(levelInput.value, 1);
       const gold = toFiniteNumber(goldInput.value, 0);
       const rawLogs = (window.SMMO_ITEM_LOGS && Array.isArray(window.SMMO_ITEM_LOGS)) ? window.SMMO_ITEM_LOGS : [];
@@ -400,10 +416,7 @@
       if (interestingItemsList) {
         interestingItemsList.innerHTML = '';
       }
-      if (errorEl) {
-        errorEl.hidden = true;
-        errorEl.textContent = '';
-      }
+      clearError();
       totalCost.textContent = '-';
       totalPower.textContent = '-';
       slotsFilled.textContent = '-';
@@ -571,14 +584,14 @@
       };
     }
 
-    runButton.addEventListener('click', (ev) => {
+    optimizerForm.addEventListener('submit', (ev) => {
       ev.preventDefault();
       try {
         statusEl.textContent = 'Computing…';
         recomputeAndRender();
       } catch (e) {
         console.error('Error in calculator:', e);
-        statusEl.textContent = `Error: ${e.message || e}`;
+        showError(e.message || e);
       }
     });
 
@@ -660,7 +673,7 @@
         }
       } catch (e) {
         console.error('Error rendering results:', e);
-        statusEl.textContent = `Render error: ${e.message || e}`;
+        showError(e.message || e);
       }
     }
 
@@ -830,7 +843,7 @@
         recomputeAndRender();
       } catch (e) {
         console.error('Error in sort button:', e);
-        statusEl.textContent = `Sort error: ${e.message || e}`;
+        showError(e.message || e);
       }
     });
 
@@ -842,11 +855,12 @@
           recomputeAndRender();
         } catch (e) {
           console.error('Error in budget sort button:', e);
-          statusEl.textContent = `Budget sort error: ${e.message || e}`;
+          showError(e.message || e);
         }
       });
     }
 
+    let copyResetTimer = null;
     if (copyButton) {
       copyButton.addEventListener('click', async () => {
         try {
@@ -854,12 +868,14 @@
           await writeTextToClipboard(summaryText);
           copyButton.textContent = 'Copied!';
           statusEl.textContent = 'Summary copied to clipboard.';
-          window.setTimeout(() => {
+          if (copyResetTimer) clearTimeout(copyResetTimer);
+          copyResetTimer = setTimeout(() => {
             copyButton.textContent = 'Copy Summary';
+            copyResetTimer = null;
           }, 1400);
         } catch (e) {
           console.error('Error copying summary:', e);
-          statusEl.textContent = 'Could not copy summary.';
+          showError('Could not copy summary.');
         }
       });
     }

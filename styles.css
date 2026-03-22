@@ -127,6 +127,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: manipulation;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   padding: 0;
   font-family: inherit;
@@ -547,6 +548,7 @@ input[type="checkbox"]:focus-visible {
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
+  touch-action: manipulation;
   transition: background var(--transition), border-color var(--transition), color var(--transition), transform 60ms ease;
 }
 
