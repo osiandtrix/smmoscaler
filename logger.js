@@ -149,25 +149,63 @@
 
   function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-  function parseRetryAfterMs(value) {
-    if (value == null || value === '') return null;
-    const asSeconds = Number(value);
-    if (Number.isFinite(asSeconds) && asSeconds >= 0) {
-      return Math.max(0, Math.round(asSeconds * 1000));
+  // Rate limiter: tracks API calls to stay within 40/min.
+  // Uses a sliding window of timestamps for actual calls made.
+  const RATE_LIMIT = 40;
+  const RATE_WINDOW_MS = 60000;
+  const MIN_INTERVAL_MS = Math.ceil(RATE_WINDOW_MS / RATE_LIMIT); // 1500ms
+  const callTimestamps = [];
+
+  async function rateLimitWait(statusEl) {
+    const now = Date.now();
+    // Prune timestamps older than the window
+    while (callTimestamps.length > 0 && callTimestamps[0] <= now - RATE_WINDOW_MS) {
+      callTimestamps.shift();
     }
-    const asDate = Date.parse(String(value));
-    if (Number.isFinite(asDate)) {
-      return Math.max(0, asDate - Date.now());
+
+    if (callTimestamps.length >= RATE_LIMIT) {
+      // Wait until the oldest call falls outside the window
+      const waitUntil = callTimestamps[0] + RATE_WINDOW_MS;
+      const waitMs = waitUntil - now + 100; // +100ms safety margin
+      if (statusEl) {
+        statusEl.textContent = `Rate limit reached (${RATE_LIMIT}/min). Waiting ${Math.ceil(waitMs / 1000)}s…`;
+      }
+      console.debug('logger: rate limit wait', { waitMs, callsInWindow: callTimestamps.length });
+      await sleep(waitMs);
+    } else if (callTimestamps.length > 0) {
+      // Enforce minimum interval between calls
+      const lastCall = callTimestamps[callTimestamps.length - 1];
+      const elapsed = now - lastCall;
+      if (elapsed < MIN_INTERVAL_MS) {
+        await sleep(MIN_INTERVAL_MS - elapsed);
+      }
     }
-    return null;
+  }
+
+  function recordApiCall() {
+    callTimestamps.push(Date.now());
   }
 
   async function fetchItem(url, options) {
     try {
       const resp = await fetch(url, options);
+      recordApiCall();
+
+      // Read rate limit headers from the API
+      const remaining = resp.headers && typeof resp.headers.get === 'function'
+        ? resp.headers.get('X-RateLimit-Remaining')
+        : null;
       const retryAfter = resp.headers && typeof resp.headers.get === 'function'
         ? resp.headers.get('Retry-After')
         : null;
+
+      if (remaining !== null) {
+        const rem = parseInt(remaining, 10);
+        if (Number.isFinite(rem)) {
+          console.debug('logger: rate limit remaining:', rem);
+        }
+      }
+
       let data = null;
       try {
         data = await resp.json();
@@ -180,11 +218,12 @@
           ok: false,
           status: resp.status,
           retryAfter,
+          rateLimitRemaining: remaining !== null ? parseInt(remaining, 10) : null,
           error: new Error(`HTTP ${resp.status}`),
           data
         };
       }
-      return { ok: true, data, status: resp.status };
+      return { ok: true, data, status: resp.status, rateLimitRemaining: remaining !== null ? parseInt(remaining, 10) : null };
     } catch (err) {
       return { ok: false, status: 0, error: err };
     }
@@ -210,108 +249,175 @@
     };
   }
 
-  function buildRequestOptions(ctx, id, url, signal) {
+  // Build the request for a specific auth method.
+  function buildAuthRequest(ctx, id, url, signal, authMethod) {
     const headers = { 'Accept': 'application/json' };
+    let requestUrl = url;
+    const options = { method: ctx.method, headers, signal };
 
-    if (ctx.apiKeyMode === 'header') {
+    if (authMethod === 'header') {
       if (typeof ctx.apiKeyHeader === 'string' && ctx.apiKeyHeader.toLowerCase() === 'authorization') {
         headers['Authorization'] = ctx.apiKey.startsWith('Bearer ') ? ctx.apiKey : `Bearer ${ctx.apiKey}`;
       } else {
         headers[ctx.apiKeyHeader] = ctx.apiKey;
       }
-    }
-
-    const options = { method: ctx.method, headers, signal };
-    if (ctx.method === 'POST' && !ctx.endpointTemplate.includes('{id}')) {
-      options.headers['Content-Type'] = 'application/json';
-      options.body = JSON.stringify({ id });
-    }
-
-    let requestUrl = url;
-    if (ctx.apiKeyMode === 'query') {
+    } else if (authMethod === 'bearer') {
+      headers['Authorization'] = ctx.apiKey.startsWith('Bearer ') ? ctx.apiKey : `Bearer ${ctx.apiKey}`;
+    } else if (authMethod === 'query') {
       const sep = requestUrl.includes('?') ? '&' : '?';
       requestUrl = `${requestUrl}${sep}${encodeURIComponent(ctx.apiKeyQueryParam)}=${encodeURIComponent(ctx.apiKey)}`;
+    } else if (authMethod === 'body') {
+      headers['Content-Type'] = 'application/json';
+      options.body = JSON.stringify({ id, api_key: ctx.apiKey });
+      return { url: requestUrl, options };
+    }
+
+    // For non-body POST, add id in body if endpoint doesn't include {id}
+    if (ctx.method === 'POST' && !ctx.endpointTemplate.includes('{id}') && authMethod !== 'body') {
+      headers['Content-Type'] = 'application/json';
+      options.body = JSON.stringify({ id });
     }
 
     return { url: requestUrl, options };
   }
 
-  function buildAuthAttempts(initialUrl, initialOptions, ctx) {
-    const attemptsByLabel = {};
-    attemptsByLabel.initial = { url: initialUrl, options: initialOptions, label: 'initial' };
-
-    if (ctx.apiKeyMode === 'header' && String(ctx.apiKeyHeader).toLowerCase() !== 'authorization') {
-      const h = Object.assign({}, initialOptions.headers || {});
-      h['Authorization'] = ctx.apiKey.startsWith('Bearer ') ? ctx.apiKey : `Bearer ${ctx.apiKey}`;
-      attemptsByLabel.bearer = { url: initialUrl, options: Object.assign({}, initialOptions, { headers: h }), label: 'bearer' };
+  // Determine which auth methods to try based on config, in priority order.
+  function getAuthMethodOrder(ctx) {
+    const methods = [];
+    if (ctx.apiKeyMode === 'body' && ctx.method === 'POST') {
+      methods.push('body');
+    } else if (ctx.apiKeyMode === 'header') {
+      methods.push('header');
+      if (String(ctx.apiKeyHeader).toLowerCase() !== 'authorization') {
+        methods.push('bearer');
+      }
+    } else if (ctx.apiKeyMode === 'query') {
+      methods.push('query');
     }
-
-    const encodedParam = `${encodeURIComponent(ctx.apiKeyQueryParam)}=`;
-    if (!initialUrl.includes(encodedParam)) {
-      const sep = initialUrl.includes('?') ? '&' : '?';
-      const urlWithQuery = `${initialUrl}${sep}${encodedParam}${encodeURIComponent(ctx.apiKey)}`;
-      attemptsByLabel.query = { url: urlWithQuery, options: initialOptions, label: 'query' };
-    }
-
-    if (ctx.method === 'POST') {
-      const opts = Object.assign({}, initialOptions);
-      const h = Object.assign({}, opts.headers || {});
-      h['Content-Type'] = 'application/json';
-      const bodySource = opts.body ? JSON.parse(opts.body) : {};
-      if (!Object.prototype.hasOwnProperty.call(bodySource, 'api_key')) {
-        const body = Object.assign({}, bodySource, { api_key: ctx.apiKey });
-        opts.headers = h;
-        opts.body = JSON.stringify(body);
-        attemptsByLabel.body = { url: initialUrl, options: opts, label: 'body' };
+    // Add remaining methods as fallbacks
+    for (const m of ['body', 'header', 'bearer', 'query']) {
+      if (!methods.includes(m)) {
+        // Only add 'body' for POST endpoints
+        if (m === 'body' && ctx.method !== 'POST') continue;
+        methods.push(m);
       }
     }
-
-    return attemptsByLabel;
+    return methods;
   }
 
-  async function attemptFetchWithFallback(initialUrl, initialOptions, ctx, opts) {
-    const maxRateLimitRetries = (opts && opts.maxRateLimitRetries) || 0;
-    const statusEl = (opts && opts.statusEl) || null;
-    const preferredAuthLabel = (ctx && ctx.preferredAuthLabel) || null;
+  // Fetch a single item with auth discovery on first call, then locked auth for subsequent calls.
+  // Returns { ok, data, error, status, rateLimited }
+  // Mutates ctx.lockedAuthMethod once auth is discovered.
+  async function fetchWithAuth(ctx, id, url, signal, statusEl) {
+    // If we already know the working auth method, use only that.
+    if (ctx.lockedAuthMethod) {
+      await rateLimitWait(statusEl);
+      const req = buildAuthRequest(ctx, id, url, signal, ctx.lockedAuthMethod);
+      const res = await fetchItem(req.url, req.options);
 
-    const attemptsByLabel = buildAuthAttempts(initialUrl, initialOptions, ctx);
-    const fallbackOrder = ['initial', 'bearer', 'query', 'body'].filter(label => attemptsByLabel[label]);
-    const orderedLabels = (preferredAuthLabel && attemptsByLabel[preferredAuthLabel])
-      ? [preferredAuthLabel].concat(fallbackOrder.filter(label => label !== preferredAuthLabel))
-      : fallbackOrder;
+      if (res.ok) return { ok: true, data: res.data, used: ctx.lockedAuthMethod };
 
-    for (const label of orderedLabels) {
-      const a = attemptsByLabel[label];
-      for (let rateTry = 0; rateTry <= maxRateLimitRetries; rateTry++) {
-        const res = await fetchItem(a.url, a.options);
-        if (res.ok) return { ok: true, data: res.data, used: a.label };
+      // Handle rate limiting with backoff
+      if (res.status === 429) {
+        return await handleRateLimit(res, req, ctx.lockedAuthMethod, statusEl);
+      }
 
-        if (res.status === 429 && maxRateLimitRetries > 0) {
-          const retryAfterMs = parseRetryAfterMs(res.retryAfter);
-          const expBackoff = Math.min(60000, 2000 * Math.pow(2, rateTry));
-          const waitMs = Math.max(retryAfterMs || 0, expBackoff) + Math.floor(Math.random() * 400);
-          if (statusEl) {
-            const waitSeconds = Math.max(1, Math.ceil(waitMs / 1000));
-            statusEl.textContent = `Rate limited (HTTP 429). Waiting ${waitSeconds}s before retrying ${a.label}…`;
+      return { ok: false, error: res.error, status: res.status };
+    }
+
+    // Auth discovery: try methods in order, but each attempt costs an API call.
+    const methods = getAuthMethodOrder(ctx);
+    for (const method of methods) {
+      await rateLimitWait(statusEl);
+      const req = buildAuthRequest(ctx, id, url, signal, method);
+      const res = await fetchItem(req.url, req.options);
+
+      if (res.ok) {
+        // Lock this auth method for all future calls
+        ctx.lockedAuthMethod = method;
+        console.debug('logger: auth discovered, locking method:', method);
+        return { ok: true, data: res.data, used: method };
+      }
+
+      if (res.status === 429) {
+        return await handleRateLimit(res, req, method, statusEl);
+      }
+
+      // 401 = wrong auth method, try next
+      if (res.status === 401) {
+        console.debug('logger: 401 for auth method:', method, '— trying next');
+        continue;
+      }
+
+      // Any other error, stop trying
+      return { ok: false, error: res.error, status: res.status };
+    }
+
+    return { ok: false, error: new Error('All auth methods failed (401)') };
+  }
+
+  async function handleRateLimit(res, req, method, statusEl) {
+    const retryAfterHeader = res.retryAfter;
+    const maxRetries = 3;
+
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      let waitMs;
+      if (retryAfterHeader != null && retryAfterHeader !== '') {
+        const asSeconds = Number(retryAfterHeader);
+        if (Number.isFinite(asSeconds) && asSeconds >= 0) {
+          waitMs = Math.round(asSeconds * 1000);
+        } else {
+          const asDate = Date.parse(String(retryAfterHeader));
+          if (Number.isFinite(asDate)) {
+            waitMs = Math.max(0, asDate - Date.now());
           }
-          await sleep(waitMs);
-          if (rateTry === maxRateLimitRetries) {
-            return { ok: false, status: 429, rateLimited: true, error: new Error('HTTP 429') };
-          }
-          continue;
         }
+      }
+      // Fall back to exponential backoff
+      if (!waitMs || waitMs <= 0) {
+        waitMs = Math.min(120000, RATE_WINDOW_MS * Math.pow(1.5, attempt));
+      }
+      waitMs += Math.floor(Math.random() * 500);
 
-        if (res.status === 401 || (res.error && res.error.message && res.error.message.includes('HTTP 401'))) {
-          console.debug('logger: 401 received for', a.label);
-          await sleep(300);
-          break; // try next auth method
-        }
+      if (statusEl) {
+        const waitSeconds = Math.max(1, Math.ceil(waitMs / 1000));
+        statusEl.textContent = `Rate limited (429). Waiting ${waitSeconds}s (retry ${attempt + 1}/${maxRetries})…`;
+      }
+      console.debug('logger: rate limited, waiting', waitMs, 'ms');
+      await sleep(waitMs);
 
-        return { ok: false, error: res.error, status: res.status };
+      await rateLimitWait(statusEl);
+      const retryRes = await fetchItem(req.url, req.options);
+      if (retryRes.ok) return { ok: true, data: retryRes.data, used: method };
+      if (retryRes.status !== 429) {
+        return { ok: false, error: retryRes.error, status: retryRes.status };
       }
     }
 
-    return { ok: false, error: new Error('All auth attempts failed (401)') };
+    return { ok: false, status: 429, rateLimited: true, error: new Error('HTTP 429 — rate limit retries exhausted') };
+  }
+
+  // Batched localStorage writes: update the in-memory array immediately,
+  // but only flush to localStorage every FLUSH_INTERVAL items or FLUSH_MS.
+  const FLUSH_INTERVAL = 10;
+  const FLUSH_MS = 15000;
+  let pendingFlush = 0;
+  let lastFlushTime = Date.now();
+
+  function flushLogs() {
+    if (pendingFlush === 0) return;
+    if (global.SMMO_LOGS && typeof global.SMMO_LOGS.save === 'function') {
+      global.SMMO_LOGS.save(global.SMMO_ITEM_LOGS || []);
+    }
+    pendingFlush = 0;
+    lastFlushTime = Date.now();
+    console.debug('logger: flushed logs to localStorage');
+  }
+
+  function flushIfNeeded() {
+    if (pendingFlush >= FLUSH_INTERVAL || (Date.now() - lastFlushTime) >= FLUSH_MS) {
+      flushLogs();
+    }
   }
 
   function updateLogEntry(id, entry, mode) {
@@ -328,16 +434,16 @@
       logs.push(entry);
     }
 
-    if (global.SMMO_LOGS && typeof global.SMMO_LOGS.set === 'function') {
-      global.SMMO_LOGS.set(logs);
-    } else {
-      global.SMMO_ITEM_LOGS = logs;
-    }
+    // Update in-memory reference without localStorage write
+    global.SMMO_ITEM_LOGS = logs;
 
     const numId = parseInt(String(id)) || 0;
     if (numId > (global.LATEST_LOG_ITEM_ID || 0)) {
       global.LATEST_LOG_ITEM_ID = numId;
     }
+
+    pendingFlush++;
+    flushIfNeeded();
   }
 
   function getExistingLogs() {
@@ -535,56 +641,65 @@
 
   // --- Shared fetch-loop runner ---
 
+  // Max consecutive 404s before stopping (avoids wasting calls past last real item)
+  const MAX_CONSECUTIVE_404 = 50;
+
   async function runFetchLoop(pending, ctx, signal, statusEl, opts) {
     const mode = (opts && opts.mode) || 'append'; // 'append' or 'replace'
-    const maxRateLimitRetries = (opts && opts.maxRateLimitRetries) || 0;
 
     let added = 0;
     let skipped = 0;
     let errors = 0;
-    let preferredAuthLabel = (opts && opts.preferredAuthLabel) || null;
+    let consecutive404 = 0;
 
     for (const id of pending) {
       if (opts && opts.isRunning && !opts.isRunning()) break;
 
       const url = buildItemUrl(ctx.base, ctx.endpointTemplate, id);
-      const req = buildRequestOptions(ctx, id, url, signal);
+      statusEl.textContent = `Fetching ${id}…${ctx.lockedAuthMethod ? '' : ' (discovering auth…)'}`;
 
-      const fetchCtx = Object.assign({}, ctx, { preferredAuthLabel });
-      statusEl.textContent = `Fetching ${id}…`;
-
-      const result = await attemptFetchWithFallback(req.url, req.options, fetchCtx, {
-        maxRateLimitRetries,
-        statusEl
-      });
+      const result = await fetchWithAuth(ctx, id, url, signal, statusEl);
 
       if (result.ok) {
-        if (result.used) preferredAuthLabel = result.used;
         const entry = { id: id, fetchedAt: new Date().toISOString(), item: result.data };
         updateLogEntry(id, entry, mode);
         added++;
-        statusEl.textContent = `${mode === 'replace' ? 'Updated' : 'Added'} ${added} items — last ${id} (auth: ${result.used || 'unknown'})`;
+        consecutive404 = 0;
+        statusEl.textContent = `${mode === 'replace' ? 'Updated' : 'Added'} ${added} items — last ${id}`;
       } else {
         const msg = result.error && result.error.message ? result.error.message : String(result.error);
         if (result.rateLimited || msg.includes('HTTP 429')) {
           errors++;
-          statusEl.textContent = `Rate limited while fetching ${id}. Backoff retries exhausted.`;
+          statusEl.textContent = `Rate limited while fetching ${id}. Retries exhausted.`;
         } else if (msg.includes('HTTP 404')) {
-          const entry = { id: id, fetchedAt: new Date().toISOString(), item: null };
-          updateLogEntry(id, entry, mode);
+          // Don't store null entries — just track the ID for resume
+          const numId = parseInt(String(id)) || 0;
+          if (numId > (global.LATEST_LOG_ITEM_ID || 0)) {
+            global.LATEST_LOG_ITEM_ID = numId;
+          }
           skipped++;
-          statusEl.textContent = `Item ${id} not found – skipping`;
+          consecutive404++;
+          statusEl.textContent = `Item ${id} not found – skipping (${consecutive404} consecutive)`;
+
+          // Stop if too many consecutive 404s (likely past last real item)
+          if (consecutive404 >= MAX_CONSECUTIVE_404) {
+            statusEl.textContent = `Stopped — ${MAX_CONSECUTIVE_404} consecutive items not found (likely past last item). Added ${added}.`;
+            console.debug('logger: stopping after consecutive 404s', { lastId: id, consecutive404, added, skipped });
+            break;
+          }
         } else {
           console.warn('Fetch failed for', id, result.error);
           errors++;
+          consecutive404 = 0;
           statusEl.textContent = `Fetch error for ${id}: ${msg}`;
         }
       }
-
-      try { await sleep(2000); } catch (e) { /* ignore */ }
     }
 
-    return { added, skipped, errors, preferredAuthLabel };
+    // Flush any remaining buffered writes
+    flushLogs();
+
+    return { added, skipped, errors };
   }
 
   // --- DOMContentLoaded: wire up UI ---
@@ -856,7 +971,6 @@
 
         const result = await runFetchLoop(idsToUpdate, ctx, updateImportedAbortController.signal, updateImportedStatus, {
           mode: 'replace',
-          maxRateLimitRetries: 5,
           isRunning: () => updateImportedRunning
         });
 

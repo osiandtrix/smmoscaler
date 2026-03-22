@@ -69,14 +69,14 @@
     ITEM_BY_ID_METHOD: "POST",
 
     // Where/how to send the API key:
+    // - "body": includes api_key in the POST JSON body (SimpleMMO default)
     // - "header": sends `<API_KEY_HEADER_NAME>: <key>`
     // - "query": appends `?apiKey=<key>` (or `&apiKey=` if query already exists)
     //
-    // Adjust these three values to match the SimpleMMO docs for your key:
-    //   - SimpleMMO typically uses the "api_key" header
-    //   - Some APIs use a custom header (e.g. "X-API-Key")
-    //   - Others might expect "Authorization: Bearer <token>"
-    API_KEY_MODE: "header",
+    // SimpleMMO docs specify POST with api_key in the request body.
+    // The app will auto-discover the correct method if misconfigured,
+    // but setting this correctly avoids wasting API calls on auth discovery.
+    API_KEY_MODE: "body",
     API_KEY_HEADER_NAME: "api_key",
     API_KEY_QUERY_PARAM: "apiKey",
 
