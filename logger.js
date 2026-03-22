@@ -934,7 +934,6 @@
           updateImportedStatus.textContent = 'Provide a public API key to start updating imported IDs.';
           return;
         }
-        const apiKey = keyCheck.apiKey;
 
         const idsToUpdate = Array.from(importedIdsForUpdate)
           .map(id => toPositiveInt(id))
