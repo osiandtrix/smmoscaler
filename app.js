@@ -14,6 +14,7 @@
     const runButton = qs('runButton');
     const resetButton = qs('resetButton');
     const sortButton = qs('sortButton');
+    const budgetSortButton = qs('budgetSortButton');
     const copyButton = qs('copyButton');
     const levelInput = qs('levelInput');
     const goldInput = qs('goldInput');
@@ -49,6 +50,7 @@
     ]);
 
     let sortBy = 'power'; // 'power' or 'value'
+    let budgetCapEnabled = false;
 
     if (CONFIG) configStatus.textContent = 'Config loaded';
     else configStatus.textContent = 'Config missing — using demo data';
@@ -77,6 +79,12 @@
       return Math.min(1, Math.max(0, parsed));
     }
 
+    function toFiniteNumber(value, fallback = 0) {
+      const parsed = parseNumber(value);
+      if (parsed == null || !Number.isFinite(parsed)) return fallback;
+      return parsed;
+    }
+
     function updateDefWeightLabel() {
       if (!defWeightValue) return;
       defWeightValue.textContent = getDefWeight().toFixed(2);
@@ -87,8 +95,9 @@
     }
 
     function isMainOutputItem(item) {
-      return !INTERESTING_TYPE_KEYS.has(getSlotKey(item.slot)) && !item.custom_item && item.slot !== 'Tools' && 
-             !['Wood Axe', 'Pickaxe', 'Fishing Rod', 'Shovel', 'Rusty Axe', 'Rusty Fishing Rod', 'Rusty Shovel', 'Rusty Pickaxe'].includes(item.name);
+      const slotKey = getSlotKey(item.slot);
+      const toolSlotKeys = new Set(['tools', 'wood axe', 'pickaxe', 'fishing rod', 'shovel']);
+      return !INTERESTING_TYPE_KEYS.has(slotKey) && !item.custom_item && !toolSlotKeys.has(slotKey);
     }
 
     function pickBestItemsBySlot(items, sortMode) {
@@ -109,8 +118,8 @@
         }
 
         if (nextMetric === currentMetric) {
-          const currentCost = current.cost || 0;
-          const nextCost = item.cost || 0;
+          const currentCost = toFiniteNumber(current.cost, 0);
+          const nextCost = toFiniteNumber(item.cost, 0);
           if (nextCost < currentCost) {
             bestBySlot.set(item.slot, item);
           }
@@ -119,22 +128,184 @@
       return Array.from(bestBySlot.values());
     }
 
-    function updateSummary(availableItems) {
-      const mainAvailableItems = availableItems.filter(isMainOutputItem);
-      const bestPerSlot = pickBestItemsBySlot(mainAvailableItems, sortBy);
+    function chooseBestBudgetCappedItemsBySlot(items, sortMode, goldLimit) {
+      if (!Number.isFinite(goldLimit) || goldLimit <= 0) return [];
 
-      const estimatedCost = bestPerSlot.reduce((sum, item) => sum + (item.cost || 0), 0);
+      const bySlot = new Map();
+      for (const item of items) {
+        const cost = toFiniteNumber(item.cost, 0);
+        if (cost <= 0) continue;
+        if (!bySlot.has(item.slot)) bySlot.set(item.slot, []);
+        bySlot.get(item.slot).push(item);
+      }
+
+      const slots = Array.from(bySlot.keys());
+      if (slots.length === 0) return [];
+
+      function getMetric(it) {
+        return sortMode === 'power' ? toFiniteNumber(it.power, 0) : toFiniteNumber(it.bestValue, 0);
+      }
+
+      const slotOptions = slots.map(slot => {
+        const opts = bySlot.get(slot)
+          .filter(it => toFiniteNumber(it.cost, 0) <= goldLimit)
+          .sort((a, b) => {
+            const cA = toFiniteNumber(a.cost, 0);
+            const cB = toFiniteNumber(b.cost, 0);
+            if (cA !== cB) return cA - cB;
+            const mA = getMetric(a);
+            const mB = getMetric(b);
+            if (mB !== mA) return mB - mA;
+            return Number(a.id || 0) - Number(b.id || 0);
+          });
+
+        const compact = [];
+        let bestMetricSeen = -Infinity;
+        for (const it of opts) {
+          const metric = getMetric(it);
+          if (metric > bestMetricSeen) {
+            compact.push(it);
+            bestMetricSeen = metric;
+          }
+        }
+        return compact;
+      });
+
+      let states = [{ cost: 0, score: 0, picks: [] }];
+
+      for (let i = 0; i < slots.length; i++) {
+        const nextStates = [];
+
+        for (const state of states) {
+          // Allow skipping a slot when budget cannot accommodate all types.
+          nextStates.push(state);
+
+          for (const it of slotOptions[i]) {
+            const cost = toFiniteNumber(it.cost, 0);
+            const score = getMetric(it);
+            const nextCost = state.cost + cost;
+            if (nextCost > goldLimit) continue;
+            nextStates.push({
+              cost: nextCost,
+              score: state.score + score,
+              picks: state.picks.concat(it)
+            });
+          }
+        }
+
+        nextStates.sort((a, b) => {
+          if (a.cost !== b.cost) return a.cost - b.cost;
+          if (b.score !== a.score) return b.score - a.score;
+          return b.picks.length - a.picks.length;
+        });
+
+        const pruned = [];
+        let bestScoreAtCost = -Infinity;
+        for (const st of nextStates) {
+          if (st.score > bestScoreAtCost) {
+            pruned.push(st);
+            bestScoreAtCost = st.score;
+          }
+        }
+
+        states = pruned.slice(-5000);
+      }
+
+      if (states.length === 0) return [];
+
+      states.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (b.picks.length !== a.picks.length) return b.picks.length - a.picks.length;
+        return a.cost - b.cost;
+      });
+
+      return states[0].picks;
+    }
+
+    function updateSummary(availableItems, selectedMainItems = null) {
+      const mainAvailableItems = Array.isArray(selectedMainItems)
+        ? selectedMainItems
+        : availableItems.filter(isMainOutputItem);
+      const bestPerSlot = budgetCapEnabled
+        ? mainAvailableItems
+        : pickBestItemsBySlot(mainAvailableItems, sortBy);
+
+      const estimatedCost = bestPerSlot.reduce((sum, item) => sum + toFiniteNumber(item.cost, 0), 0);
       const totalEquipmentStrength = bestPerSlot.reduce((sum, item) => sum + (item.power || 0), 0);
 
       totalCost.textContent = Math.round(estimatedCost).toLocaleString();
       totalPower.textContent = totalEquipmentStrength.toFixed(1);
-      slotsFilled.textContent = mainAvailableItems.length;
+      slotsFilled.textContent = bestPerSlot.length;
+    }
+
+    function updateBudgetButtonLabel() {
+      if (!budgetSortButton) return;
+      budgetSortButton.textContent = budgetCapEnabled ? 'Budget cap: On' : 'Budget cap: Off';
+    }
+
+    function recomputeAndRender() {
+      const level = toFiniteNumber(levelInput.value, 1);
+      const gold = toFiniteNumber(goldInput.value, 0);
+      const rawLogs = (window.SMMO_ITEM_LOGS && Array.isArray(window.SMMO_ITEM_LOGS)) ? window.SMMO_ITEM_LOGS : [];
+      let items = [];
+      const includeCritBonus = specialAttacksCheckbox.checked;
+      const defWeight = getDefWeight();
+
+      if (rawLogs.length > 0) {
+        items = rawLogs
+          .map(l => l.item ? normalizeItem(l.item, includeCritBonus, level, defWeight, l.id) : null)
+          .filter(it => it !== null);
+        configStatus.textContent = `Using ${items.length} items from logs (${rawLogs.length} total entries)`;
+      } else {
+        items = (CONFIG && CONFIG.DEMO_ITEMS) ? CONFIG.DEMO_ITEMS : [];
+      }
+
+      const minPower = Number(minPowerInput.value) || 0;
+      const usable = items.filter(it => {
+        if (!it || !it.id) return false;
+        const cost = it.marketLow != null ? toFiniteNumber(it.marketLow, null) : (it.price != null ? toFiniteNumber(it.price, null) : null);
+        if (cost == null) return false;
+        if (it.slot === 'Food' || it.slot === 'Other') return false;
+        return (it.minLevel || 0) <= level && cost <= gold && it.power >= minPower;
+      });
+
+      usable.forEach(it => {
+        const cost = it.marketLow != null ? toFiniteNumber(it.marketLow, 0) : toFiniteNumber(it.price, 0);
+        it.cost = cost;
+        it.bestValue = cost > 0 ? it.power / cost : 0;
+      });
+
+      const unavailableItems = usable.filter(it => (it.cost || 0) === 0);
+      const availableItems = usable.filter(it => (it.cost || 0) > 0);
+      const interestingAvailableItems = availableItems.filter(it => !isMainOutputItem(it));
+
+      let renderAvailableItems = availableItems;
+      let selectedMainItems = null;
+      if (budgetCapEnabled) {
+        const mainAvailableItems = availableItems.filter(isMainOutputItem);
+        selectedMainItems = chooseBestBudgetCappedItemsBySlot(mainAvailableItems, sortBy, gold);
+        renderAvailableItems = selectedMainItems.concat(interestingAvailableItems);
+      }
+
+      updateSummary(renderAvailableItems, selectedMainItems);
+
+      sortButton.disabled = false;
+      if (budgetSortButton) budgetSortButton.disabled = false;
+      if (copyButton) {
+        copyButton.disabled = renderAvailableItems.length === 0 && unavailableItems.length === 0;
+      }
+      renderResults(renderAvailableItems, unavailableItems);
     }
 
     function resetUiState() {
       sortBy = 'power';
+      budgetCapEnabled = false;
       sortButton.textContent = 'Sort by: Power';
       sortButton.disabled = true;
+      updateBudgetButtonLabel();
+      if (budgetSortButton) {
+        budgetSortButton.disabled = true;
+      }
       if (copyButton) {
         copyButton.disabled = true;
         copyButton.textContent = 'Copy summary';
@@ -347,64 +518,7 @@
       ev.preventDefault();
       try {
         statusEl.textContent = 'Computing…';
-        const level = Number(levelInput.value) || 1;
-        const gold = Number(goldInput.value) || 0;
-        // Prefer logs if present (populated by logger.js). Logged entries may
-        // include an `item` object from the API; normalize if so.
-        const rawLogs = (window.SMMO_ITEM_LOGS && Array.isArray(window.SMMO_ITEM_LOGS)) ? window.SMMO_ITEM_LOGS : [];
-        let items = [];
-        const includeCritBonus = specialAttacksCheckbox.checked;
-        const defWeight = getDefWeight();
-        if (rawLogs.length > 0) {
-          // Normalize items from logs, filtering out nulls (which are 404 entries)
-          items = rawLogs
-            .map(l => l.item ? normalizeItem(l.item, includeCritBonus, level, defWeight, l.id) : null)
-            .filter(it => it !== null);
-          configStatus.textContent = `Using ${items.length} items from logs (${rawLogs.length} total entries)`;
-        } else {
-          items = (CONFIG && CONFIG.DEMO_ITEMS) ? CONFIG.DEMO_ITEMS : [];
-        }
-
-        console.log('Loaded items for filtering', { rawLogsCount: rawLogs.length, normalizedCount: items.length, level, gold });
-
-        // Filter items: must have level requirement met AND must have a cost
-        // (marketLow preferred, falls back to price). Blank/404 items are skipped.
-        // Exclude Food and Other item types from showing up in the UI output
-        const minPower = Number(minPowerInput.value) || 0;
-        const usable = items.filter(it => {
-          if (!it || !it.id) return false;
-          // Use marketLow if available, fallback to price
-          const cost = it.marketLow != null ? it.marketLow : (it.price != null ? it.price : null);
-          if (cost == null) return false;
-          // Exclude Food and Other item types
-          if (it.slot === 'Food' || it.slot === 'Other') return false;
-          return (it.minLevel || 0) <= level && cost <= gold && it.power >= minPower;
-        });
-
-        console.log('Filtered to usable items', { usableCount: usable.length, level, gold });
-
-        // Calculate cost and bestValue for each usable item
-        usable.forEach(it => {
-          const cost = it.marketLow != null ? it.marketLow : it.price;
-          it.cost = cost;
-          it.bestValue = cost > 0 ? it.power / cost : 0;
-        });
-
-        // Separate items with estimated cost of 0 (unavailable) from others
-        const unavailableItems = usable.filter(it => (it.cost || 0) === 0);
-        const availableItems = usable.filter(it => (it.cost || 0) > 0);
-
-        // For the new behaviour we simply list every usable item instead of
-        // picking the single best per slot.  The summary is simplified to show
-        // the count and a couple of aggregate values.
-        
-        updateSummary(availableItems);
-
-        sortButton.disabled = false;
-        if (copyButton) {
-          copyButton.disabled = availableItems.length === 0 && unavailableItems.length === 0;
-        }
-        renderResults(availableItems, unavailableItems);
+        recomputeAndRender();
       } catch (e) {
         console.error('Error in calculator:', e);
         statusEl.textContent = `Error: ${e.message || e}`;
@@ -654,48 +768,25 @@
         sortBy = sortBy === 'power' ? 'value' : 'power';
         const label = sortBy === 'power' ? 'Sort by: Power' : 'Sort by: Value';
         sortButton.textContent = label;
-        // Re-render with new sort
-        const level = Number(levelInput.value) || 1;
-        const gold = Number(goldInput.value) || 0;
-        const minPower = Number(minPowerInput.value) || 0;
-        const rawLogs = (window.SMMO_ITEM_LOGS && Array.isArray(window.SMMO_ITEM_LOGS)) ? window.SMMO_ITEM_LOGS : [];
-        let items = [];
-        const includeCritBonus = specialAttacksCheckbox.checked;
-        const defWeight = getDefWeight();
-        if (rawLogs.length > 0) {
-          items = rawLogs
-            .map(l => l.item ? normalizeItem(l.item, includeCritBonus, level, defWeight, l.id) : null)
-            .filter(it => it !== null);
-        } else {
-          items = (CONFIG && CONFIG.DEMO_ITEMS) ? CONFIG.DEMO_ITEMS : [];
-        }
-        const usable = items.filter(it => {
-          if (!it || !it.id) return false;
-          const cost = it.marketLow != null ? it.marketLow : (it.price != null ? it.price : null);
-          if (cost == null) return false;
-          return (it.minLevel || 0) <= level && cost <= gold && it.power >= minPower;
-        });
-        usable.forEach(it => {
-          const cost = it.marketLow != null ? it.marketLow : it.price;
-          it.cost = cost;
-          it.bestValue = cost > 0 ? it.power / cost : 0;
-        });
-        
-        // Separate items with estimated cost of 0 (unavailable) from others
-        const unavailableItems = usable.filter(it => (it.cost || 0) === 0);
-        const availableItems = usable.filter(it => (it.cost || 0) > 0);
-        
-        updateSummary(availableItems);
-        
-        renderResults(availableItems, unavailableItems);
-        if (copyButton) {
-          copyButton.disabled = availableItems.length === 0 && unavailableItems.length === 0;
-        }
+        recomputeAndRender();
       } catch (e) {
         console.error('Error in sort button:', e);
         statusEl.textContent = `Sort error: ${e.message || e}`;
       }
     });
+
+    if (budgetSortButton) {
+      budgetSortButton.addEventListener('click', () => {
+        try {
+          budgetCapEnabled = !budgetCapEnabled;
+          updateBudgetButtonLabel();
+          recomputeAndRender();
+        } catch (e) {
+          console.error('Error in budget sort button:', e);
+          statusEl.textContent = `Budget sort error: ${e.message || e}`;
+        }
+      });
+    }
 
     if (copyButton) {
       copyButton.addEventListener('click', async () => {
